@@ -13,6 +13,9 @@ export class LandingComponent {
   constructor() {
     this.data = {
       name: 'Daniël Geerts',
+      function: 'DevOps Developer - focused on C# and Azure Bicep',
+      description: 'A passionate software developer with a focus on Angular and web technologies.',
+      imagePath: 'https://avatars.githubusercontent.com/u/devdanielsun?v=4',
       links: [
         { label: 'GitHub', url: 'https://github.com/devdanielsun' },
         { label: 'LinkedIn', url: 'https://www.linkedin.com/in/devdanielsun/' },

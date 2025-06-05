@@ -8,10 +8,10 @@ html {
   @include mat.theme((
     color: (
       primary: mat.$magenta-palette,
-      tertiary: mat.$orange-palette,
+      tertiary: mat.$violet-palette,
     ),
     typography: (
-      plain-family: Roboto, //, "Helvetica Neue", sans-serif, // Matches Material Design
+      plain-family: Roboto, // Matches Material Design
       brand-family: "Open Sans", // Matches Material Design
       bold-weight: 900,
       medium-weight: 500,
