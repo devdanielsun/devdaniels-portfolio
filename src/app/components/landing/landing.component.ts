@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-landing',
-  imports: [],
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.scss'
+  templateUrl: './landing.component.html'
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit {
+  data: any;
 
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.http.get('assets/data/landing.json').subscribe(res => {
+      this.data = res;
+    });
+  }
 }
