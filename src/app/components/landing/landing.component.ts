@@ -5,6 +5,7 @@ import { LandingData } from '../../models/landing-data.interface';
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
+  styleUrl: './landing.component.scss',
   imports: [MatCardModule]
 })
 export class LandingComponent {

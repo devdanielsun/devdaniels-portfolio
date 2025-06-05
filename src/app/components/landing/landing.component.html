@@ -1,17 +1,19 @@
-<mat-card class="landing-card">
-  <img mat-card-image src="{{ data?.imagePath }}" alt="DevDaniels - Landing Image">
-  <mat-card-header>
-    <mat-card-title>{{ data?.name }}</mat-card-title>
-    <mat-card-subtitle>{{ data?.function }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>{{ data?.description }}
-  </mat-card-content>
-  <mat-card-actions>
-    @for (link of data?.links; track link) {
-      <div>
-        <button matButton="tonal" color="primary"  target="_blank">{{ link.label }}</button>
-      </div>
-  }
-  </mat-card-actions>
-</mat-card>
+<div class="landing-container">
+  <mat-card class="landing-card">
+    <img mat-card-image src="{{ data?.imagePath }}" alt="DevDaniels - Landing Image">
+    <mat-card-header>
+      <mat-card-title>{{ data?.name }}</mat-card-title>
+      <mat-card-subtitle>{{ data?.function }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ data?.description }}
+    </mat-card-content>
+    <mat-card-actions>
+      @for (link of data?.links; track link) {
+        <div>
+          <button matButton="tonal" color="primary"  target="_blank">{{ link.label }}</button>
+        </div>
+    }
+    </mat-card-actions>
+  </mat-card>
+</div>
