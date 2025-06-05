@@ -15,12 +15,12 @@ export class LandingComponent {
     this.data = {
       name: 'Daniël Geerts',
       function: 'DevOps Developer - focused on C# and Azure Bicep',
-      description: 'A passionate software developer with a focus on Angular and web technologies.',
+      description: 'A passionate software developer with a focus on C# and Azure domain. Check my links, or check my portfolio:',
       imagePath: 'https://avatars.githubusercontent.com/u/devdanielsun?v=4',
       links: [
-        { label: 'GitHub', url: 'https://github.com/devdanielsun' },
-        { label: 'LinkedIn', url: 'https://www.linkedin.com/in/devdanielsun/' },
-        { label: 'Portfolio', url: '/portfolio' },
+        { label: 'GitHub', icon: 'github', url: 'https://github.com/devdanielsun' },
+        { label: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/in/devdanielsun/' },
+        { label: '> Portfolio', url: '/portfolio' },
       ],
     };
   }
