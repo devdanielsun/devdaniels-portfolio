@@ -1,1 +1,8 @@
-<p>landing works!</p>
+<mat-card>
+  <h2>{{ data?.name }}</h2>
+  @for (link of data?.links; track link) {
+    <div>
+      <a mat-raised-button color="primary" [href]="link.url" target="_blank">{{ link.label }}</a>
+    </div>
+  }
+</mat-card>
