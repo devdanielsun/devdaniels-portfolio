@@ -1,4 +1,19 @@
-<p>home works!</p>
-<mat-slide-toggle>Toggle me!</mat-slide-toggle>
-<button mat-button>Basic</button>
-<button mat-raised-button>Basic</button>
+<div class="hero">
+    <h1>Daniël Geerts <span>(he/his)</span></h1>
+    <p>-DevDaniels-</p>
+
+    <p>Software/DevOps Wizard <mat-icon>wand_shine</mat-icon></p>
+
+    <div class="social-icons">
+        <a matIconButton href="https://github.com/devdanielsun" target="_blank" title="View my GitHub">
+            <mat-icon>commit</mat-icon>
+        </a>
+        <a matIconButton href="https://linkedin.com/in/danielgeerts" target="_blank" title="Connect on LinkedIn">
+            <mat-icon>business_center</mat-icon>
+        </a>
+        <a matIconButton [routerLink]="portfolioRoute" title="Check my portfolio">
+            <mat-icon>subdirectory_arrow_right</mat-icon>
+        </a>
+    </div>
+</div>
+  

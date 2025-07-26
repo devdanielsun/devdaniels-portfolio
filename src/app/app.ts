@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
-import { CommonModule } from '@angular/common'; // <-- Add this import
-import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterModule], // <-- Add CommonModule here
+  imports: [
+    CommonModule,
+    RouterModule,
+  ],
   template: `
     <main>
       <nav>
