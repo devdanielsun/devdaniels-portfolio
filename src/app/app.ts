@@ -1,19 +1,24 @@
 import { Component, signal } from '@angular/core';
-// import { RouterOutlet } from '@angular/router';
-import { Home } from './home/home';
+import { CommonModule } from '@angular/common'; // <-- Add this import
+import { RouterModule, Routes } from '@angular/router';
+import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
-  //imports: [RouterOutlet],
-  imports: [ Home ],
-  //templateUrl: './app.html',
+  standalone: true,
+  imports: [CommonModule, RouterModule], // <-- Add CommonModule here
   template: `
     <main>
-      <header class="brand-name">
-        <h1>{{ title() }}</h1>
-      </header>
+      <nav>
+        <a *ngFor="let route of navRoutes"
+          [routerLink]="route.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          {{ route.title }}
+        </a>
+      </nav>
       <section class="content">
-        <app-home></app-home>
+        <router-outlet></router-outlet>
       </section>
     </main>
   `,
@@ -21,4 +26,6 @@ import { Home } from './home/home';
 })
 export class App {
   protected readonly title = signal('devdaniels-portfolio');
+  protected readonly routes = routes;
+  navRoutes = routes.filter(r => r.title);
 }
