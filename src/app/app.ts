@@ -7,7 +7,7 @@ import { routes } from './app.routes';
   selector: 'app-root',
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule
   ],
   template: `
     <main>
