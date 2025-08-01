@@ -1,0 +1,12 @@
+<main>
+    <ngx-particles [id]="id" [options]="particlesOptions" [particlesInit]="particlesInit"></ngx-particles>
+    <nav>
+        <a *ngFor="let route of navRoutes" [routerLink]="route.path" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+            {{ route.title }}
+        </a>
+    </nav>
+    <section class="content">
+        <router-outlet></router-outlet>
+    </section>
+</main>
