@@ -23,13 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20.19'
-      - name: Install dependencies
-        run: npm ci
-      - name: Build Angular app
-        run: npm run build -- --output-path ${{ env.APP_ARTIFACT_LOCATION }}
+          lfs: false
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
