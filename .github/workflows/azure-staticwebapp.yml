@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 env:
-  APP_LOCATION: "/src" # Angular source root
+  APP_LOCATION: "." # Angular source root
   API_LOCATION: "" # No API
   APP_ARTIFACT_LOCATION: "dist/devdaniels-portfolio" # Angular build output
 
