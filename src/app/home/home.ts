@@ -6,7 +6,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faHatWizard, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
-import { HeroComponent } from "../modules/container-component/container-component";
+import { ContainerComponent } from "../modules/container-component/container-component";
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,7 @@ import { HeroComponent } from "../modules/container-component/container-componen
     MatButtonModule,
     MatTooltipModule,
     FontAwesomeModule,
-    HeroComponent
+    ContainerComponent
 ],
   templateUrl: './home.html',
   styleUrl: './home.scss'

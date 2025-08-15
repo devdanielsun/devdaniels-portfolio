@@ -1,4 +1,12 @@
-.hero {
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
     text-align: center;
     padding: 8rem 16rem;
     background: var(--mat-sys-primary-container);
