@@ -1,0 +1,10 @@
+container-component {
+    h1 {
+        color: var(--mat-sys-error);
+        margin-bottom: 3rem;
+    }
+
+    p {
+        color: var(--mat-sys-on-surface);
+    }
+}

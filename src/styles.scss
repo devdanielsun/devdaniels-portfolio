@@ -7,12 +7,10 @@
 @use '@angular/material' as mat;
 
 html {
-  color-scheme: light dark;
+  // Default to dark theme
+  color-scheme: dark;
   @include mat.theme((
-    color: (
-      primary: mat.$cyan-palette,
-      tertiary: mat.$orange-palette,
-    ),
+    color: mat.$magenta-palette,
     typography: Roboto,
     density: 0,
   ));
@@ -30,9 +28,23 @@ html {
   font: var(--mat-sys-body-medium);
 }
 
-body.light-mode {
+html.light-theme {
   color-scheme: light;
+  @include mat.theme((
+    color: mat.$azure-palette,
+    typography: Roboto,
+    density: 0,
+  ));
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.clickable-icon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.clickable-icon:hover {
+  color: var(--mat-sys-primary);
+}

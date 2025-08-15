@@ -1,59 +1,66 @@
+
 # DevdanielsPortfolio
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
 
-## Development server
+---
+[![Angular Build & Deploy to Azure Static Web App](https://github.com/devdanielsun/devdaniels-portfolio/actions/workflows/azure-staticwebapp.yml/badge.svg)](https://github.com/devdanielsun/devdaniels-portfolio/actions/workflows/azure-staticwebapp.yml)
+---
 
-To start a local development server, run:
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) >= 22.12
+- [Angular CLI](https://angular.dev/tools/cli) (recommended)
+
+### Install dependencies
 
 ```bash
-ng serve
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Development server
 
-## Code scaffolding
+Start a local development server:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+```bash
+npm start
+```
+
+Open your browser at [http://localhost:4200/](http://localhost:4200/). The app reloads automatically on source file changes.
+
+### Building
+
+To build the project for production:
+
+```bash
+npm build
+```
+
+Build artifacts are stored in the `dist/` directory.
+
+### Code scaffolding
+
+Generate a new component:
 
 ```bash
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+For more schematics (components, directives, pipes):
 
 ```bash
 ng generate --help
 ```
 
-## Building
+### Deployment
 
-To build the project run:
+The app is configured for deployment to Azure Static Web Apps. See [azure-staticwebapp.yml](.github/workflows/azure-staticwebapp.yml) for CI/CD details.
 
-```bash
-ng build
-```
+## Project Structure
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- `src/app/` — Angular application source code
+- `src/styles.scss` — Global styles and Material theming
+- `src/assets/` — Static assets (images, favicon, etc.)
+- `.github/workflows/` — GitHub Actions CI/CD workflows
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
