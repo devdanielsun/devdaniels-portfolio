@@ -1,0 +1,15 @@
+.hero {
+    text-align: center;
+    padding: 8rem 16rem;
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    margin: 0 auto;
+
+    @media (max-width: 900px) and (min-width: 601px) { // Tablets
+        padding: 1rem;
+    }
+
+    @media (max-width: 600px) { // Mobile devices
+        padding: 1rem;
+    }
+}
