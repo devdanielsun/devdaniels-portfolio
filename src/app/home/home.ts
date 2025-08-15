@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faHatWizard, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -21,7 +21,7 @@ import { faHatWizard, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class Home {
   protected readonly portfolioRoute = '/portfolio';
-  protected readonly faGithub = faGithub;
+  protected readonly faGithub = faGithubSquare;
   protected readonly faLinkedin = faLinkedin;
   protected readonly faWizard = faHatWizard;
   protected readonly faAnglesRight = faAnglesRight;
