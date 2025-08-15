@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Home } from './home/home';
 import { Portfolio } from './portfolio/portfolio';
+import { NotFound404 } from './not-found-404/not-found-404';
 
 export const routes: Routes = [
     {
@@ -13,6 +14,14 @@ export const routes: Routes = [
         component: Portfolio,
         title: 'Portfolio'
     },
+    {
+        path: '404',
+        component: NotFound404
+    },
+    {
+        path: '**',
+        redirectTo: '/404'
+    }
 ];
 
 export default routes;

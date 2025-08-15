@@ -1,0 +1,24 @@
+.not-found-404 {
+    text-align: center;
+    padding: 8rem 16rem;
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+    margin: 0 auto;
+
+    @media (max-width: 900px)  { // Tablets
+        padding: 8rem;
+    }
+
+    @media (max-width: 600px) { // Mobile devices
+        padding: 1rem;
+    }
+
+    h1 {
+        color: var(--mat-sys-error);
+        margin-bottom: 3rem;
+    }
+
+    p {
+        color: var(--mat-sys-on-surface);
+    }
+}
