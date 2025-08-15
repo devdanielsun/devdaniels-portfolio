@@ -1,20 +1,21 @@
 <div class="center-container">
     <div class="hero">
-        <h1>Daniël Geerts <span>(he/his)</span></h1>
-        <p>-DevDaniels-</p>
+        <img src="assets/images/devdaniels_profile_picture.jpg" alt="DevDaniels profile picture">
+        <p class="title">Daniël Geerts <span>(he/his)</span></p>
+        <p class="subtitle">-DevDaniels-</p>
 
-        <p>Software/DevOps Wizard <fa-icon [icon]="faWizard"></fa-icon></p>
+        <p class="description">Software/DevOps Wizard <fa-icon [icon]="faWizard" animation="bounce"/></p>
 
         <div class="social-icons">
-            <a matIconButton href="https://github.com/devdanielsun" target="_blank" title="View my GitHub">
-                <fa-icon [icon]="faGithub"></fa-icon>
-            </a>
-            <a matIconButton href="https://linkedin.com/in/danielgeerts" target="_blank" title="Connect on LinkedIn">
-                <fa-icon [icon]="faLinkedin"></fa-icon>
-            </a>
-            <a matIconButton [routerLink]="portfolioRoute" title="Check my portfolio">
-                <mat-icon>subdirectory_arrow_right</mat-icon>
-            </a>
+            <span class="icon-wrapper" (click)="goToGithub()" matTooltip="View my GitHub">
+                <fa-icon [icon]="faGithub" size="3x"></fa-icon>
+            </span>
+            <span class="icon-wrapper" (click)="goToLinkedIn()" matTooltip="Connect on LinkedIn">
+                <fa-icon [icon]="faLinkedin" size="3x"></fa-icon>
+            </span>
+            <span class="icon-wrapper" (click)="goToPortfolio()" matTooltip="Continue to my portfolio">
+                <fa-icon [icon]="faAnglesRight" size="3x"></fa-icon>
+            </span>
         </div>
     </div>
 </div>

@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faHatWizard } from '@fortawesome/free-solid-svg-icons';
+import { faHatWizard, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
   imports: [
-    RouterLink,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatTooltipModule,
     FontAwesomeModule
   ],
   templateUrl: './home.html',
@@ -24,4 +24,17 @@ export class Home {
   protected readonly faGithub = faGithub;
   protected readonly faLinkedin = faLinkedin;
   protected readonly faWizard = faHatWizard;
+  protected readonly faAnglesRight = faAnglesRight;
+
+  goToGithub() {
+    window.open('https://github.com/devdanielsun/', '_blank');
+  }
+  
+  goToLinkedIn() {
+    window.open('https://www.linkedin.com/in/danielgeerts/', '_blank');
+  }
+
+  goToPortfolio() {
+    window.open(this.portfolioRoute, '_self');
+  }
 }

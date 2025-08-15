@@ -21,19 +21,45 @@
         width: 80%; // Mobile width
     }
 
-    h1 {
+    .title {
         font-size: 3rem;
         margin-bottom: 1rem;
+
+        span {
+            font-size: 1.5rem;
+        }
     }
 
-    p {
+    .subtitle {
         font-size: 1.25rem;
-        margin-bottom: 2rem;
+        margin-top: 0;
+        margin-bottom: 3rem;
     }
 
-    .social-icons a {
-        margin: 0 0.5rem;
-        font-size: 24px;
-        color: var(--mat-sys-on-primary-container);
+    .description {
+        font-size: 1.25rem;
+        margin-bottom: 6rem;
+    }
+
+    .social-icons {
+        margin-top: 5rem;
+
+        .icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 3rem;
+            color: var(--mat-sys-on-secondary-container);
+            border: 2px solid var(--mat-sys-on-secondary-container);
+            border-radius: 50%;
+            padding: 1rem;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+
+            &:hover {
+                color: var(--mat-sys-on-primary-container);
+                border-color: var(--mat-sys-on-primary-container);
+            }
+        }
     }
 }
