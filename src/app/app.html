@@ -1,13 +1,13 @@
 <main>
     <ngx-particles [id]="id" [options]="particlesOptions" (particlesLoaded)="particlesLoaded($event)"></ngx-particles>
     <nav>
-        @if (router.url !== '/') {
+        <!-- @if (router.url !== '/') { -->
             @for (route of navRoutes; track route) {
                 <a [routerLink]="route.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                     {{ route.title }}
                 </a>
             }
-        }
+        <!-- } -->
         @if (isDarkMode) {
             <fa-icon [icon]="faSun" (click)="toggleTheme()" class="clickable-icon" size="2x" matTooltip="Switch to light mode"></fa-icon>
         } @else {

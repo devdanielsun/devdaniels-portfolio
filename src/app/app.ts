@@ -75,7 +75,7 @@ export class App {
       },
       interactivity: {
         events: { onHover: { enable: true, mode: 'repulse' } },
-        modes: { push: { particles_nb: 4 }, repulse: { distance: 100, duration: 0.4 } }
+        modes: { push: { particles_nb: 4 }, repulse: { distance: 200, duration: 0.4 } }
       }
     };
   }
