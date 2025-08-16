@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faHatWizard, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import { ContainerComponent } from "../modules/container-component/container-component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,8 @@ export class Home {
   protected readonly faWizard = faHatWizard;
   protected readonly faAnglesRight = faAnglesRight;
 
+  constructor(private router: Router) {}
+
   goToGithub() {
     window.open('https://github.com/devdanielsun/', '_blank');
   }
@@ -37,6 +40,9 @@ export class Home {
   }
 
   goToPortfolio() {
-    window.open(this.portfolioRoute, '_self');
+    const uri = '/portfolio';
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([uri])
+    });
   }
 }
