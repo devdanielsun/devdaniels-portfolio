@@ -35,12 +35,12 @@ container-component {
             align-items: center;
             justify-content: center;
             margin: 0 3rem;
-            color: var(--mat-sys-primary);
+            color: var(--mat-sys-secondary);
             padding: 1rem;
             cursor: pointer;
 
             &:hover {
-                color: var(--mat-sys-on-background);
+                color: var(--mat-sys-primary);
             }
 
             @media (max-width: 900px) and (min-width: 601px) { // Tablets
