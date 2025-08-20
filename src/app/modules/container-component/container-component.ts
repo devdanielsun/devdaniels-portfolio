@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'container-component',
   imports: [],
   templateUrl: './container-component.html',
-  styleUrl: './container-component.scss'
+  styleUrl: './container-component.scss',
 })
 export class ContainerComponent {
 
+    @Input()
+    fullWidth: boolean = false;
+
+    constructor() {
+      console.log('myCustomComponent');
+    }
 }
