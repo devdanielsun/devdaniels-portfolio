@@ -1,26 +1,44 @@
-nav {
+.main-menu {
     display: flex;
-    gap: 1rem;
-    margin: 1rem 0;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    padding: 0 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    margin: 0 2em;
 
-    a {
-        color: var(--mat-sys-on-surface);
-        text-decoration: none;
-        font-size: 1.2em;
-        transition: color 0.3s ease;
+    .logo {
+        a {
+            color: var(--mat-sys-on-surface);
+            text-decoration: none;
 
-        &:hover {
-            color: var(--mat-sys-primary);
+            &:hover {
+                color: var(--mat-sys-primary);
+            }
         }
+    }
 
-        &.active {
-            color: var(--mat-sys-primary);
-            font-weight: bold;
-            text-decoration: underline;
+    nav {
+        display: flex;
+        gap: 1rem;
+        margin: 1rem 0;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+
+        a {
+            color: var(--mat-sys-on-surface);
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: var(--mat-sys-primary);
+            }
+
+            &.active {
+                color: var(--mat-sys-primary);
+                font-weight: bold;
+                text-decoration: underline;
+            }
         }
     }
 }

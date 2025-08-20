@@ -59,17 +59,34 @@ export class App {
     if (this.particlesContainer) {
       this.particlesContainer.refresh();
     }
+
+    // Listen for resize to adjust particle count dynamically
+    window.addEventListener('resize', () => this.createOptions());
   }
 
   // Create particles options based on the current theme
   createOptions() {
-    const particleColor = this.isDarkMode ? '#ffffff' : '#111111';
-    const bgColor = this.isDarkMode ? '#111111' : '#ffffff';
+    const particleColor = resolveCssColor('--mat-sys-primary');
+    const bgColor = resolveCssColor('--mat-sys-background');
+
+    // Set default number of particles
+    let particleCount = 80; // desktop default
+
+    // Reduce particles on smaller screens
+    const width = window.innerWidth;
+    
+    if (width <= 768) {           // tablet
+      particleCount = 40;
+    }
+    if (width <= 480) {           // mobile
+      particleCount = 20;
+    }
 
     return {
       preset: 'links',
       background: { color: bgColor },
       particles: {
+        number: { value: particleCount },
         color: { value: particleColor },
         links: { color: particleColor }
       },
@@ -100,4 +117,20 @@ export class App {
       this.particlesContainer.reset(this.particlesOptions);
     }
   }
+}
+
+function resolveCssColor(varName: string): string {
+  // Create a temporary element
+  const el = document.createElement('div');
+  el.style.display = 'none';
+  el.style.backgroundColor = `var(${varName})`;
+
+  document.body.appendChild(el);
+
+  // Browser resolves "light-dark(...)" into actual rgb(...)
+  const resolved = getComputedStyle(el).backgroundColor;
+
+  document.body.removeChild(el);
+
+  return resolved.trim();
 }
