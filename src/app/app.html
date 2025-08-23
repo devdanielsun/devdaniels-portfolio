@@ -1,11 +1,18 @@
 <main>
     <ngx-particles [id]="id" [options]="particlesOptions" (particlesLoaded)="particlesLoaded($event)"></ngx-particles>
     <div class="main-menu">
-        <div class="logo">
-            @if (router.url !== '/') {
-                <h1 class="title"><a routerLink="/">DevDaniëls</a></h1>
-                <p>Software/DevOps engineer</p>
-            }
+        <div class="logo-container">
+                <h1 class="title">
+                    <a routerLink="/">
+                        <div class="logo-svg" [innerHTML]="logoSvg"></div>
+                        @if (router.url !== '/') {
+                            DevDaniëls
+                        }
+                    </a>
+                </h1>
+                @if (router.url !== '/') {
+                    <p class="subtitle">Software/DevOps engineer</p>
+                }
         </div>
         <nav>
             <!-- @if (router.url !== '/') { -->
