@@ -7,17 +7,23 @@ export const routes: Routes = [
     {
         path: '',
         component: Home,
-        title: 'DevDaniels - Home'
+        title: 'Home - DevDaniëls', // Browser tab title
+        data: {
+            navTitle: 'Home'        // Navigation menu title
+        }
     },
     {
         path: 'portfolio',
         component: Portfolio,
-        title: 'DevDaniels - Portfolio'
+        title: 'Portfolio - DevDaniëls', // Browser tab title
+        data: {
+            navTitle: 'Portfolio'        // Navigation menu title
+        }
     },
     {
         path: '404',
         component: NotFound404,
-        title: 'DevDaniels - 404 Not Found'
+        title: '404 Not Found - DevDaniëls', // Browser tab title
     },
     {
         path: '**',

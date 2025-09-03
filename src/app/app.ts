@@ -25,14 +25,13 @@ import { SvgLoaderService } from './services/svg-loader.service';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('devdaniels-portfolio');
   protected logoSvg: any;
 
   protected readonly faMoon = faMoon;
   protected readonly faSun = faSun;
 
   protected readonly routes = routes;
-  navRoutes = routes.filter(r => r.title);
+  navRoutes = routes.filter(r => r.title).filter(r => r.path !== '404' && r.path !== '**');
 
   isDarkMode: boolean = true; // Default to dark theme
 
