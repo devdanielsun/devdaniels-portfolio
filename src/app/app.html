@@ -23,9 +23,9 @@
                 }
             <!-- } -->
             @if (isDarkMode) {
-                <fa-icon [icon]="faSun" (click)="toggleTheme()" class="clickable-icon" size="2x" matTooltip="Switch to light mode"></fa-icon>
+                <fa-icon [icon]="faSun" (click)="toggleTheme()" class="clickable-icon switch-theme" size="2x" matTooltip="Switch to light mode"></fa-icon>
             } @else {
-                <fa-icon [icon]="faMoon" (click)="toggleTheme()" class="clickable-icon" size="2x" matTooltip="Switch to dark mode"></fa-icon>
+                <fa-icon [icon]="faMoon" (click)="toggleTheme()" class="clickable-icon switch-theme" size="2x" matTooltip="Switch to dark mode"></fa-icon>
             }
         </nav>
     </div>
