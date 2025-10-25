@@ -10,7 +10,6 @@ import { routes } from './app.routes';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { SvgLoaderService } from './services/svg-loader.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +24,8 @@ import { SvgLoaderService } from './services/svg-loader.service';
   styleUrl: './app.scss',
 })
 export class App {
-  protected logoSvg: any;
+  protected logoPathLight = 'assets/logo-devdaniels-light.png';
+  protected logoPathDark = 'assets/logo-devdaniels-dark.png';
 
   protected readonly faMoon = faMoon;
   protected readonly faSun = faSun;
@@ -43,13 +43,9 @@ export class App {
   constructor(
     public router: Router,
     private readonly ngParticlesService: NgParticlesService,
-    private svgLoader: SvgLoaderService
   ) {}
 
   ngOnInit(): void {
-    // load svg logo
-    this.svgLoader.loadSvg('assets/logo-devdaniels.svg')
-      .subscribe(svg => this.logoSvg = svg);
 
     // Initialize particles with the slim engine and links preset
     this.ngParticlesService.init(async (engine) => {

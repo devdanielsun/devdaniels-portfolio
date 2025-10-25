@@ -3,7 +3,6 @@ import { ContainerComponent } from "../modules/container-component/container-com
 import { Router } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faIdCard } from '@fortawesome/free-solid-svg-icons';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { 
   diAzureOriginal,

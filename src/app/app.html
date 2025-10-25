@@ -2,17 +2,15 @@
     <ngx-particles [id]="id" [options]="particlesOptions" (particlesLoaded)="particlesLoaded($event)"></ngx-particles>
     <div class="main-menu">
         <div class="logo-container">
-                <h1 class="title">
-                    <a routerLink="/">
-                        <div class="logo-svg" [innerHTML]="logoSvg"></div>
-                        @if (router.url !== '/') {
-                            DevDaniëls
-                        }
-                    </a>
-                </h1>
+            <a routerLink="/">
+                <img class="logo-img" [src]="isDarkMode ? logoPathLight : logoPathDark" alt="DevDaniëls Logo" />
                 @if (router.url !== '/') {
-                    <p class="subtitle">Software/DevOps engineer</p>
+                    <div class="site-info">
+                        <h1 class="title">DevDaniëls</h1>
+                        <p class="subtitle">Software/DevOps engineer</p>
+                    </div>
                 }
+            </a>
         </div>
         <nav>
             <!-- @if (router.url !== '/') { -->
