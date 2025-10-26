@@ -3,11 +3,11 @@
     <div class="main-menu">
         <div class="logo-container">
             <a routerLink="/">
-                <img class="logo-img" [src]="isDarkMode ? logoPathLight : logoPathDark" alt="DevDaniëls Logo" />
+                <div class="logo-svg" [innerHTML]="logoSvg"></div>
                 @if (router.url !== '/') {
                     <div class="site-info">
-                        <h1 class="title">DevDaniëls</h1>
-                        <p class="subtitle">Software/DevOps engineer</p>
+                        <span class="title">DevDaniëls</span>
+                        <span class="subtitle">Software/DevOps engineer</span>
                     </div>
                 }
             </a>
