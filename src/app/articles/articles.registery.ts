@@ -1,11 +1,16 @@
-import { CODEERTS_ARTICLE, Codeerts } from './codeerts/codeerts.article';
+import { CODEERTS_ARTICLE, CodeertsArticle } from './codeerts/codeerts.article';
+import { POLLOR_ARTICLE, PollorArticle } from './pollor/pollor.article';
 
 // Registry entries: add new articles here
 const ARTICLE_REGISTRY = [
   {
     meta: CODEERTS_ARTICLE,
     // avoid dynamic import complexity by returning the component directly
-    loadComponent: () => Promise.resolve(Codeerts)
+    loadComponent: () => Promise.resolve(CodeertsArticle)
+  },
+  {
+    meta: POLLOR_ARTICLE,
+    loadComponent: () => Promise.resolve(PollorArticle)
   }
 ];
 
