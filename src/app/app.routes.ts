@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Portfolio } from './pages/portfolio/portfolio';
 import { NotFound404 } from './pages/not-found-404/not-found-404';
+import { PortfolioArticleComponent } from './modules/portfolio-article-component/portfolio-article-component';
+import { createArticleChildren } from './articles/articles.registery';
 
 export const routes: Routes = [
     {
@@ -21,13 +23,14 @@ export const routes: Routes = [
         }
     },
     {
-        path: '404',
-        component: NotFound404,
-        title: '404 Not Found - DevDaniels', // Browser tab title
+        path: 'articles',
+        component: PortfolioArticleComponent,
+        children: createArticleChildren()
     },
     {
         path: '**',
-        redirectTo: '/404'
+        component: NotFound404,
+        title: '404 Not Found - DevDaniels', // Browser tab title
     }
 ];
 
