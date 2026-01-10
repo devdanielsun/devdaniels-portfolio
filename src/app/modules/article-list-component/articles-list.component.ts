@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -17,6 +17,11 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
 
   private routeSub?: Subscription;
   private currentCategory?: string;
+
+  @Input() hideContainerView: boolean = false;
+  @Input() hideTitle: boolean = false;
+  @Input() hideCategoryNav: boolean = false;
+  @Input() maxItemsToShow: number | undefined = undefined; // undefined means show all
 
   constructor() {}
 

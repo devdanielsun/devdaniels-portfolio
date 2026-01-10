@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ContainerComponent } from "../../modules/container-component/container.component";
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -13,15 +13,18 @@ import {
   diNodejsOriginal,
   diGithubOriginal } from '@ng-icons/devicon/original';
 import { faSolidIdCard } from '@ng-icons/font-awesome/solid';
+import { ArticlesListComponent } from "../../modules/article-list-component/articles-list.component";
 
 @Component({
   selector: 'app-portfolio',
   imports: [
+    RouterLink,
     ContainerComponent,
     FontAwesomeModule,
     MatGridListModule,
-    NgIconComponent
-  ],
+    NgIconComponent,
+    ArticlesListComponent
+],
   providers: [
     provideIcons({
       diAzureOriginal,
