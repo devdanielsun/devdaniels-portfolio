@@ -8,8 +8,6 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 [![NPM Test @ Development](https://github.com/devdanielsun/devdaniels-portfolio/actions/workflows/npm-test.yml/badge.svg)](https://github.com/devdanielsun/devdaniels-portfolio/actions/workflows/npm-test.yml/badge.svg)
 [![Deploy app to Azure @ Main](https://github.com/devdanielsun/devdaniels-portfolio/actions/workflows/deploy-to-azure-staticwebapp.yml/badge.svg)](https://github.com/devdanielsun/devdaniels-portfolio/actions/workflows/deploy-to-azure-staticwebapp.yml)
 
-https://github.com/devdanielsun/devdaniels-portfolio/actions/workflows/npm-tests.yml/badge.svg
-
 ---
 
 ### Prerequisites
