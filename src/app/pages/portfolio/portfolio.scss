@@ -1,3 +1,5 @@
+@use 'variables' as vars;
+
 .section {
     text-align: left;
     display: flex;
@@ -31,7 +33,7 @@
         }
     }
 
-    @media (max-width: 900px) and (min-width: 601px) { // Tablets
+    @include vars.respond-to(tablet) {
         flex-direction: column;
  
         .content-left, .content-right {

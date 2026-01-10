@@ -9,7 +9,8 @@ import { ContainerComponent } from '../modules/container-component/container.com
   selector: 'app-articles-list',
   standalone: true,
   imports: [CommonModule, RouterLink, ContainerComponent],
-  templateUrl: './articles-list.component.html'
+  templateUrl: './articles-list.component.html',
+  styleUrls: ['./articles-list.component.scss']
 })
 export class ArticlesListComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);

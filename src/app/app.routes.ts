@@ -6,8 +6,6 @@ import { ArticleComponent } from './modules/article-component/article.component'
 import { ArticleResolver } from './resolvers/article.resolver';
 import { ArticleLoaderComponent } from './modules/article-component/article-loader.component';
 import { ArticlesListComponent } from './articles/articles-list.component';
-// registry still exports the flat ARTICLES list for index or other uses
-import { ARTICLES } from './articles/articles.registery';
 
 export const routes: Routes = [
     {
