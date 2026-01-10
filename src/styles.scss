@@ -35,6 +35,8 @@ html.light-theme {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+/** Styles for site content **/
+
 .clickable-icon {
   cursor: pointer;
   transition: color 0.3s ease;
@@ -42,4 +44,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .clickable-icon:hover {
   color: var(--mat-sys-primary);
+}
+
+a {
+  color: var(--mat-sys-secondary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--mat-sys-primary);
+  }
+
+  &.active {
+    color: var(--mat-sys-primary);
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }

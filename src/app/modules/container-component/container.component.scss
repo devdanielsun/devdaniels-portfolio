@@ -1,3 +1,5 @@
+@use 'variables' as vars;
+
 .container {
     min-height: 80vh;
     display: flex;
@@ -13,12 +15,13 @@
         background-color: var(--mat-sys-primary-container);
         margin-bottom: 5em;
 
-        @media (max-width: 900px) and (min-width: 601px) { // Tablets
+        @include vars.respond-to(tablet) {
             margin: 1em;
             padding: 2em;
             min-width: 80%;
         }
-        @media (max-width: 600px) { // Mobile devices
+
+        @include vars.respond-to(mobile) {
             margin: 1em;
             padding: 2em;
             min-width: 90%;
@@ -33,12 +36,12 @@
     align-items: start;
     justify-content: start;
 
-    @media (max-width: 900px) and (min-width: 601px) { // Tablets
+    @include vars.respond-to(tablet) {
         width: 90%;
         margin: 1rem;
     }
 
-    @media (max-width: 600px) { // Mobile devices
+    @include vars.respond-to(mobile) {
         width: 95%;
         margin: 1rem;
     }
