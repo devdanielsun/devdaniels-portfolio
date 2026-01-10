@@ -7,7 +7,7 @@ export const routes: Routes = [
     {
         path: '',
         component: Home,
-        title: 'Home - DevDaniëls', // Browser tab title
+        title: 'Home - DevDaniels', // Browser tab title
         data: {
             navTitle: 'Home'        // Navigation menu title
         }
@@ -15,7 +15,7 @@ export const routes: Routes = [
     {
         path: 'portfolio',
         component: Portfolio,
-        title: 'Portfolio - DevDaniëls', // Browser tab title
+        title: 'Portfolio - DevDaniels', // Browser tab title
         data: {
             navTitle: 'Portfolio'        // Navigation menu title
         }
@@ -23,7 +23,7 @@ export const routes: Routes = [
     {
         path: '404',
         component: NotFound404,
-        title: '404 Not Found - DevDaniëls', // Browser tab title
+        title: '404 Not Found - DevDaniels', // Browser tab title
     },
     {
         path: '**',
