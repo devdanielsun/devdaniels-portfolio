@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { ARTICLES, findArticlesByCategory, listCategories } from './articles.registery';
-import { ContainerComponent } from '../modules/container-component/container.component';
+import { ARTICLES, findArticlesByCategory, listCategories } from '../../articles/articles.registery';
+import { ContainerComponent } from '../container-component/container.component';
 
 @Component({
   selector: 'app-articles-list',
@@ -33,7 +33,15 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
   }
 
   items() {
-    return this.currentCategory ? findArticlesByCategory(this.currentCategory) : ARTICLES;
+    const source = this.currentCategory ? findArticlesByCategory(this.currentCategory) : ARTICLES;
+    // return a sorted copy (newest first) by extracting the first year found in the `date` string
+    return [...source].sort((a, b) => this.extractYear(b.date) - this.extractYear(a.date));
+  }
+
+  private extractYear(dateStr?: string): number {
+    if (!dateStr) return 0;
+    const m = dateStr.match(/(\d{4})/);
+    return m ? parseInt(m[1], 10) : 0;
   }
 
   categories() {

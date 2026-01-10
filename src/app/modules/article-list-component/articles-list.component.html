@@ -11,9 +11,10 @@
 
     <ul>
         <li>
-            @for (a of items(); track a) {
-                <a [routerLink]="['/articles', a.slug]" routerLinkActive="active">{{ a.title }}</a> — {{ a.shortDescription }}
-                <br />
+            @for (a of items() ; track a) {
+                <a [routerLink]="['/articles', a.slug]" routerLinkActive="active">{{ a.title }}</a> - <small> {{ a.date }}</small>
+                <p>{{ a.shortDescription }}..</p>
+                <br /><br />
             }
         </li>
     </ul>
