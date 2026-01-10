@@ -13,41 +13,46 @@ export const routes: Routes = [
     {
         path: '',
         component: Home,
-        title: 'Home - DevDaniels', // Browser tab title
-        data: {
-            navTitle: 'Home'        // Navigation menu title
-        }
+        title: 'Home - DevDaniels',
+        data: { navTitle: 'Home' }
     },
     {
         path: 'portfolio',
         component: Portfolio,
-        title: 'Portfolio - DevDaniels', // Browser tab title
-        data: {
-            navTitle: 'Portfolio'        // Navigation menu title
-        }
+        title: 'Portfolio - DevDaniels',
+        data: { navTitle: 'Portfolio' }
     },
     {
         path: 'articles',
         children: [
             {
                 path: '',
-                component: ArticlesListComponent
+                component: ArticlesListComponent,
+                title: 'Articles - DevDaniels'
             },
             {
                 path: 'category/:category',
-                component: ArticlesListComponent
+                component: ArticlesListComponent,
+                title: 'Articles - DevDaniels'
             },
             {
+                // make the portfolio wrapper the route component so its router-outlet hosts the article
                 path: ':slug',
-                component: ArticleLoaderComponent,
-                resolve: { article: ArticleResolver }
+                component: PortfolioArticleComponent,
+                children: [
+                    {
+                        path: '',
+                        component: ArticleLoaderComponent,
+                        resolve: { article: ArticleResolver }
+                    }
+                ]
             }
         ]
     },
     {
         path: '**',
         component: NotFound404,
-        title: '404 Not Found - DevDaniels', // Browser tab title
+        title: '404 Not Found - DevDaniels',
     }
 ];
 

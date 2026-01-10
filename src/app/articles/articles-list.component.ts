@@ -29,10 +29,8 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.routeSub?.unsubscribe();
-    // ...existing code...
   }
 
-  // used by the template
   items() {
     return this.currentCategory ? findArticlesByCategory(this.currentCategory) : ARTICLES;
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { findLoaderBySlug } from '../../articles/articles.registery';
 import { Article } from '../../models/article.model';
 
@@ -11,10 +12,13 @@ import { Article } from '../../models/article.model';
 export class ArticleLoaderComponent implements OnInit {
   @ViewChild('vc', { read: ViewContainerRef, static: true }) vc!: ViewContainerRef;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private title: Title) {}
 
   async ngOnInit(): Promise<void> {
     const article = this.route.snapshot.data['article'] as Article | undefined;
+    if (article?.title) {
+      this.title.setTitle(`${article.title} - DevDaniels`);
+    }
     if (!article) return;
     const loader = findLoaderBySlug(article.slug);
     if (!loader) return;
