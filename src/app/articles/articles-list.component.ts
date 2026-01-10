@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ARTICLES, findArticlesByCategory, listCategories } from './articles.registery';
@@ -8,7 +8,7 @@ import { ContainerComponent } from '../modules/container-component/container.com
 @Component({
   selector: 'app-articles-list',
   standalone: true,
-  imports: [CommonModule, RouterLink, ContainerComponent],
+  imports: [CommonModule, RouterLink, RouterLinkActive, ContainerComponent],
   templateUrl: './articles-list.component.html',
   styleUrls: ['./articles-list.component.scss']
 })
