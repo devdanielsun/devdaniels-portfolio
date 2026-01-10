@@ -5,11 +5,14 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class SvgLoaderService {
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
+  constructor(
+    private http: HttpClient,
+    private sanitizer: DomSanitizer,
+  ) {}
 
   loadSvg(path: string) {
-    return this.http.get(path, { responseType: 'text' }).pipe(
-      map(svg => this.sanitizer.bypassSecurityTrustHtml(svg))
-    );
+    return this.http
+      .get(path, { responseType: 'text' })
+      .pipe(map((svg) => this.sanitizer.bypassSecurityTrustHtml(svg)));
   }
 }

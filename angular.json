@@ -18,17 +18,14 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            },
+            "assets": ["src/assets"],
+            "styles": ["src/styles.scss", "src/_variables.scss"]
           },
           "configurations": {
             "production": {
@@ -72,18 +69,14 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            },
+            "assets": ["src/assets"],
+            "styles": ["src/styles.scss", "src/_variables.scss"]
           }
         }
       }

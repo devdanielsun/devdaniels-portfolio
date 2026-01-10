@@ -1,0 +1,88 @@
+<container-component [fullWidth]="true">
+  <h1>About</h1>
+  <div class="section about-section">
+    <div class="content-left">
+      <div class="about-icon">
+        <ng-icon name="faSolidIdCard" size="128px"></ng-icon>
+      </div>
+      <p>
+        My name is Daniël and I am a software developer based in the
+        Netherlands. I have a passion for functional web applications and
+        software systems. I have experience working with a variety of
+        technologies including C# .NET, Azure, Bicep, Angular, React, Node.js,
+        and more. This portfolio site is W.I.P.
+      </p>
+    </div>
+    <div class="content-right">
+      <div class="skill-icons">
+        <div class="skill-icon-row">
+          <ng-icon
+            name="diCsharpOriginal"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+          <ng-icon
+            name="diAzureOriginal"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+        </div>
+        <div class="skill-icon-row">
+          <ng-icon
+            name="diNodejsOriginal"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+          <ng-icon
+            name="diAngularOriginal"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+          <ng-icon
+            name="diReactOriginal"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+        </div>
+        <div class="skill-icon-row">
+          <ng-icon
+            name="diGitOriginal"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+          <ng-icon
+            name="diGithubOriginal"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</container-component>
+
+<container-component [fullWidth]="true" class="projects-section">
+  <h1>Projects</h1>
+  <div>
+    <app-articles-list
+      [hideContainerView]="true"
+      [hideTitle]="true"
+      [hideCategoryNav]="true"
+      [maxItemsToShow]="3"
+    ></app-articles-list>
+  </div>
+  <br />
+  <div>
+    <a [routerLink]="['/articles']" class="view-all-articles-link"
+      >View All Articles</a
+    >
+  </div>
+</container-component>
+
+<container-component [fullWidth]="true" class="contact-section">
+  <h1>Contact</h1>
+  <p>
+    If you would like to get in touch, please feel free to reach out to me
+    via...
+  </p>
+</container-component>
