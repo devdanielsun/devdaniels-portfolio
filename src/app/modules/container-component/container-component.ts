@@ -7,11 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './container-component.scss',
 })
 export class ContainerComponent {
-
-    @Input()
-    fullWidth: boolean = false;
-
-    constructor() {
-      console.log('myCustomComponent');
-    }
+    @Input() fullWidth: boolean = false;
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ContainerComponent } from "../modules/container-component/container-component";
+import { ContainerComponent } from "../../modules/container-component/container-component";
 import { Router } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
