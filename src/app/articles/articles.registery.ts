@@ -11,12 +11,13 @@ const ARTICLE_REGISTRY = [
   }
 ];
 
-export function createArticleChildren(): Routes {
-  return ARTICLE_REGISTRY.map(entry => ({
-    path: entry.meta.slug,
-    loadComponent: entry.loadComponent,
-    data: { article: entry.meta } as ArticleRouteData
-  }));
+export const ARTICLES = ARTICLE_REGISTRY.map(e => e.meta);
+
+export function findArticleBySlug(slug: string) {
+  return ARTICLES.find(a => a.slug === slug);
 }
 
-export const ARTICLES = ARTICLE_REGISTRY.map(e => e.meta);
+export function findLoaderBySlug(slug: string) {
+  const entry = ARTICLE_REGISTRY.find(e => e.meta.slug === slug);
+  return entry?.loadComponent;
+}
