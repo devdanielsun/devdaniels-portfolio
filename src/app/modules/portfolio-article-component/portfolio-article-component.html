@@ -1,24 +1,26 @@
 <container-component [fullWidth]="true" class="portfolio-article-container">
-    @if (article()) {
-        <p class="breadcrumb"><a href="">Home</a> > <a href="portfolio">Portfolio</a> > <a href="{article.category}">{{ article()?.category }}</a> > <a class="active" href="{article.title}" disabled>{{ article()?.title }}</a>
-        <p>{{ article()?.slug }}</p>
-        <p>{{ article()?.shortDescription }}</p>
-        <h1>{{ article()?.title }}</h1>
-        <p>{{ article()?.date }}</p>
-        <p>{{ article()?.category }}</p>
-        @if (article()?.featuredImage) {
-            <img
-                [src]="article()?.featuredImage?.srcPath"
-                [alt]="article()?.featuredImage?.altText"
-                class="portfolio-image"/>
-        }
+    @if (article(); as a) {
+        <p class="breadcrumb">
+            <a routerLink="/">Home</a> &gt; <a routerLink="/portfolio">Portfolio</a>
+            <span> &gt; <a [routerLink]="['/articles','category', a.category]">{{ a.category || '' }}</a></span>
+            <span> &gt; <span class="active">{{ a.title || '' }}</span></span>
+        </p>
+
+        <p class="article-slug">{{ a.slug || '' }}</p>
+        <p class="article-short">{{ a.shortDescription || '' }}</p>
+        <h1 class="article-title">{{ a.title || '' }}</h1>
+        <p class="article-date">{{ a.date || '' }}</p>
+        <p class="article-category">{{ a.category || '' }}</p>
+
+        <img [hidden]="!a.featuredImage" [src]="a.featuredImage?.srcPath" [alt]="a.featuredImage?.altText" class="portfolio-image"/>
 
         <div class="article-content">
-            <!-- Article HTML comes from child -->
+            <!-- Article HTML or list comes from child outlet -->
             <section class="article-content">
-                <router-outlet />
+                <router-outlet></router-outlet>
             </section>
         </div>
+
     } @else {
         <p>Error loading article</p>
     }

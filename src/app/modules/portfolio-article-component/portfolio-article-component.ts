@@ -1,5 +1,5 @@
 import { Component, inject, computed, } from '@angular/core';
-import { ActivatedRoute, RouterOutlet, Router, NavigationEnd} from '@angular/router';
+import { ActivatedRoute, RouterOutlet, Router, NavigationEnd, RouterLink} from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs/operators';
 import { ContainerComponent } from "../container-component/container-component";
@@ -7,7 +7,7 @@ import { ArticleRouteData } from '../../models/article.model';
 
 @Component({
   selector: 'app-portfolio-article-component',
-  imports: [ContainerComponent, RouterOutlet],
+  imports: [ContainerComponent, RouterOutlet, RouterLink],
   templateUrl: './portfolio-article-component.html',
   styleUrl: './portfolio-article-component.scss'
 })

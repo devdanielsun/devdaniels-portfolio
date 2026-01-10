@@ -5,6 +5,7 @@ import { NotFound404 } from './pages/not-found-404/not-found-404';
 import { PortfolioArticleComponent } from './modules/portfolio-article-component/portfolio-article-component';
 import { ArticleResolver } from './resolvers/article.resolver';
 import { ArticleLoaderComponent } from './modules/portfolio-article-component/article-loader.component';
+import { ArticlesListComponent } from './articles/articles-list.component';
 // registry still exports the flat ARTICLES list for index or other uses
 import { ARTICLES } from './articles/articles.registery';
 
@@ -27,8 +28,15 @@ export const routes: Routes = [
     },
     {
         path: 'articles',
-        component: PortfolioArticleComponent,
         children: [
+            {
+                path: '',
+                component: ArticlesListComponent
+            },
+            {
+                path: 'category/:category',
+                component: ArticlesListComponent
+            },
             {
                 path: ':slug',
                 component: ArticleLoaderComponent,

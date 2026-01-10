@@ -21,3 +21,15 @@ export function findLoaderBySlug(slug: string) {
   const entry = ARTICLE_REGISTRY.find(e => e.meta.slug === slug);
   return entry?.loadComponent;
 }
+
+export function findArticlesByCategory(category: string) {
+  return ARTICLES.filter(a => a.category?.includes(category));
+}
+
+export function listCategories() {
+  const set = new Set<string>();
+  for (const a of ARTICLES) {
+    (a.category || []).forEach(c => set.add(c));
+  }
+  return Array.from(set);
+}

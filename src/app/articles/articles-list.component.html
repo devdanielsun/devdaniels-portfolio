@@ -1,0 +1,19 @@
+<container-component [fullWidth]="true" class="portfolio-article-container">
+    <h1>Articles</h1>
+    <nav>
+        <a [routerLink]="['']">All</a>
+        <span>
+            @for (c of categories(); track c) {
+                | <a [routerLink]="['category', c]">{{ c }}</a>
+            }
+        </span>
+    </nav>
+
+    <ul>
+        <li>
+            @for (a of items(); track a) {
+                <a [routerLink]="[a.slug]">{{ a.title }}</a> — {{ a.shortDescription }}
+            }
+        </li>
+    </ul>
+</container-component>
