@@ -3,6 +3,7 @@ export interface ArticleRouteData {
 }
 
 export interface Article {
+  published: boolean;
   slug: string;
   title: string;
   date: string;

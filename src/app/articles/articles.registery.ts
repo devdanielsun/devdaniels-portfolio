@@ -14,7 +14,7 @@ const ARTICLE_REGISTRY = [
   }
 ];
 
-export const ARTICLES = ARTICLE_REGISTRY.map(e => e.meta);
+export const ARTICLES = ARTICLE_REGISTRY.map(e => e.meta).filter(a => a.published);
 
 export function findArticleBySlug(slug: string) {
   return ARTICLES.find(a => a.slug === slug);
