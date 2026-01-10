@@ -27,6 +27,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Run tests
+      # Install Chromium and Xvfb (needed to run Chrome in headless mode on CI)
+      - name: Install Chromium & Xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser xvfb
+
+      # Run tests under Xvfb so Chrome can run without a display
       - name: Run tests
-        run: npm test
+        env:
+          CHROME_BIN: /usr/bin/chromium-browser
+        run: xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' npm test
