@@ -1,20 +1,20 @@
 .breadcrumb {
-    color: var(--mat-sys-on-surface);
+  color: var(--mat-sys-on-surface);
 
-    .active {
-        font-weight: bold;
-        text-decoration: underline;
-    }
+  .active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
 
 .portfolio-image {
-    max-width: 250px;
-    width: 100%;
-    height: auto;
+  max-width: 250px;
+  width: 100%;
+  height: auto;
 }
 
 .article-content {
-    text-align: left;
-    max-width: 480px;
-    margin: 0 auto;
+  text-align: left;
+  max-width: 480px;
+  margin: 0 auto;
 }

@@ -2,7 +2,7 @@ name: Angular Build & Deploy to Azure Static Web App
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   APP_LOCATION: "/" # Angular source root
@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '>=22.12'
+          node-version: ">=22.12"
 
       # Install dependencies
       - name: Install dependencies

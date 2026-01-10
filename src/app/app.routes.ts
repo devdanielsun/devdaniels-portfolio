@@ -8,50 +8,50 @@ import { ArticleLoaderComponent } from './modules/article-component/article-load
 import { ArticlesListComponent } from './modules/article-list-component/articles-list.component';
 
 export const routes: Routes = [
-    {
+  {
+    path: '',
+    component: Home,
+    title: 'Home - DevDaniels',
+    data: { navTitle: 'Home' },
+  },
+  {
+    path: 'portfolio',
+    component: Portfolio,
+    title: 'Portfolio - DevDaniels',
+    data: { navTitle: 'Portfolio' },
+  },
+  {
+    path: 'articles',
+    children: [
+      {
         path: '',
-        component: Home,
-        title: 'Home - DevDaniels',
-        data: { navTitle: 'Home' }
-    },
-    {
-        path: 'portfolio',
-        component: Portfolio,
-        title: 'Portfolio - DevDaniels',
-        data: { navTitle: 'Portfolio' }
-    },
-    {
-        path: 'articles',
+        component: ArticlesListComponent,
+        title: 'Articles - DevDaniels',
+      },
+      {
+        path: 'category/:category',
+        component: ArticlesListComponent,
+        title: 'Articles - DevDaniels',
+      },
+      {
+        // make the portfolio wrapper the route component so its router-outlet hosts the article
+        path: ':slug',
+        component: ArticleComponent,
         children: [
-            {
-                path: '',
-                component: ArticlesListComponent,
-                title: 'Articles - DevDaniels'
-            },
-            {
-                path: 'category/:category',
-                component: ArticlesListComponent,
-                title: 'Articles - DevDaniels'
-            },
-            {
-                // make the portfolio wrapper the route component so its router-outlet hosts the article
-                path: ':slug',
-                component: ArticleComponent,
-                children: [
-                    {
-                        path: '',
-                        component: ArticleLoaderComponent,
-                        resolve: { article: ArticleResolver }
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        path: '**',
-        component: NotFound404,
-        title: '404 Not Found - DevDaniels',
-    }
+          {
+            path: '',
+            component: ArticleLoaderComponent,
+            resolve: { article: ArticleResolver },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '**',
+    component: NotFound404,
+    title: '404 Not Found - DevDaniels',
+  },
 ];
 
 export default routes;

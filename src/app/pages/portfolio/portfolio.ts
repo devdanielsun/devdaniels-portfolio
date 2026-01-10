@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
-import { ContainerComponent } from "../../modules/container-component/container.component";
+import { ContainerComponent } from '../../modules/container-component/container.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { 
+import {
   diAzureOriginal,
   diCsharpOriginal,
   diGitOriginal,
   diAngularOriginal,
   diReactOriginal,
   diNodejsOriginal,
-  diGithubOriginal } from '@ng-icons/devicon/original';
+  diGithubOriginal,
+} from '@ng-icons/devicon/original';
 import { faSolidIdCard } from '@ng-icons/font-awesome/solid';
-import { ArticlesListComponent } from "../../modules/article-list-component/articles-list.component";
+import { ArticlesListComponent } from '../../modules/article-list-component/articles-list.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -23,8 +24,8 @@ import { ArticlesListComponent } from "../../modules/article-list-component/arti
     FontAwesomeModule,
     MatGridListModule,
     NgIconComponent,
-    ArticlesListComponent
-],
+    ArticlesListComponent,
+  ],
   providers: [
     provideIcons({
       diAzureOriginal,
@@ -34,11 +35,11 @@ import { ArticlesListComponent } from "../../modules/article-list-component/arti
       diAngularOriginal,
       diReactOriginal,
       diNodejsOriginal,
-      diGithubOriginal
-    })
+      diGithubOriginal,
+    }),
   ],
   templateUrl: './portfolio.html',
-  styleUrl: './portfolio.scss'
+  styleUrl: './portfolio.scss',
 })
 export class Portfolio {
   constructor(private router: Router) {}

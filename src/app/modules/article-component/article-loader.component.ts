@@ -7,12 +7,16 @@ import { Article } from '../../models/article.model';
 @Component({
   selector: 'app-article-loader',
   standalone: true,
-  template: `<ng-container #vc></ng-container>`
+  template: `<ng-container #vc></ng-container>`,
 })
 export class ArticleLoaderComponent implements OnInit {
-  @ViewChild('vc', { read: ViewContainerRef, static: true }) vc!: ViewContainerRef;
+  @ViewChild('vc', { read: ViewContainerRef, static: true })
+  vc!: ViewContainerRef;
 
-  constructor(private route: ActivatedRoute, private title: Title) {}
+  constructor(
+    private route: ActivatedRoute,
+    private title: Title,
+  ) {}
 
   async ngOnInit(): Promise<void> {
     const article = this.route.snapshot.data['article'] as Article | undefined;

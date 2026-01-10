@@ -1,15 +1,21 @@
-import { Component, inject, computed, } from '@angular/core';
-import { ActivatedRoute, RouterOutlet, Router, NavigationEnd, RouterLink} from '@angular/router';
+import { Component, inject, computed } from '@angular/core';
+import {
+  ActivatedRoute,
+  RouterOutlet,
+  Router,
+  NavigationEnd,
+  RouterLink,
+} from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs/operators';
-import { ContainerComponent } from "../container-component/container.component";
+import { ContainerComponent } from '../container-component/container.component';
 import { ArticleRouteData } from '../../models/article.model';
 
 @Component({
   selector: 'app-portfolio-article-component',
   imports: [ContainerComponent, RouterOutlet, RouterLink],
   templateUrl: './article.component.html',
-  styleUrl: './article.component.scss'
+  styleUrl: './article.component.scss',
 })
 export class ArticleComponent {
   private route = inject(ActivatedRoute);
@@ -17,8 +23,8 @@ export class ArticleComponent {
 
   // signal that updates on navigation end
   private navigation = toSignal(
-    this.router.events.pipe(filter(e => e instanceof NavigationEnd)),
-    { requireSync: false }
+    this.router.events.pipe(filter((e) => e instanceof NavigationEnd)),
+    { requireSync: false },
   );
 
   // read deepest child snapshot data on navigation

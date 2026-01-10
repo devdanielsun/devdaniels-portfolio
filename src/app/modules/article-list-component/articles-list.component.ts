@@ -2,7 +2,11 @@ import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { ARTICLES, findArticlesByCategory, listCategories } from '../../articles/articles.registery';
+import {
+  ARTICLES,
+  findArticlesByCategory,
+  listCategories,
+} from '../../articles/articles.registery';
 import { ContainerComponent } from '../container-component/container.component';
 
 @Component({
@@ -10,7 +14,7 @@ import { ContainerComponent } from '../container-component/container.component';
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, ContainerComponent],
   templateUrl: './articles-list.component.html',
-  styleUrls: ['./articles-list.component.scss']
+  styleUrls: ['./articles-list.component.scss'],
 })
 export class ArticlesListComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
@@ -27,7 +31,7 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // subscribe so the component updates when :category changes
-    this.routeSub = this.route.paramMap.subscribe(pm => {
+    this.routeSub = this.route.paramMap.subscribe((pm) => {
       this.currentCategory = pm.get('category') || undefined;
       // If you have any cached items/state, refresh it here or call change detection.
     });
@@ -38,9 +42,13 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
   }
 
   items() {
-    const source = this.currentCategory ? findArticlesByCategory(this.currentCategory) : ARTICLES;
+    const source = this.currentCategory
+      ? findArticlesByCategory(this.currentCategory)
+      : ARTICLES;
     // return a sorted copy (newest first) by extracting the first year found in the `date` string
-    return [...source].sort((a, b) => this.extractYear(b.date) - this.extractYear(a.date));
+    return [...source].sort(
+      (a, b) => this.extractYear(b.date) - this.extractYear(a.date),
+    );
   }
 
   private extractYear(dateStr?: string): number {

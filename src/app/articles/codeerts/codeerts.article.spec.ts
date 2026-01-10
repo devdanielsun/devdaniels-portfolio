@@ -8,9 +8,8 @@ describe('TerraformCicdPipeline', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Codeerts]
-    })
-    .compileComponents();
+      imports: [Codeerts],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Codeerts);
     component = fixture.componentInstance;

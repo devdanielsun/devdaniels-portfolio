@@ -8,9 +8,8 @@ describe('NotFound404', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NotFound404]
-    })
-    .compileComponents();
+      imports: [NotFound404],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NotFound404);
     component = fixture.componentInstance;

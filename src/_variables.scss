@@ -2,23 +2,31 @@ $break-tablet: 768px;
 $break-mobile: 600px;
 
 :root {
-    --content-max-width: 800px;
+  --content-max-width: 800px;
 }
 
 /* Override the custom property at different breakpoints */
 @media (max-width: $break-tablet) {
-    :root { --content-max-width: 700px; }
+  :root {
+    --content-max-width: 700px;
+  }
 }
 
 @media (max-width: $break-mobile) {
-    :root { --content-max-width: 500px; }
+  :root {
+    --content-max-width: 500px;
+  }
 }
 
 // Utility mixin to reuse the same breakpoints in components
 @mixin respond-to($size) {
   @if $size == tablet {
-    @media (max-width: $break-tablet) { @content; }
+    @media (max-width: $break-tablet) {
+      @content;
+    }
   } @else if $size == mobile {
-    @media (max-width: $break-mobile) { @content; }
+    @media (max-width: $break-mobile) {
+      @content;
+    }
   }
 }

@@ -1,4 +1,8 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 
@@ -11,9 +15,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       routes,
       withInMemoryScrolling({
-        scrollPositionRestoration: 'top',   // always scroll to top
-        anchorScrolling: 'enabled',         // optional, scrolls to fragment anchors
-      })),
-    provideHttpClient()
-  ]
+        scrollPositionRestoration: 'top', // always scroll to top
+        anchorScrolling: 'enabled', // optional, scrolls to fragment anchors
+      }),
+    ),
+    provideHttpClient(),
+  ],
 };

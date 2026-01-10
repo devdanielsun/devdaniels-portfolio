@@ -6,7 +6,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faHatWizard, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
-import { ContainerComponent } from "../../modules/container-component/container.component";
+import { ContainerComponent } from '../../modules/container-component/container.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,10 +17,10 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatTooltipModule,
     FontAwesomeModule,
-    ContainerComponent
-],
+    ContainerComponent,
+  ],
   templateUrl: './home.html',
-  styleUrl: './home.scss'
+  styleUrl: './home.scss',
 })
 export class Home {
   protected readonly portfolioRoute = '/portfolio';
@@ -34,7 +34,7 @@ export class Home {
   goToGithub() {
     window.open('https://github.com/devdanielsun/', '_blank');
   }
-  
+
   goToLinkedIn() {
     window.open('https://www.linkedin.com/in/danielgeerts/', '_blank');
   }
@@ -42,7 +42,7 @@ export class Home {
   goToPortfolio() {
     const uri = '/portfolio';
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([uri])
+      this.router.navigate([uri]);
     });
   }
 }

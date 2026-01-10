@@ -1,13 +1,13 @@
 @if (hideContainerView) {
-      <ng-container *ngTemplateOutlet="content" />
+  <ng-container *ngTemplateOutlet="content" />
 } @else {
-    <div class="container" [class.full-width-container]="fullWidth">
-        <div class="content" [class.full-width-content]="fullWidth">
-            <ng-container *ngTemplateOutlet="content" />
-        </div>
+  <div class="container" [class.full-width-container]="fullWidth">
+    <div class="content" [class.full-width-content]="fullWidth">
+      <ng-container *ngTemplateOutlet="content" />
     </div>
+  </div>
 }
 
 <ng-template #content>
-    <ng-content />
+  <ng-content />
 </ng-template>

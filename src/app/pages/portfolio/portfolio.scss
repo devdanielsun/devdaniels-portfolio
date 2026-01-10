@@ -1,44 +1,46 @@
-@use 'variables' as vars;
+@use "variables" as vars;
 
 .section {
-    text-align: left;
-    display: flex;
+  text-align: left;
+  display: flex;
 }
 
 .about-section {
-    flex-direction: row;
+  flex-direction: row;
 
-    .content-left, .content-right {
-        width: 50%;
-        padding: 2em;
+  .content-left,
+  .content-right {
+    width: 50%;
+    padding: 2em;
 
-        .about-icon {
-            text-align: center;
-        }
-
-        .skill-icons {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-
-            .skill-icon-row {
-                display: flex;
-                flex-direction: column;
-
-                ng-icon {
-                    padding: 1em;
-                }
-            }
-        }
+    .about-icon {
+      text-align: center;
     }
 
-    @include vars.respond-to(tablet) {
+    .skill-icons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .skill-icon-row {
+        display: flex;
         flex-direction: column;
- 
-        .content-left, .content-right {
-            width: 100%;
-            padding: 1em;
+
+        ng-icon {
+          padding: 1em;
         }
+      }
     }
+  }
+
+  @include vars.respond-to(tablet) {
+    flex-direction: column;
+
+    .content-left,
+    .content-right {
+      width: 100%;
+      padding: 1em;
+    }
+  }
 }

@@ -1,19 +1,36 @@
 <container-component>
-    <img [src]="'assets/images/devdanielsProfilePicture.jpg'" alt="DevDaniels profile picture">
-    <p class="title">Daniël Geerts <span>(he/his)</span></p>
-    <p class="subtitle">-DevDaniels-</p>
+  <img
+    [src]="'assets/images/devdanielsProfilePicture.jpg'"
+    alt="DevDaniels profile picture"
+  />
+  <p class="title">Daniël Geerts <span>(he/his)</span></p>
+  <p class="subtitle">-DevDaniels-</p>
 
-    <p class="description">Software/DevOps Wizard <fa-icon [icon]="faWizard" animation="bounce"/></p>
+  <p class="description">
+    Software/DevOps Wizard <fa-icon [icon]="faWizard" animation="bounce" />
+  </p>
 
-    <div class="social-icons">
-        <span class="icon-wrapper" (click)="goToGithub()" matTooltip="View my GitHub">
-            <fa-icon [icon]="faGithub" size="4x"></fa-icon>
-        </span>
-        <span class="icon-wrapper" (click)="goToLinkedIn()" matTooltip="Connect on LinkedIn">
-            <fa-icon [icon]="faLinkedin" size="4x"></fa-icon>
-        </span>
-        <span class="icon-wrapper" (click)="goToPortfolio()" matTooltip="Continue to my portfolio">
-            <fa-icon [icon]="faAnglesRight" size="3x"></fa-icon>
-        </span>
-    </div>
+  <div class="social-icons">
+    <span
+      class="icon-wrapper"
+      (click)="goToGithub()"
+      matTooltip="View my GitHub"
+    >
+      <fa-icon [icon]="faGithub" size="4x"></fa-icon>
+    </span>
+    <span
+      class="icon-wrapper"
+      (click)="goToLinkedIn()"
+      matTooltip="Connect on LinkedIn"
+    >
+      <fa-icon [icon]="faLinkedin" size="4x"></fa-icon>
+    </span>
+    <span
+      class="icon-wrapper"
+      (click)="goToPortfolio()"
+      matTooltip="Continue to my portfolio"
+    >
+      <fa-icon [icon]="faAnglesRight" size="3x"></fa-icon>
+    </span>
+  </div>
 </container-component>
