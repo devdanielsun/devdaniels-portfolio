@@ -10,11 +10,12 @@
             </span>
             <span>
                 &gt;
-                @for (cat of a.category; track cat) {
+                @for (cat of a.category; track cat; let last = $last) {
                     <a [routerLink]="['/articles','category', cat]">{{ cat || '' }}</a>
                     
-                        ,
-                    
+                    @if (!last) {
+                        /
+                    }
                 }
                 <!-- <a [routerLink]="['/articles','category', a.category]">{{ a.category || '' }}</a> -->
             </span>

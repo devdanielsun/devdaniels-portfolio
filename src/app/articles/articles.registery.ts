@@ -1,5 +1,3 @@
-import type { Routes } from '@angular/router';
-import { ArticleRouteData } from '../models/article.model';
 import { CODEERTS_ARTICLE, Codeerts } from './codeerts/codeerts.article';
 
 // Registry entries: add new articles here

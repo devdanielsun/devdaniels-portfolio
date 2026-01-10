@@ -1,0 +1,34 @@
+.breadcrumb {
+    color: var(--mat-sys-on-surface);
+
+    a {
+        color: var(--mat-sys-secondary);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--mat-sys-primary);
+        }
+
+        &.active {
+            color: var(--mat-sys-primary);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+
+    .active {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+.portfolio-image {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+}
+
+.article-content {
+    text-align: left;
+    max-width: 480px;
+}

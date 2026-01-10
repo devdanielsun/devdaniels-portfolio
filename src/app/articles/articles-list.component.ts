@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ARTICLES, findArticlesByCategory, listCategories } from './articles.registery';
-import { ContainerComponent } from '../modules/container-component/container-component';
+import { ContainerComponent } from '../modules/container-component/container.component';
 
 @Component({
   selector: 'app-articles-list',
