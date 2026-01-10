@@ -43,3 +43,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .clickable-icon:hover {
   color: var(--mat-sys-primary);
 }
+
+a {
+  color: var(--mat-sys-secondary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--mat-sys-primary);
+  }
+
+  &.active {
+    color: var(--mat-sys-primary);
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
