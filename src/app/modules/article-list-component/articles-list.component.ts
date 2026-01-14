@@ -2,11 +2,7 @@ import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import {
-  ARTICLES,
-  findArticlesByCategory,
-  listCategories,
-} from '../../articles/articles.registery';
+import { ArticlesService } from '../../services/articles.service';
 import { ContainerComponent } from '../container-component/container.component';
 
 @Component({
@@ -18,46 +14,45 @@ import { ContainerComponent } from '../container-component/container.component';
 })
 export class ArticlesListComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
-
+  private articlesService = inject(ArticlesService);
   private routeSub?: Subscription;
-  private currentCategory?: string;
 
   @Input() hideContainerView: boolean = false;
   @Input() hideTitle: boolean = false;
   @Input() hideCategoryNav: boolean = false;
-  @Input() maxItemsToShow: number | undefined = undefined; // undefined means show all
+  @Input() maxItemsToShow?: number;
 
-  constructor() {}
+  currentCategory?: string;
+  items: any[] = [];
+  categories: string[] = [];
 
   ngOnInit(): void {
-    // subscribe so the component updates when :category changes
-    this.routeSub = this.route.paramMap.subscribe((pm) => {
-      this.currentCategory = pm.get('category') || undefined;
-      // If you have any cached items/state, refresh it here or call change detection.
-    });
+    this.subscribeToRouteParams();
+    this.loadCategories();
   }
 
   ngOnDestroy(): void {
     this.routeSub?.unsubscribe();
   }
 
-  items() {
-    const source = this.currentCategory
-      ? findArticlesByCategory(this.currentCategory)
-      : ARTICLES;
-    // return a sorted copy (newest first) by extracting the first year found in the `date` string
-    return [...source].sort(
-      (a, b) => this.extractYear(b.date) - this.extractYear(a.date),
-    );
+  private subscribeToRouteParams(): void {
+    this.routeSub = this.route.paramMap.subscribe((paramMap) => {
+      this.currentCategory = paramMap.get('category') || undefined;
+      this.loadArticles();
+    });
   }
 
-  private extractYear(dateStr?: string): number {
-    if (!dateStr) return 0;
-    const m = dateStr.match(/(\d{4})/);
-    return m ? parseInt(m[1], 10) : 0;
+  private loadArticles(): void {
+    this.articlesService
+      .getArticles(this.currentCategory)
+      .subscribe((articles) => {
+        this.items = articles;
+      });
   }
 
-  categories() {
-    return listCategories();
+  private loadCategories(): void {
+    this.articlesService.getCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
   }
 }

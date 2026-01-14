@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 import { NotFound404 } from './not-found-404';
 
@@ -9,6 +11,14 @@ describe('NotFound404', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NotFound404],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            snapshot: { paramMap: of({}) },
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(NotFound404);

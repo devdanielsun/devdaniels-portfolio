@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Codeerts } from './codeerts.article';
+import { CodeertsArticle } from './codeerts.article';
 
 describe('TerraformCicdPipeline', () => {
-  let component: Codeerts;
-  let fixture: ComponentFixture<Codeerts>;
+  let component: CodeertsArticle;
+  let fixture: ComponentFixture<CodeertsArticle>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Codeerts],
+      imports: [CodeertsArticle],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Codeerts);
+    fixture = TestBed.createComponent(CodeertsArticle);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

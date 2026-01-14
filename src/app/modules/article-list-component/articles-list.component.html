@@ -13,10 +13,11 @@
         [routerLink]="['/articles']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        >All</a
       >
+        All
+      </a>
       <span>
-        @for (c of categories(); track c) {
+        @for (c of categories; track c) {
           |
           <a
             [routerLink]="['/articles', 'category', c]"
@@ -31,10 +32,7 @@
 
   <ul>
     <li>
-      @for (
-        a of items() | slice: 0 : maxItemsToShow ?? items().length;
-        track a
-      ) {
+      @for (a of items | slice: 0 : maxItemsToShow ?? items.length; track a) {
         <a [routerLink]="['/articles', a.slug]" routerLinkActive="active">{{
           a.title
         }}</a>

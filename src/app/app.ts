@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { NgxParticlesModule } from '@tsparticles/angular';
@@ -91,7 +91,7 @@ export class App {
       // tablet
       particleCount = 40;
     }
-    if (width <= 480) {
+    if (width <= 600) {
       // mobile
       particleCount = 20;
     }
