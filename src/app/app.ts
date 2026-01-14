@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { NgxParticlesModule } from '@tsparticles/angular';
@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SvgLoaderService } from './services/svg-loader.service';
+import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -24,8 +25,12 @@ import { SvgLoaderService } from './services/svg-loader.service';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
-  protected logoSvg: any;
+export class App implements OnInit {
+  public router = inject(Router);
+  private readonly ngParticlesService = inject(NgParticlesService);
+  private readonly svgLoader = inject(SvgLoaderService);
+
+  protected logoSvg?: SafeHtml;
 
   protected readonly faMoon = faMoon;
   protected readonly faSun = faSun;
@@ -35,24 +40,18 @@ export class App {
     .filter((r) => r.title)
     .filter((r) => r.path !== '404' && r.path !== '**');
 
-  isDarkMode: boolean = true; // Default to dark theme
+  isDarkMode = true; // Default to dark theme
 
   // Set particles options based on the current theme
   private particlesContainer?: Container;
   protected readonly id = 'tsparticles';
   particlesOptions = {};
 
-  constructor(
-    public router: Router,
-    private readonly ngParticlesService: NgParticlesService,
-    private svgLoader: SvgLoaderService,
-  ) {}
-
   ngOnInit(): void {
     // load svg logo
     this.svgLoader
       .loadSvg('assets/logo-devdaniels.svg')
-      .subscribe((svg) => (this.logoSvg = svg));
+      .subscribe((svg) => (this.logoSvg = svg as SafeHtml));
 
     // Initialize particles with the slim engine and links preset
     this.ngParticlesService.init(async (engine) => {

@@ -30,7 +30,7 @@ export class ArticleComponent {
   // read deepest child snapshot data on navigation
   article = computed(() => {
     // consume navigation signal to recompute when route changes
-    this.navigation;
+    this.navigation();
     let r: ActivatedRoute | null = this.route;
     while (r?.firstChild) {
       r = r.firstChild;
