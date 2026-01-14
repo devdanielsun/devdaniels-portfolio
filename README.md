@@ -64,5 +64,6 @@ The app is configured for deployment to Azure Static Web Apps. See [azure-static
 - `src/styles.scss` — Global styles and Material theming
 - `src/assets/` — Static assets (images, favicon, etc.)
 - `.github/workflows/` — GitHub Actions CI/CD workflows
+- `.husky/precommit` - Executes a precommit which formats the staged code and executes tests
 
 ---

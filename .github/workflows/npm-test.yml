@@ -37,4 +37,4 @@ jobs:
       - name: Run tests
         env:
           CHROME_BIN: /usr/bin/chromium-browser
-        run: xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' npm run test:ci
+        run: xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' npm run test

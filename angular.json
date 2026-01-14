@@ -18,14 +18,23 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "stylePreprocessorOptions": {
-              "includePaths": ["src"]
+              "includePaths": [
+                "src"
+              ]
             },
-            "assets": ["src/assets"],
-            "styles": ["src/styles.scss", "src/_variables.scss"]
+            "assets": [
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss",
+              "src/_variables.scss"
+            ]
           },
           "configurations": {
             "production": {
@@ -69,20 +78,42 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "stylePreprocessorOptions": {
-              "includePaths": ["src"]
+              "includePaths": [
+                "src"
+              ]
             },
-            "assets": ["src/assets"],
-            "styles": ["src/styles.scss", "src/_variables.scss"]
+            "assets": [
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss",
+              "src/_variables.scss"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }
