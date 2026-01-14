@@ -5,12 +5,13 @@ import {
   findArticlesByCategory,
   listCategories,
 } from '../articles/articles.registery';
+import { Article } from '../models/article.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticlesService {
-  getArticles(category?: string): Observable<any[]> {
+  getArticles(category?: string): Observable<Article[]> {
     const source = category ? findArticlesByCategory(category) : ARTICLES;
     return of(
       [...source].sort(

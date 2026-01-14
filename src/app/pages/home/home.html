@@ -1,4 +1,4 @@
-<container-component>
+<app-container-component>
   <img
     [src]="'assets/images/devdanielsProfilePicture.jpg'"
     alt="DevDaniels profile picture"
@@ -13,24 +13,30 @@
   <div class="social-icons">
     <span
       class="icon-wrapper"
+      tabindex="0"
       (click)="goToGithub()"
+      (keydown.enter)="goToGithub()"
       matTooltip="View my GitHub"
     >
       <fa-icon [icon]="faGithub" size="4x"></fa-icon>
     </span>
     <span
       class="icon-wrapper"
+      tabindex="0"
       (click)="goToLinkedIn()"
+      (keydown.enter)="goToLinkedIn()"
       matTooltip="Connect on LinkedIn"
     >
       <fa-icon [icon]="faLinkedin" size="4x"></fa-icon>
     </span>
     <span
       class="icon-wrapper"
+      tabindex="0"
       (click)="goToPortfolio()"
+      (keydown.enter)="goToPortfolio()"
       matTooltip="Continue to my portfolio"
     >
       <fa-icon [icon]="faAnglesRight" size="3x"></fa-icon>
     </span>
   </div>
-</container-component>
+</app-container-component>

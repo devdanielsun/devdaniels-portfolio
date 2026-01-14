@@ -1,1 +1,11 @@
-npx lint-staged
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run linting
+npm run lint || exit 1
+
+# Run formatting
+npm run format || exit 1
+
+# Run tests
+npm run test || exit 1

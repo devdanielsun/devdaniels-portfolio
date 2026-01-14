@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ContainerComponent } from '../../modules/container-component/container.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -42,7 +42,7 @@ import { ArticlesListComponent } from '../../modules/article-list-component/arti
   styleUrl: './portfolio.scss',
 })
 export class Portfolio {
-  constructor(private router: Router) {}
+  private router = inject(Router);
 
   goToProject(projectUri: string) {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {

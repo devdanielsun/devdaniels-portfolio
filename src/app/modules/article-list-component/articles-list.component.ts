@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ArticlesService } from '../../services/articles.service';
 import { ContainerComponent } from '../container-component/container.component';
+import { Article } from '../../models/article.model';
 
 @Component({
   selector: 'app-articles-list',
@@ -17,18 +18,19 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
   private articlesService = inject(ArticlesService);
   private routeSub?: Subscription;
 
-  @Input() hideContainerView: boolean = false;
-  @Input() hideTitle: boolean = false;
-  @Input() hideCategoryNav: boolean = false;
+  @Input() hideContainerView = false;
+  @Input() hideTitle = false;
+  @Input() hideCategoryNav = false;
   @Input() maxItemsToShow?: number;
 
   currentCategory?: string;
-  items: any[] = [];
+  items: Article[] = [];
   categories: string[] = [];
 
   ngOnInit(): void {
     this.subscribeToRouteParams();
     this.loadCategories();
+    this.loadArticles();
   }
 
   ngOnDestroy(): void {
@@ -45,7 +47,7 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
   private loadArticles(): void {
     this.articlesService
       .getArticles(this.currentCategory)
-      .subscribe((articles) => {
+      .subscribe((articles: Article[]) => {
         this.items = articles;
       });
   }
