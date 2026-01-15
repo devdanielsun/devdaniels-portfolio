@@ -1,6 +1,7 @@
 name: Run Tests
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - development
@@ -22,7 +23,7 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       # Run linting
       - name: Run linting

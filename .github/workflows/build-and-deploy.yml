@@ -1,6 +1,7 @@
 name: Build and Deploy to Azure
 
 on:
+  workflow_dispatch:
   push:
     branches: ["main"]
 
@@ -29,7 +30,7 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       # Run linting
       - name: Run linting
