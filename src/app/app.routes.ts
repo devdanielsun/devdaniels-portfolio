@@ -22,11 +22,12 @@ export const routes: Routes = [
   },
   {
     path: 'articles',
+    title: 'Articles - DevDaniels',
+    data: { navTitle: 'Articles' },
     children: [
       {
         path: '',
         component: ArticlesListComponent,
-        title: 'Articles - DevDaniels',
       },
       {
         path: 'category/:category',
