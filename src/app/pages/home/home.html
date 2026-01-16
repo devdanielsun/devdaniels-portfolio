@@ -1,42 +1,40 @@
 <app-container-component>
   <img
     [src]="'assets/images/devdanielsProfilePicture.jpg'"
-    alt="DevDaniels profile picture"
+    alt="Daniël Geerts (DevDaniels) profile picture"
   />
   <p class="title">Daniël Geerts <span>(he/his)</span></p>
-  <p class="subtitle">-DevDaniels-</p>
+  <p class="subtitle">- DevDaniels -</p>
 
   <p class="description">
     Software/DevOps Wizard <fa-icon [icon]="faWizard" animation="bounce" />
   </p>
 
   <div class="social-icons">
-    <span
+    <a
       class="icon-wrapper"
-      tabindex="0"
-      (click)="goToGithub()"
-      (keydown.enter)="goToGithub()"
+      href="https://github.com/devdanielsun/"
+      target="_blank"
+      rel="noopener noreferrer"
       matTooltip="View my GitHub"
     >
       <fa-icon [icon]="faGithub" size="4x"></fa-icon>
-    </span>
-    <span
+    </a>
+    <a
       class="icon-wrapper"
-      tabindex="0"
-      (click)="goToLinkedIn()"
-      (keydown.enter)="goToLinkedIn()"
+      href="https://www.linkedin.com/in/danielgeerts/"
+      target="_blank"
+      rel="noopener noreferrer"
       matTooltip="Connect on LinkedIn"
     >
       <fa-icon [icon]="faLinkedin" size="4x"></fa-icon>
-    </span>
-    <span
+    </a>
+    <a
       class="icon-wrapper"
-      tabindex="0"
-      (click)="goToPortfolio()"
-      (keydown.enter)="goToPortfolio()"
+      [routerLink]="['/portfolio']"
       matTooltip="Continue to my portfolio"
     >
       <fa-icon [icon]="faAnglesRight" size="3x"></fa-icon>
-    </span>
+    </a>
   </div>
 </app-container-component>
