@@ -1,61 +1,253 @@
 <app-container-component [fullWidth]="true">
-  <h1>About</h1>
   <div class="section about-section">
-    <div class="content-left">
-      <div class="about-icon">
-        <ng-icon name="faSolidIdCard" size="128px"></ng-icon>
-      </div>
-      <p>
-        My name is Daniël and I am a software developer based in the
-        Netherlands. I have a passion for functional web applications and
-        software systems. I have experience working with a variety of
-        technologies including C# .NET, Azure, Bicep, Angular, React, Node.js,
-        and more. This portfolio site is W.I.P.
-      </p>
-    </div>
-    <div class="content-right">
+    <div class="inner-section">
       <div class="skill-icons">
         <div class="skill-icon-row">
           <ng-icon
-            name="diCsharpOriginal"
+            name="diGitPlain"
             size="256px"
             style="width: 64px; height: auto"
           ></ng-icon>
           <ng-icon
-            name="diAzureOriginal"
+            name="diGithubcodespacesPlain"
+            size="256px"
+            style="width: 64px; height: auto"
+            color="white"
+          ></ng-icon>
+          <ng-icon
+            name="diStackoverflowPlain"
             size="256px"
             style="width: 64px; height: auto"
           ></ng-icon>
         </div>
         <div class="skill-icon-row">
           <ng-icon
-            name="diNodejsOriginal"
+            name="diTypescriptPlain"
             size="256px"
             style="width: 64px; height: auto"
           ></ng-icon>
           <ng-icon
-            name="diAngularOriginal"
+            name="diAngularPlain"
             size="256px"
             style="width: 64px; height: auto"
           ></ng-icon>
           <ng-icon
-            name="diReactOriginal"
+            name="diNodejsPlainWordmark"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+          <ng-icon
+            name="diNpmPlain"
             size="256px"
             style="width: 64px; height: auto"
           ></ng-icon>
         </div>
         <div class="skill-icon-row">
           <ng-icon
-            name="diGitOriginal"
+            name="diCsharpPlain"
             size="256px"
             style="width: 64px; height: auto"
           ></ng-icon>
           <ng-icon
-            name="diGithubOriginal"
+            name="diLinuxPlain"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+          <ng-icon
+            name="diAzuredevopsPlain"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+          <ng-icon
+            name="diAzuresqldatabasePlain"
             size="256px"
             style="width: 64px; height: auto"
           ></ng-icon>
         </div>
+        <div class="skill-icon-row">
+          <ng-icon
+            name="diVscodePlain"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+          <ng-icon
+            name="diCloudflarePlain"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+          <ng-icon
+            name="diJsonPlain"
+            size="256px"
+            style="width: 64px; height: auto"
+          ></ng-icon>
+        </div>
+      </div>
+    </div>
+    <div class="inner-section about-text-section">
+      <p>
+        <span class="title">Hello, my name is Daniël Geerts</span>
+      </p>
+      <p>
+        <span class="subtitle">- Software/DevOps engineer -</span>
+      </p>
+      <p>
+        I am a software developer based in the Netherlands. I enjoy building
+        functional, well-designed web applications and robust software systems.
+        I work with a broad range of technologies, including C#/.NET, Azure,
+        Bicep, Angular, React, Node.js, and more.
+      </p>
+    </div>
+    <div class="inner-section">
+      <img
+        [src]="'assets/images/devdanielsProfilePicture.jpg'"
+        alt="Daniël Geerts (DevDaniels) profile picture"
+      />
+    </div>
+  </div>
+</app-container-component>
+
+<app-container-component [fullWidth]="true">
+  <h1>Experience</h1>
+  <div>
+    <div class="section experience-section">
+      <div class="inner-section">
+        <div>
+          <fa-icon [icon]="faAward" size="2x"></fa-icon>
+          <h2>Certifications</h2>
+          <h3>Microsoft Azure</h3>
+          <dl>
+            <dt>Microsoft Certified: Azure Fundamentals (AZ-900)</dt>
+            <dt>Microsoft Certified: Azure AI Fundamentals (AI-900)</dt>
+          </dl>
+          <h3>Amazon Web Services (AWS)</h3>
+          <dl>
+            <dt>Certified Cloud Practitioner</dt>
+            <dt>Certified Developer Associate</dt>
+          </dl>
+          <h3>Other certifications</h3>
+          <dl>
+            <dt>Professional Scrum Master™ I (PSM I)</dt>
+            <dt>Docker Essentials: A Developer Introduction</dt>
+            <dt>First Aid / Emergency Response</dt>
+          </dl>
+        </div>
+        <div>
+          <fa-icon [icon]="faGraduationCap" size="2x"></fa-icon>
+          <h2>Bachelor of Applied Sciences, Hanzehogeschool Groningen</h2>
+          <span>Sep. 2017 - nov. 2021</span>
+          <dl>
+            <dt>Major: ICT - Software Engineer (at Hanzehogeschool)</dt>
+            <dt>Minor: Smart Energy (at NewEnergyAcademy)</dt>
+            <dt>
+              Certificate: Energy Academy Certificate (at NewEnergyAcademy)
+            </dt>
+            <dt>Graduation project at Rijkswaterstaat</dt>
+            <dt>Internship at Capteur</dt>
+          </dl>
+        </div>
+        <div>
+          <fa-icon [icon]="faGraduationCap" size="2x"></fa-icon>
+          <h2>Game Development, Alfa College Groningen</h2>
+          <span>Sep. 2014 - jun. 2017</span>
+          <dl>
+            <dt>Major: Game Developer (at Alfa College)</dt>
+            <dt>Minor: Game Design (at Alfa College)</dt>
+            <dt>Graduation project at NoelWapp</dt>
+            <dt>Internship at Bereslim (Virtual Reality, C#, Unity)</dt>
+          </dl>
+        </div>
+        <p>Additional information about my experience and skills.</p>
+        <div>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/danielgeerts#experience"
+            class="view-all-articles-link"
+            >View More On My LinkedIn</a
+          >
+        </div>
+      </div>
+      <div class="inner-section">
+        <div>
+          <fa-icon [icon]="faCode" size="2x"></fa-icon>
+          <h2>Full Stack</h2>
+          <dl>
+            <dt>Software Architecture</dt>
+            <dt>Software Development</dt>
+            <dt>Infrastructure - Deployment / Orchestration</dt>
+            <dt>Cloud (Azure, AWS, IBM, Google)</dt>
+            <dt>DevOps Practices</dt>
+          </dl>
+        </div>
+        <div>
+          <fa-icon [icon]="faCode" size="2x"></fa-icon>
+          <h2>Backend</h2>
+          <dl>
+            <dt>C#/.NET, Node.js, Python</dt>
+            <dt>Azure (App Services, Functions, DevOps, etc.)</dt>
+            <dt>AWS (Lambda, S3, CloudFormation, etc.)</dt>
+            <dt>RESTful API Development</dt>
+            <dt>Cloudflare, DNS Management, SSL/TLS</dt>
+            <dt>Docker, Kubernetes, Terraform, Bicep</dt>
+            <dt>SQL, NoSQL & PL/SQL databases</dt>
+          </dl>
+        </div>
+        <div>
+          <fa-icon [icon]="faCode" size="2x"></fa-icon>
+          <h2>Frontend</h2>
+          <dl>
+            <dt>Angular, React, HTML, PHP, CSS, SCSS</dt>
+            <dt>TypeScript, JavaScript, jQuery</dt>
+            <dt>Responsive Web Design</dt>
+            <dt>UX/UI Principles</dt>
+            <dt>Cross-Browser Compatibility</dt>
+          </dl>
+        </div>
+      </div>
+      <div class="inner-section">
+        <div>
+          <fa-icon [icon]="faTimeline" size="2x"></fa-icon>
+          <h2>DevOps</h2>
+          <dl>
+            <dt>CI/CD Pipelines (Azure DevOps, GitHub Actions, Jenkins)</dt>
+            <dt>Infrastructure as Code (Bicep, Terraform, CloudFormation)</dt>
+            <dt>Containerization (Docker, Kubernetes)</dt>
+            <dt>Monitoring & Logging (Azure Monitor, AWS CloudWatch)</dt>
+            <dt>Version Control (Git, GitHub, Azure Repos)</dt>
+          </dl>
+        </div>
+        <div>
+          <fa-icon [icon]="faCloud" size="2x"></fa-icon>
+          <h2>Cloud Development</h2>
+          <dl>
+            <dt>Cloud Architecture Design</dt>
+            <dt>Serverless Computing</dt>
+            <dt>Microservices Development</dt>
+            <dt>API Development & Integration</dt>
+            <dt>Cloud Security Best Practices</dt>
+          </dl>
+        </div>
+        <div>
+          <fa-icon [icon]="faCodeBranch" size="2x"></fa-icon>
+          <h2>GIT / Agile</h2>
+          <dl>
+            <dt>Version Control (Git)</dt>
+            <dt>Agile Methodologies (Scrum, Kanban)</dt>
+            <dt>Continuous Integration/Continuous Deployment (CI/CD)</dt>
+            <dt>Collaboration Tools (Azure DevOps, Jira, Trello)</dt>
+            <dt>Code Review Practices</dt>
+          </dl>
+        </div>
+      </div>
+      <br />
+      <div>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/danielgeerts"
+          class="view-all-articles-link"
+          >View More On My LinkedIn</a
+        >
       </div>
     </div>
   </div>

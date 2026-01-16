@@ -3,42 +3,77 @@
 .section {
   text-align: left;
   display: flex;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .about-section {
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  align-items: center;
+  justify-items: center;
 
-  .content-left,
-  .content-right {
-    width: 50%;
+  .inner-section {
     padding: 2em;
 
-    .about-icon {
-      text-align: center;
-    }
-
-    .skill-icons {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-
-      .skill-icon-row {
-        display: flex;
-        flex-direction: column;
-
-        ng-icon {
-          padding: 1em;
-        }
-      }
+    img {
+      border-radius: 5%;
+      width: 350px;
+      height: 350px;
     }
   }
 
-  @include vars.respond-to(tablet) {
-    flex-direction: column;
+  .about-text-section {
+    text-align: center;
+    max-width: 75%;
 
-    .content-left,
-    .content-right {
+    .title {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      margin-bottom: 1em;
+      font-weight: 100;
+    }
+  }
+
+  .skill-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .skill-icon-row {
+      display: flex;
+      flex-direction: column;
+
+      ng-icon {
+        padding: 1em;
+      }
+    }
+  }
+}
+
+.experience-section {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  align-items: start;
+  justify-items: center;
+  padding: 2em;
+
+  .inner-section {
+    padding: 2em;
+  }
+}
+
+@include vars.respond-to(tablet) {
+  .about-section {
+    display: grid;
+    grid-template-columns: 100%;
+
+    .inner-section {
       width: 100%;
       padding: 1em;
     }
