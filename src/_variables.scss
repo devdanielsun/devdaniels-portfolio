@@ -3,6 +3,11 @@ $break-mobile: 600px;
 
 :root {
   --content-max-width: 800px;
+  //TODO: @if $dark-mode {
+  --terminal-color: #33ff33;
+  // } @else {
+  //   --terminal-color: #007700;
+  // }
 }
 
 /* Override the custom property at different breakpoints */
