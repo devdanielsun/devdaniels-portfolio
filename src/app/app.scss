@@ -44,10 +44,10 @@
         width: 75px;
         height: 75px;
         transition: transform 1s ease-in-out 0s;
-      }
 
-      .logo-svg:hover {
-        transform: rotate(225deg);
+        &:hover {
+          transform: rotate(225deg);
+        }
       }
     }
   }

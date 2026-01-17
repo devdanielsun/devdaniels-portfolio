@@ -1,25 +1,52 @@
 @use "variables" as vars;
 
 .section {
-  text-align: left;
+  text-align: center;
   display: flex;
-}
+  flex-direction: column;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
 
-.about-section {
-  flex-direction: row;
+  .inner-section {
+    text-align: left;
+  }
 
-  .content-left,
-  .content-right {
-    width: 50%;
-    padding: 2em;
+  .about-section {
+    display: grid;
+    // TODO: replace with Tailwind CSS classes
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-items: center;
 
-    .about-icon {
+    .inner-section {
+      padding: 2em;
+
+      img {
+        border-radius: 5%;
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    .about-text-section {
       text-align: center;
+      max-width: 75%;
+
+      .title {
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+
+      .subtitle {
+        font-size: 1.2em;
+        margin-bottom: 1em;
+        font-weight: 100;
+      }
     }
 
     .skill-icons {
       display: flex;
-      flex-direction: row;
       align-items: center;
       justify-content: center;
 
@@ -29,16 +56,67 @@
 
         ng-icon {
           padding: 1em;
+
+          &:hover {
+            color: var(--terminal-color);
+          }
         }
       }
     }
   }
 
-  @include vars.respond-to(tablet) {
-    flex-direction: column;
+  .experience-section {
+    display: grid;
+    // TODO: replace with Tailwind CSS classes
+    grid-template-columns: 40% 30% 30%;
+    align-items: start;
+    justify-items: center;
+    padding: 2em;
 
-    .content-left,
-    .content-right {
+    .inner-section {
+      padding: 2em;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 0px;
+        padding-top: 0px;
+        margin-block-start: 0;
+      }
+
+      h3 {
+        margin-bottom: 0.2em;
+      }
+
+      ul {
+        margin-top: 0px;
+        padding-top: 0px;
+        margin-block-start: 0;
+        list-style: ">_ ";
+
+        li {
+          line-height: 1.4em;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: var(--terminal-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include vars.respond-to(tablet) {
+  .about-section {
+    display: grid;
+    // TODO: replace with Tailwind CSS classes
+    grid-template-columns: 100%;
+
+    .inner-section {
       width: 100%;
       padding: 1em;
     }

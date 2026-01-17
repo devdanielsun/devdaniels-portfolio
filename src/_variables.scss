@@ -1,31 +1,36 @@
-$break-tablet: 768px;
-$break-mobile: 600px;
+$break-tablet: 1024px;
+$break-mobile: 769px;
 
 :root {
-  --content-max-width: 800px;
+  --content-max-width: 1200px;
+  //TODO: @if $dark-mode {
+  --terminal-color: #33ff33;
+  // } @else {
+  //   --terminal-color: #007700;
+  // }
 }
 
 /* Override the custom property at different breakpoints */
-@media (max-width: $break-tablet) {
+@media (min-width: $break-mobile) and (max-width: $break-tablet) {
   :root {
-    --content-max-width: 700px;
+    --content-max-width: 900px;
   }
 }
 
-@media (max-width: $break-mobile) {
+@media (min-width: 0) and (max-width: #{$break-mobile - 1}px) {
   :root {
-    --content-max-width: 500px;
+    --content-max-width: 600px;
   }
 }
 
 // Utility mixin to reuse the same breakpoints in components
 @mixin respond-to($size) {
   @if $size == tablet {
-    @media (max-width: $break-tablet) {
+    @media (min-width: $break-mobile) and (max-width: $break-tablet) {
       @content;
     }
   } @else if $size == mobile {
-    @media (max-width: $break-mobile) {
+    @media (min-width: 0) and (max-width: #{$break-mobile - 1}px) {
       @content;
     }
   }

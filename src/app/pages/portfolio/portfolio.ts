@@ -5,15 +5,30 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
-  diAzureOriginal,
-  diCsharpOriginal,
-  diGitOriginal,
-  diAngularOriginal,
-  diReactOriginal,
-  diNodejsOriginal,
-  diGithubOriginal,
-} from '@ng-icons/devicon/original';
-import { faSolidIdCard } from '@ng-icons/font-awesome/solid';
+  diLinuxPlain,
+  diCsharpPlain,
+  diGitPlain,
+  diAngularPlain,
+  diNodejsPlainWordmark,
+  diStackoverflowPlain,
+  diAzuredevopsPlain,
+  diAzuresqldatabasePlain,
+  diGithubcodespacesPlain,
+  diTypescriptPlain,
+  diAzurePlain,
+  diCloudflarePlain,
+  diVscodePlain,
+  diNpmPlain,
+  diJsonPlain,
+} from '@ng-icons/devicon/plain';
+import {
+  faGraduationCap,
+  faAward,
+  faCode,
+  faTimeline,
+  faCloud,
+  faCodeBranch,
+} from '@fortawesome/free-solid-svg-icons';
 import { ArticlesListComponent } from '../../modules/article-list-component/articles-list.component';
 
 @Component({
@@ -28,14 +43,21 @@ import { ArticlesListComponent } from '../../modules/article-list-component/arti
   ],
   providers: [
     provideIcons({
-      diAzureOriginal,
-      diCsharpOriginal,
-      diGitOriginal,
-      faSolidIdCard,
-      diAngularOriginal,
-      diReactOriginal,
-      diNodejsOriginal,
-      diGithubOriginal,
+      diLinuxPlain,
+      diCsharpPlain,
+      diGitPlain,
+      diAngularPlain,
+      diNodejsPlainWordmark,
+      diTypescriptPlain,
+      diStackoverflowPlain,
+      diAzuredevopsPlain,
+      diAzuresqldatabasePlain,
+      diGithubcodespacesPlain,
+      diAzurePlain,
+      diCloudflarePlain,
+      diVscodePlain,
+      diNpmPlain,
+      diJsonPlain,
     }),
   ],
   templateUrl: './portfolio.html',
@@ -43,6 +65,13 @@ import { ArticlesListComponent } from '../../modules/article-list-component/arti
 })
 export class Portfolio {
   private router = inject(Router);
+
+  protected readonly faGraduationCap = faGraduationCap;
+  protected readonly faAward = faAward;
+  protected readonly faCode = faCode;
+  protected readonly faTimeline = faTimeline;
+  protected readonly faCloud = faCloud;
+  protected readonly faCodeBranch = faCodeBranch;
 
   goToProject(projectUri: string) {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {

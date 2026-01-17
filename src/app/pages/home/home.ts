@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,11 +8,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faHatWizard, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import { ContainerComponent } from '../../modules/container-component/container.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   imports: [
+    RouterLink,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -23,26 +24,9 @@ import { Router } from '@angular/router';
   styleUrl: './home.scss',
 })
 export class Home {
-  private router = inject(Router);
-
   protected readonly portfolioRoute = '/portfolio';
   protected readonly faGithub = faGithubSquare;
   protected readonly faLinkedin = faLinkedin;
   protected readonly faWizard = faHatWizard;
   protected readonly faAnglesRight = faAnglesRight;
-
-  goToGithub() {
-    window.open('https://github.com/devdanielsun/', '_blank');
-  }
-
-  goToLinkedIn() {
-    window.open('https://www.linkedin.com/in/danielgeerts/', '_blank');
-  }
-
-  goToPortfolio() {
-    const uri = '/portfolio';
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([uri]);
-    });
-  }
 }
