@@ -4,7 +4,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  max-width: 1300px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 
   .inner-section {
@@ -13,7 +13,8 @@
 
   .about-section {
     display: grid;
-    grid-template-columns: 25% 50% 25%;
+    // TODO: replace with Tailwind CSS classes
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     justify-items: center;
 
@@ -66,6 +67,7 @@
 
   .experience-section {
     display: grid;
+    // TODO: replace with Tailwind CSS classes
     grid-template-columns: 40% 30% 30%;
     align-items: start;
     justify-items: center;
@@ -111,6 +113,7 @@
 @include vars.respond-to(tablet) {
   .about-section {
     display: grid;
+    // TODO: replace with Tailwind CSS classes
     grid-template-columns: 100%;
 
     .inner-section {

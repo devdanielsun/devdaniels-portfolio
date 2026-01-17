@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Test Job
+    name: Run Tests Job
     steps:
       # Checkout the repository
       - name: Checkout code
