@@ -68,7 +68,7 @@
   .experience-section {
     display: grid;
     // TODO: replace with Tailwind CSS classes
-    grid-template-columns: 40% 30% 30%;
+    grid-template-columns: 50% 50%;
     align-items: start;
     justify-items: center;
     padding: 2em;
@@ -95,15 +95,10 @@
         margin-top: 0px;
         padding-top: 0px;
         margin-block-start: 0;
-        list-style: ">_ ";
+        list-style: "- ";
 
         li {
-          line-height: 1.4em;
-          transition: color 0.3s ease;
-
-          &:hover {
-            color: var(--terminal-color);
-          }
+          line-height: 1.8em;
         }
       }
     }
