@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ContainerComponent } from '../../modules/container-component/container.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
@@ -40,6 +41,7 @@ import { ArticlesListComponent } from '../../modules/article-list-component/arti
     MatGridListModule,
     NgIconComponent,
     ArticlesListComponent,
+    MatTooltipModule,
   ],
   providers: [
     provideIcons({
