@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ArticlesService } from '../../services/articles.service';
-import { ContainerComponent } from '../container-component/container.component';
+import { ContainerComponent } from '../../modules/container-component/container.component';
 import { Article } from '../../models/article.model';
 
 @Component({

@@ -30,7 +30,7 @@ import {
   faCloud,
   faCodeBranch,
 } from '@fortawesome/free-solid-svg-icons';
-import { ArticlesListComponent } from '../../modules/article-list-component/articles-list.component';
+import { ArticlesListComponent } from '../article-list-component/articles-list.component';
 
 @Component({
   selector: 'app-portfolio',

@@ -2,10 +2,10 @@ import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { Portfolio } from './pages/portfolio/portfolio';
 import { NotFound404 } from './pages/not-found-404/not-found-404';
+import { ArticlesListComponent } from './pages/article-list-component/articles-list.component';
 import { ArticleComponent } from './modules/article-component/article.component';
 import { ArticleResolver } from './resolvers/article.resolver';
 import { ArticleLoaderComponent } from './modules/article-component/article-loader.component';
-import { ArticlesListComponent } from './modules/article-list-component/articles-list.component';
 
 export const routes: Routes = [
   {
