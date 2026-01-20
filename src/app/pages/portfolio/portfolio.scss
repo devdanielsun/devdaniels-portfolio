@@ -13,7 +13,6 @@
 
   .about-section {
     display: grid;
-    // TODO: replace with Tailwind CSS classes
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     justify-items: center;
@@ -22,21 +21,13 @@
       padding: 2em;
 
       img {
-        border-radius: 5%;
         width: 300px;
         height: 300px;
       }
     }
 
     .about-text-section {
-      text-align: center;
-      max-width: 75%;
-
-      .title {
-        font-size: 2em;
-        font-weight: bold;
-        margin-bottom: 0.5em;
-      }
+      text-align: left;
 
       .subtitle {
         font-size: 1.2em;
@@ -55,7 +46,7 @@
         flex-direction: column;
 
         ng-icon {
-          padding: 1em;
+          margin: 1em;
 
           &:hover {
             color: var(--terminal-color);
@@ -67,8 +58,7 @@
 
   .experience-section {
     display: grid;
-    // TODO: replace with Tailwind CSS classes
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
     align-items: start;
     justify-items: center;
     padding: 2em;
@@ -108,8 +98,7 @@
 @include vars.respond-to(tablet) {
   .about-section {
     display: grid;
-    // TODO: replace with Tailwind CSS classes
-    grid-template-columns: 100%;
+    grid-template-columns: auto;
 
     .inner-section {
       width: 100%;
