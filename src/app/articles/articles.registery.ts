@@ -47,7 +47,6 @@ const ARTICLE_REGISTRY = [
   },
 ];
 
-// TODO: check if debug mode or not. If debug mode show all articles.
 export const ARTICLES = ARTICLE_REGISTRY.map((e) => e.meta).filter((a) => {
   if (isDevMode()) {
     return true;

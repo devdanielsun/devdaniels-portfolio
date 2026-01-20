@@ -25,7 +25,7 @@
               "includePaths": ["src"]
             },
             "assets": ["src/assets"],
-            "styles": ["src/styles.scss", "src/_variables.scss"]
+            "styles": ["src/styles.scss", "src/variables.scss"]
           },
           "configurations": {
             "production": {
@@ -76,7 +76,7 @@
               "includePaths": ["src"]
             },
             "assets": ["src/assets"],
-            "styles": ["src/styles.scss", "src/_variables.scss"]
+            "styles": ["src/styles.scss", "src/variables.scss"]
           }
         },
         "lint": {

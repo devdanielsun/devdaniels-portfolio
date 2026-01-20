@@ -1,103 +1,13 @@
 <app-container-component [fullWidth]="true">
   <div class="section">
     <div class="about-section">
-      <div class="inner-section">
-        <div class="skill-icons">
-          <div class="skill-icon-row">
-            <ng-icon
-              name="diAzuredevopsPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="Microsoft Azure"
-            ></ng-icon>
-            <ng-icon
-              name="diCloudflarePlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="Cloudflare"
-            ></ng-icon>
-            <ng-icon
-              name="diLinuxPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="Linux"
-            ></ng-icon>
-          </div>
-          <div class="skill-icon-row">
-            <ng-icon
-              name="diCsharpPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="C# .net"
-            ></ng-icon>
-            <ng-icon
-              name="diAzuresqldatabasePlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="SQL databases"
-            ></ng-icon>
-            <ng-icon
-              name="diJsonPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="JSON"
-            ></ng-icon>
-            <ng-icon
-              name="diVscodePlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="VS Code IDE"
-            ></ng-icon>
-          </div>
-          <div class="skill-icon-row">
-            <ng-icon
-              name="diTypescriptPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="TypeScript"
-            ></ng-icon>
-            <ng-icon
-              name="diAngularPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="Angular"
-            ></ng-icon>
-            <ng-icon
-              name="diNodejsPlainWordmark"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="Node.js"
-            ></ng-icon>
-            <ng-icon
-              name="diNpmPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="NPM"
-            ></ng-icon>
-          </div>
-          <div class="skill-icon-row">
-            <ng-icon
-              name="diGitPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="Git - version control"
-            ></ng-icon>
-            <ng-icon
-              name="diGithubcodespacesPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="Github"
-            ></ng-icon>
-            <ng-icon
-              name="diStackoverflowPlain"
-              size="256px"
-              style="width: 64px; height: auto"
-              matTooltip="Stackoverflow"
-            ></ng-icon>
-          </div>
-        </div>
-      </div>
       <div class="inner-section about-text-section">
+        <!-- <div class="profile-picture">
+          <img
+            [src]="'assets/images/devdanielsProfilePicture.jpg'"
+            alt="Daniël Geerts (DevDaniels) profile picture"
+          />
+        </div> -->
         <h1>Hello, my name is Daniël Geerts</h1>
         <span class="subtitle">- Software/DevOps engineer -</span>
         <p>
@@ -111,18 +21,28 @@
           to time. You can find some of my art projects here as well.
         </p>
       </div>
-      <div class="inner-section">
-        <img
-          [src]="'assets/images/devdanielsProfilePicture.jpg'"
-          alt="Daniël Geerts (DevDaniels) profile picture"
-        />
+      <div class="inner-section about-icons-section">
+        <div class="skill-icons">
+          @for (columnNumber of [1, 2, 3, 4]; track columnNumber) {
+            <div class="skill-icon-column">
+              @for (icon of listOfBrandIcons; track icon) {
+                @if (icon.col === columnNumber) {
+                  <ng-icon
+                    [name]="icon.icon"
+                    size="256px"
+                    [matTooltip]="icon.tooltip"
+                  ></ng-icon>
+                }
+              }
+            </div>
+          }
+        </div>
       </div>
     </div>
   </div>
 </app-container-component>
 
 <app-container-component [fullWidth]="true">
-  <!-- TODO rewrite to Tailwind -->
   <div class="section">
     <h1>Experience</h1>
     <div class="experience-section">
@@ -256,7 +176,6 @@
           [maxItemsToShow]="3"
         ></app-articles-list-page>
       </div>
-      <br />
       <div>
         <a [routerLink]="['/articles']" class="view-all-articles-link"
           >View All Articles</a

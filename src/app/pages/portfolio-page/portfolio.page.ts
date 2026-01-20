@@ -16,7 +16,6 @@ import {
   diAzuresqldatabasePlain,
   diGithubcodespacesPlain,
   diTypescriptPlain,
-  diAzurePlain,
   diCloudflarePlain,
   diVscodePlain,
   diNpmPlain,
@@ -55,7 +54,6 @@ import { ArticlesListPage } from '../article-list-page/articles-list.page';
       diAzuredevopsPlain,
       diAzuresqldatabasePlain,
       diGithubcodespacesPlain,
-      diAzurePlain,
       diCloudflarePlain,
       diVscodePlain,
       diNpmPlain,
@@ -75,9 +73,40 @@ export class PortfolioPage {
   protected readonly faCloud = faCloud;
   protected readonly faCodeBranch = faCodeBranch;
 
+  protected readonly listOfBrandIcons: BrandIcon[] = [
+    // Column 1
+    { col: 1, icon: 'diAzuredevopsPlain', tooltip: 'Azure DevOps' },
+    { col: 1, icon: 'diCloudflarePlain', tooltip: 'Cloudflare' },
+    { col: 1, icon: 'diLinuxPlain', tooltip: 'Linux' },
+    // Column 2
+    { col: 2, icon: 'diCsharpPlain', tooltip: 'C# .net' },
+    {
+      col: 2,
+      icon: 'diAzuresqldatabasePlain',
+      tooltip: 'SQL Databases',
+    },
+    { col: 2, icon: 'diJsonPlain', tooltip: 'JSON / XML' },
+    { col: 2, icon: 'diVscodePlain', tooltip: 'Visual Studio Code' },
+    // Column 3
+    { col: 3, icon: 'diTypescriptPlain', tooltip: 'TypeScript' },
+    { col: 3, icon: 'diAngularPlain', tooltip: 'Angular' },
+    { col: 3, icon: 'diNodejsPlainWordmark', tooltip: 'Node.js' },
+    { col: 3, icon: 'diNpmPlain', tooltip: 'npm' },
+    // Column 4
+    { col: 4, icon: 'diGitPlain', tooltip: 'Git' },
+    { col: 4, icon: 'diGithubcodespacesPlain', tooltip: 'GitHub' },
+    { col: 4, icon: 'diStackoverflowPlain', tooltip: 'Stack Overflow' },
+  ];
+
   goToProject(projectUri: string) {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([projectUri]);
     });
   }
+}
+
+interface BrandIcon {
+  col: number;
+  icon: string;
+  tooltip: string;
 }

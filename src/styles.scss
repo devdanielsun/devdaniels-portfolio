@@ -4,6 +4,12 @@
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use "@angular/material" as mat;
+@use "variables" as vars;
+
+// This makes sure that the padding and border are included in the total width and height of the elements.
+* {
+  box-sizing: border-box;
+}
 
 html {
   // Default to dark theme
