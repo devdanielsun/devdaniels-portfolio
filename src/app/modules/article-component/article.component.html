@@ -24,7 +24,9 @@
         <span class="active">{{ a.title || "" }}</span>
       </span>
     </p>
-
+    @if (!a.published) {
+      <h1 style="color: red">NOT PUBLISHED YET</h1>
+    }
     <p class="article-slug">Slug: {{ a.slug || "" }}</p>
     <p class="article-short">
       shortDescription: {{ a.shortDescription || "" }}

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { Article } from '../../models/article.model';
+import { Article, Author } from '../../models/article.model';
 
 export const CODEERTS_ARTICLE: Article = {
   published: true,
+  slug: 'codeerts',
+  author: Author.DanielGeerts,
   title: 'Codeerts',
   shortDescription:
     'Tijdens mijn studententijd ben ik als freelance developer actief geweest onder de naam Codeerts, van 2019 tot 2021. Mijn verantwoordelijkheden omvatten het ontwikkelen en onderhouden van websites en webshops voor verschillende klanten.',
@@ -10,9 +12,15 @@ export const CODEERTS_ARTICLE: Article = {
   category: ['Freelance', 'Web Development'],
   featuredImage: {
     altText: 'Codeerts Logo',
-    srcPath: 'assets/images/portfolio/codeerts/codeerts-logo.png',
+    srcPath: 'assets/images/project/codeerts/codeerts-logo.png',
   },
-  slug: 'codeerts',
+  tags: [
+    'Wordpress',
+    'Wordpress Custom Plugins',
+    'PHP',
+    'Javascript',
+    'JQuery',
+  ],
 };
 
 @Component({

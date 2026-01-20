@@ -1,5 +1,21 @@
 import { CODEERTS_ARTICLE, CodeertsArticle } from './codeerts/codeerts.article';
 import { POLLOR_ARTICLE, PollorArticle } from './pollor/pollor.article';
+import {
+  MODERN_DINOSAURS_ARTICLE,
+  ModernDinosaursArticle,
+} from './modern-dinosaurs/modern-dinosaurs.article';
+import {
+  DEVDANIELS_WEBSITE_ARTICLE,
+  DevDanielsWebsiteArticle,
+} from './devdaniels-website/devdaniels-website.article';
+import {
+  DEVEGANEETCLUB_ARTICLE,
+  DeVeganEetClubArticle,
+} from './deveganeetclub/deveganeetclub-website.article';
+import {
+  IBM_CICD_CASESTUDY_ARTICLE,
+  IbmCicdCasestudyArticle,
+} from './ibm-cicd-casestudy/ibm-cicd-casestudy.article';
 
 // Registry entries: add new articles here
 const ARTICLE_REGISTRY = [
@@ -12,8 +28,25 @@ const ARTICLE_REGISTRY = [
     meta: POLLOR_ARTICLE,
     loadComponent: () => Promise.resolve(PollorArticle),
   },
+  {
+    meta: MODERN_DINOSAURS_ARTICLE,
+    loadComponent: () => Promise.resolve(ModernDinosaursArticle),
+  },
+  {
+    meta: DEVDANIELS_WEBSITE_ARTICLE,
+    loadComponent: () => Promise.resolve(DevDanielsWebsiteArticle),
+  },
+  {
+    meta: DEVEGANEETCLUB_ARTICLE,
+    loadComponent: () => Promise.resolve(DeVeganEetClubArticle),
+  },
+  {
+    meta: IBM_CICD_CASESTUDY_ARTICLE,
+    loadComponent: () => Promise.resolve(IbmCicdCasestudyArticle),
+  },
 ];
 
+// TODO: check if debug mode or not. If debug mode show all articles.
 export const ARTICLES = ARTICLE_REGISTRY.map((e) => e.meta).filter(
   (a) => a.published,
 );

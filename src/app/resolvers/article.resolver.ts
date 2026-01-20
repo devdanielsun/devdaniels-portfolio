@@ -10,7 +10,8 @@ export class ArticleResolver implements Resolve<Article | null> {
   resolve(route: ActivatedRouteSnapshot): Article | null {
     const slug = route.paramMap.get('slug') || '';
     const article = findArticleBySlug(slug);
-    if (!article) {
+    //TODO: only make available when published or when in app is in debug mode
+    if (!article || !article.published) {
       // navigate to wildcard 404 route
       this.router.navigate(['/404']);
       return null;
