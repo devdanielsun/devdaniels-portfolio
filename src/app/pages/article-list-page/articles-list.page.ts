@@ -3,17 +3,17 @@ import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ArticlesService } from '../../services/articles.service';
-import { ContainerComponent } from '../../modules/container-component/container.component';
+import { ContainerComponent } from '../../components/container-component/container.component';
 import { Article } from '../../models/article.model';
 
 @Component({
-  selector: 'app-articles-list',
+  selector: 'app-articles-list-page',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, ContainerComponent],
-  templateUrl: './articles-list.component.html',
-  styleUrls: ['./articles-list.component.scss'],
+  templateUrl: './articles-list.page.html',
+  styleUrls: ['./articles-list.page.scss'],
 })
-export class ArticlesListComponent implements OnInit, OnDestroy {
+export class ArticlesListPage implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private articlesService = inject(ArticlesService);
   private routeSub?: Subscription;

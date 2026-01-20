@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ContainerComponent } from '../../modules/container-component/container.component';
+import { ContainerComponent } from '../../components/container-component/container.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -30,17 +30,17 @@ import {
   faCloud,
   faCodeBranch,
 } from '@fortawesome/free-solid-svg-icons';
-import { ArticlesListComponent } from '../article-list-component/articles-list.component';
+import { ArticlesListPage } from '../article-list-page/articles-list.page';
 
 @Component({
-  selector: 'app-portfolio',
+  selector: 'app-portfolio-page',
   imports: [
     RouterLink,
     ContainerComponent,
     FontAwesomeModule,
     MatGridListModule,
     NgIconComponent,
-    ArticlesListComponent,
+    ArticlesListPage,
     MatTooltipModule,
   ],
   providers: [
@@ -62,10 +62,10 @@ import { ArticlesListComponent } from '../article-list-component/articles-list.c
       diJsonPlain,
     }),
   ],
-  templateUrl: './portfolio.html',
-  styleUrl: './portfolio.scss',
+  templateUrl: './portfolio.page.html',
+  styleUrl: './portfolio.page.scss',
 })
-export class Portfolio {
+export class PortfolioPage {
   private router = inject(Router);
 
   protected readonly faGraduationCap = faGraduationCap;
