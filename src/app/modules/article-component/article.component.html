@@ -14,10 +14,9 @@
           <a [routerLink]="['/articles', 'category', cat]">{{ cat || "" }}</a>
 
           @if (!last) {
-            /
+            {{ ", " }}
           }
         }
-        <!-- <a [routerLink]="['/articles','category', a.category]">{{ a.category || '' }}</a> -->
       </span>
       <span>
         &gt;
@@ -27,13 +26,22 @@
     @if (!a.published) {
       <h1 style="color: red">NOT PUBLISHED YET</h1>
     }
-    <p class="article-slug">Slug: {{ a.slug || "" }}</p>
-    <p class="article-short">
-      shortDescription: {{ a.shortDescription || "" }}
+
+    <p id="article-author">Written by {{ a.author || "" }}</p>
+    <h1 id="article-title">{{ a.title || "" }}</h1>
+    <p id="article-date">Date: {{ a.date || "" }}</p>
+    <p id="article-category">Category: {{ a.category || "" }}</p>
+    <!-- TODO: tags into MUI badges and make clickable (apply filter in '/article') -->
+    <p id="article-tags">
+      {{ "Tags: " }}
+      @for (tag of a.tags; track tag; let last = $last) {
+        {{ tag }}
+
+        @if (!last) {
+          {{ ", " }}
+        }
+      }
     </p>
-    <h1 class="article-title">Title: {{ a.title || "" }}</h1>
-    <p class="article-date">Date: {{ a.date || "" }}</p>
-    <p class="article-category">Category: {{ a.category || "" }}</p>
 
     <img
       [hidden]="!a.featuredImage"
@@ -43,10 +51,7 @@
     />
 
     <div class="article-content">
-      <!-- Article HTML or list comes from child outlet -->
-      <section class="article-content">
-        <router-outlet></router-outlet>
-      </section>
+      <router-outlet></router-outlet>
     </div>
   } @else {
     <p>Error loading article</p>
