@@ -67,3 +67,7 @@ The app is configured for deployment to Azure Static Web Apps. See [azure-static
 - `.husky/precommit` - Executes a precommit which formats the staged code and executes tests
 
 ---
+
+## How to add articles?
+
+Follow the instructies from [ARTICLES.md](/src/app/articles/ARTICLES.md)
