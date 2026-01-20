@@ -1,3 +1,4 @@
+import { isDevMode } from '@angular/core';
 import { CODEERTS_ARTICLE, CodeertsArticle } from './codeerts/codeerts.article';
 import { POLLOR_ARTICLE, PollorArticle } from './pollor/pollor.article';
 import {
@@ -47,9 +48,12 @@ const ARTICLE_REGISTRY = [
 ];
 
 // TODO: check if debug mode or not. If debug mode show all articles.
-export const ARTICLES = ARTICLE_REGISTRY.map((e) => e.meta).filter(
-  (a) => a.published,
-);
+export const ARTICLES = ARTICLE_REGISTRY.map((e) => e.meta).filter((a) => {
+  if (isDevMode()) {
+    return true;
+  }
+  return a.published;
+});
 
 export function findArticleBySlug(slug: string) {
   return ARTICLES.find((a) => a.slug === slug);

@@ -31,11 +31,16 @@
   <ul>
     <li>
       @for (a of items | slice: 0 : maxItemsToShow ?? items.length; track a) {
-        <a [routerLink]="['/articles', a.slug]" routerLinkActive="active">{{
-          a.title
-        }}</a>
-        - <small> {{ a.date }}</small>
-        <p>{{ a.shortDescription }}..</p>
+        <p>
+          <a [routerLink]="['/articles', a.slug]" routerLinkActive="active">{{
+            a.title
+          }}</a>
+          <small>
+            - {{ a.date }} ({{ a.published ? "Published" : "Draft" }})
+          </small>
+          <br />
+          {{ a.shortDescription }}..
+        </p>
       }
     </li>
   </ul>
