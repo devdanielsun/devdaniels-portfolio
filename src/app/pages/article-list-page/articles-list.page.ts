@@ -18,9 +18,7 @@ export class ArticlesListPage implements OnInit, OnDestroy {
   private articlesService = inject(ArticlesService);
   private routeSub?: Subscription;
 
-  @Input() hideContainerView = false;
-  @Input() hideTitle = false;
-  @Input() hideCategoryNav = false;
+  @Input() onlyShowArticles = false;
   @Input() maxItemsToShow?: number;
 
   currentCategory?: string;
