@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CodeertsArticle } from './codeerts.article';
+import { IbmCicdCasestudyArticle } from './ibm-cicd-casestudy.article';
 
-describe('CodeertsArticle', () => {
-  let component: CodeertsArticle;
-  let fixture: ComponentFixture<CodeertsArticle>;
+describe('IbmCicdCasestudyArticle', () => {
+  let component: IbmCicdCasestudyArticle;
+  let fixture: ComponentFixture<IbmCicdCasestudyArticle>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CodeertsArticle],
+      imports: [IbmCicdCasestudyArticle],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CodeertsArticle);
+    fixture = TestBed.createComponent(IbmCicdCasestudyArticle);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,201 @@
+<app-container-component [fullWidth]="true">
+  <div class="section">
+    <div class="about-section">
+      <div class="inner-section about-text-section">
+        <!-- <div class="profile-picture">
+          <img
+            [src]="'assets/images/devdanielsProfilePicture.jpg'"
+            alt="Daniël Geerts (DevDaniels) profile picture"
+          />
+        </div> -->
+        <h1>Hello, my name is Daniël Geerts</h1>
+        <span class="subtitle">- Software/DevOps engineer -</span>
+        <p>
+          I am a software/devops developer based in the Netherlands. I enjoy
+          building functional, well-designed web applications and robust
+          software systems. I work with a broad range of technologies, including
+          C# .net, Azure, Bicep, TypeScript, Node.js, Git, and more.
+        </p>
+        <p>
+          Next to being a bits and bites wizard, I enjoy (making) art from time
+          to time. You can find some of my art projects here as well.
+        </p>
+      </div>
+      <div class="inner-section about-icons-section">
+        <div class="skill-icons">
+          @for (columnNumber of [1, 2, 3, 4]; track columnNumber) {
+            <div class="skill-icon-column">
+              @for (icon of listOfBrandIcons; track icon) {
+                @if (icon.col === columnNumber) {
+                  <ng-icon
+                    [name]="icon.icon"
+                    size="256px"
+                    [matTooltip]="icon.tooltip"
+                  ></ng-icon>
+                }
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</app-container-component>
+
+<app-container-component [fullWidth]="true">
+  <div class="section">
+    <h1>Experience</h1>
+    <div class="experience-section">
+      <div class="inner-section">
+        <div>
+          <h2>
+            <fa-icon [icon]="faAward" size="1x"></fa-icon>
+            Certifications
+          </h2>
+          <h3>Microsoft Azure</h3>
+          <ul>
+            <li>Microsoft Certified: Azure Fundamentals (AZ-900)</li>
+            <li>Microsoft Certified: Azure AI Fundamentals (AI-900)</li>
+          </ul>
+          <h3>Amazon Web Services (AWS)</h3>
+          <ul>
+            <li>Certified Cloud Practitioner</li>
+            <li>Certified Developer Associate</li>
+          </ul>
+          <h3>Other certifications</h3>
+          <ul>
+            <li>Professional Scrum Master™ I (PSM I)</li>
+            <li>Docker Essentials: A Developer Introduction</li>
+            <li>First Aid / Emergency Response</li>
+          </ul>
+        </div>
+        <div>
+          <h2>
+            <fa-icon [icon]="faGraduationCap" size="1x"></fa-icon>
+            Bachelor of Applied Sciences
+          </h2>
+          <p>
+            Hanzehogeschool Groningen
+            <br />
+            Graduated: 2021
+          </p>
+          <ul>
+            <li>Major: ICT - Software Engineer (at Hanzehogeschool)</li>
+            <li>Minor: Smart Energy (at NewEnergyAcademy)</li>
+            <li>
+              Certificate: Energy Academy Certificate (at NewEnergyAcademy)
+            </li>
+            <li>Graduation project at Rijkswaterstaat</li>
+          </ul>
+        </div>
+        <div>
+          <h2>
+            <fa-icon [icon]="faGraduationCap" size="1x"></fa-icon>
+            Game Development
+          </h2>
+          <p>
+            Alfa College Groningen
+            <br />
+            Graduated: 2017
+          </p>
+          <ul>
+            <li>Major: Game Developer</li>
+          </ul>
+        </div>
+      </div>
+      <div class="inner-section">
+        <div>
+          <h2>
+            <fa-icon [icon]="faCode" size="1x"></fa-icon>
+            DevOps & Software Engineering
+          </h2>
+          <ul>
+            <li>Software Architecture</li>
+            <li>Software Development</li>
+            <li>Infrastructure - Deployment / Orchestration</li>
+            <li>Cloud (Azure, AWS, IBM, Google)</li>
+            <li>DevOps Practices</li>
+            <li>Continuous Integration/Continuous Deployment (CI/CD)</li>
+            <li>CI/CD Pipelines (Azure DevOps, GitHub Actions, Jenkins)</li>
+            <li>Infrastructure as Code (Bicep, Terraform, CloudFormation)</li>
+            <li>Version Control (Git, GitHub, Azure Repos)</li>
+            <li>Monitoring & Logging (Azure Monitor, Grafana, Alerts)</li>
+            <li>Containerization (Docker, Kubernetes)</li>
+          </ul>
+        </div>
+        <div>
+          <h2>
+            <fa-icon [icon]="faCode" size="1x"></fa-icon>
+            Backend
+          </h2>
+          <ul>
+            <li>C#/.NET, Node.js, Python</li>
+            <li>Azure (App Services, Functions, DevOps, etc.)</li>
+            <li>AWS (Lambda, S3, CloudFormation, etc.)</li>
+            <li>RESTful API Development</li>
+            <li>Cloudflare, DNS Management, SSL/TLS</li>
+            <li>Docker, Kubernetes, Terraform, Bicep</li>
+            <li>SQL, NoSQL & PL/SQL databases</li>
+          </ul>
+        </div>
+        <div>
+          <h2>
+            <fa-icon [icon]="faCode" size="1x"></fa-icon>
+            Frontend
+          </h2>
+          <ul>
+            <li>Angular, React, HTML, PHP, CSS, SCSS</li>
+            <li>TypeScript, JavaScript, jQuery</li>
+            <li>Responsive Web Design</li>
+            <li>UX/UI Principles</li>
+            <li>Cross-Browser Compatibility</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div>
+      <a
+        class="old-skool-button old-skool-button--primary"
+        href="https://www.linkedin.com/in/danielgeerts/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View More On My LinkedIn
+      </a>
+    </div>
+  </div>
+</app-container-component>
+
+<app-container-component [fullWidth]="true">
+  <div class="section">
+    <h1>Projects</h1>
+    <div class="projects-section">
+      <div class="inner-section">
+        <app-articles-list-page
+          [onlyShowArticles]="true"
+          [maxItemsToShow]="3"
+        ></app-articles-list-page>
+      </div>
+    </div>
+    <div>
+      <a
+        class="old-skool-button old-skool-button--primary"
+        [routerLink]="['/articles']"
+      >
+        View All Articles
+      </a>
+    </div>
+  </div>
+</app-container-component>
+
+<app-container-component [fullWidth]="true">
+  <div class="section">
+    <div class="contact-section">
+      <h1>Contact</h1>
+      <p>
+        If you would like to get in touch, please feel free to reach out to me
+        via...
+      </p>
+    </div>
+  </div>
+</app-container-component>

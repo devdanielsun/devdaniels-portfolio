@@ -1,22 +1,22 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { Portfolio } from './pages/portfolio/portfolio';
-import { NotFound404 } from './pages/not-found-404/not-found-404';
-import { ArticleComponent } from './modules/article-component/article.component';
+import { HomePage } from './pages/home-page/home.page';
+import { PortfolioPage } from './pages/portfolio-page/portfolio.page';
+import { NotFound404Page } from './pages/not-found-404-page/not-found-404.page';
+import { ArticlesListPage } from './pages/article-list-page/articles-list.page';
+import { ArticleComponent } from './components/article-component/article.component';
 import { ArticleResolver } from './resolvers/article.resolver';
-import { ArticleLoaderComponent } from './modules/article-component/article-loader.component';
-import { ArticlesListComponent } from './modules/article-list-component/articles-list.component';
+import { ArticleLoaderComponent } from './components/article-component/article-loader.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Home,
+    component: HomePage,
     title: 'Home - DevDaniels',
     data: { navTitle: 'Home' },
   },
   {
     path: 'portfolio',
-    component: Portfolio,
+    component: PortfolioPage,
     title: 'Portfolio - DevDaniels',
     data: { navTitle: 'Portfolio' },
   },
@@ -27,11 +27,11 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: ArticlesListComponent,
+        component: ArticlesListPage,
       },
       {
         path: 'category/:category',
-        component: ArticlesListComponent,
+        component: ArticlesListPage,
         title: 'Articles - DevDaniels',
       },
       {
@@ -50,7 +50,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    component: NotFound404,
+    component: NotFound404Page,
     title: '404 Not Found - DevDaniels',
   },
 ];

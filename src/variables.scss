@@ -3,11 +3,6 @@ $break-mobile: 769px;
 
 :root {
   --content-max-width: 1200px;
-  //TODO: @if $dark-mode {
-  --terminal-color: #33ff33;
-  // } @else {
-  //   --terminal-color: #007700;
-  // }
 }
 
 /* Override the custom property at different breakpoints */
@@ -29,8 +24,9 @@ $break-mobile: 769px;
     @media (min-width: $break-mobile) and (max-width: $break-tablet) {
       @content;
     }
-  } @else if $size == mobile {
-    @media (min-width: 0) and (max-width: #{$break-mobile - 1}px) {
+  }
+  @if $size == mobile {
+    @media (min-width: 0) and (max-width: $break-mobile) {
       @content;
     }
   }

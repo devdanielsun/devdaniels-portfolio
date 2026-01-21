@@ -1,26 +1,33 @@
 import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ArticlesService } from '../../services/articles.service';
-import { ContainerComponent } from '../container-component/container.component';
+import { ContainerComponent } from '../../components/container-component/container.component';
 import { Article } from '../../models/article.model';
+import { isDevMode } from '@angular/core';
 
 @Component({
-  selector: 'app-articles-list',
+  selector: 'app-articles-list-page',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, ContainerComponent],
-  templateUrl: './articles-list.component.html',
-  styleUrls: ['./articles-list.component.scss'],
+  templateUrl: './articles-list.page.html',
+  styleUrls: ['./articles-list.page.scss'],
 })
-export class ArticlesListComponent implements OnInit, OnDestroy {
+export class ArticlesListPage implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private articlesService = inject(ArticlesService);
   private routeSub?: Subscription;
 
-  @Input() hideContainerView = false;
-  @Input() hideTitle = false;
-  @Input() hideCategoryNav = false;
+  protected isDevMode = isDevMode();
+
+  @Input() onlyShowArticles = false;
   @Input() maxItemsToShow?: number;
 
   currentCategory?: string;
@@ -56,5 +63,9 @@ export class ArticlesListComponent implements OnInit, OnDestroy {
     this.articlesService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
+  }
+
+  navigateToArticle(articleSlug: string): void {
+    this.router.navigate(['/articles', articleSlug]);
   }
 }

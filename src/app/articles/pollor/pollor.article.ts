@@ -1,25 +1,20 @@
 import { Component } from '@angular/core';
-import { Article } from '../../models/article.model';
+import { Article, Author } from '../../models/article.model';
 
 export const POLLOR_ARTICLE: Article = {
   published: false,
+  slug: 'pollor',
+  author: Author.DanielGeerts,
   title: 'Pollor',
   shortDescription:
     'In dit artikel vertel ik over het project genaamd Pollor. Dit is een platform waar gebruikers enquêtes kunnen maken en delen, waarbij de nadruk ligt op anoniem stemmen. Ik bespreek de gebruikte technologieën, uitdagingen tijdens de ontwikkeling en de behaalde resultaten.',
-  date: '2023 t/m heden',
-  category: [
-    'Project',
-    'Hobby',
-    'Web Development',
-    'Angular',
-    'C# .NET',
-    'Azure',
-  ],
+  startDate: '2023',
+  categories: ['Project', 'Web Development'],
   featuredImage: {
     altText: 'Pollor Logo',
-    srcPath: 'assets/images/portfolio/pollor/pollor-logo.png',
+    srcPath: 'assets/images/project/pollor/pollor-logo.png',
   },
-  slug: 'pollor',
+  tags: ['C# .net', 'Typescript', 'SQL', 'CI/CD', 'Azure'],
 };
 
 @Component({

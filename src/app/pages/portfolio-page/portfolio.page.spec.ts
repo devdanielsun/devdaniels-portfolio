@@ -2,15 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
-import { Portfolio } from './portfolio';
+import { PortfolioPage } from './portfolio.page';
 
-describe('Portfolio', () => {
-  let component: Portfolio;
-  let fixture: ComponentFixture<Portfolio>;
+describe('PortfolioPage', () => {
+  let component: PortfolioPage;
+  let fixture: ComponentFixture<PortfolioPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Portfolio],
+      imports: [PortfolioPage],
       providers: [
         {
           provide: ActivatedRoute,
@@ -22,7 +22,7 @@ describe('Portfolio', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Portfolio);
+    fixture = TestBed.createComponent(PortfolioPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

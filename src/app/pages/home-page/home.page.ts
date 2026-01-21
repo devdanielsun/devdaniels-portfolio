@@ -7,10 +7,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faHatWizard, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
-import { ContainerComponent } from '../../modules/container-component/container.component';
+import { ContainerComponent } from '../../components/container-component/container.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-home-page',
   imports: [
     RouterLink,
     MatToolbarModule,
@@ -20,10 +20,10 @@ import { ContainerComponent } from '../../modules/container-component/container.
     FontAwesomeModule,
     ContainerComponent,
   ],
-  templateUrl: './home.html',
-  styleUrl: './home.scss',
+  templateUrl: './home.page.html',
+  styleUrl: './home.page.scss',
 })
-export class Home {
+export class HomePage {
   protected readonly portfolioRoute = '/portfolio';
   protected readonly faGithub = faGithubSquare;
   protected readonly faLinkedin = faLinkedin;
