@@ -2,15 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
-import { NotFound404 } from './not-found-404.page';
+import { NotFound404Page } from './not-found-404.page';
 
-describe('NotFound404', () => {
-  let component: NotFound404;
-  let fixture: ComponentFixture<NotFound404>;
+describe('NotFound404Page', () => {
+  let component: NotFound404Page;
+  let fixture: ComponentFixture<NotFound404Page>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NotFound404],
+      imports: [NotFound404Page],
       providers: [
         {
           provide: ActivatedRoute,
@@ -21,7 +21,7 @@ describe('NotFound404', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NotFound404);
+    fixture = TestBed.createComponent(NotFound404Page);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
