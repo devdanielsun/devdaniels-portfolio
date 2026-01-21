@@ -64,13 +64,13 @@ export function findLoaderBySlug(slug: string) {
 }
 
 export function findArticlesByCategory(category: string) {
-  return ARTICLES.filter((a) => a.category?.includes(category));
+  return ARTICLES.filter((a) => a.categories?.includes(category));
 }
 
 export function listCategories() {
   const set = new Set<string>();
   for (const a of ARTICLES) {
-    (a.category || []).forEach((c) => set.add(c));
+    (a.categories || []).forEach((c) => set.add(c));
   }
   return Array.from(set);
 }

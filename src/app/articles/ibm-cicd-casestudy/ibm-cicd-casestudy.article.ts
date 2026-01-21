@@ -8,14 +8,15 @@ export const IBM_CICD_CASESTUDY_ARTICLE: Article = {
   title: 'IBM CICD Casestudy',
   shortDescription:
     'IBM Associate. Twee weekse casestudy naar CI/CD en IBM Cloud services.',
-  date: '2021',
-  category: ['Project', 'Casestudy'],
+  startDate: '2021',
+  endDate: '2021',
+  categories: ['Project', 'Casestudy'],
   featuredImage: {
     altText: 'IBM Logo',
     srcPath: 'assets/images/project/IBM/IBM-logo.png',
   },
   githubRepo: {
-    lable: 'Github - IBM CICD Casestudy',
+    label: 'Github - IBM CICD Casestudy',
     link: 'https://github.com/devdanielsun/ibm-cicd-casestudy',
   },
   tags: ['Terraform', 'IBM Cloud', 'CI/CD', 'Azure', 'Github Workflow'],

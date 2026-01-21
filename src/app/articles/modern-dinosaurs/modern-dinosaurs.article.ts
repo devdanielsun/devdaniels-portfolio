@@ -8,8 +8,9 @@ export const MODERN_DINOSAURS_ARTICLE: Article = {
   title: 'Modern Dinosaurs',
   shortDescription:
     'Hoe overleven dinosaurussen in de moderne tijd? Dit is een art project, waarbij vervuiling en afval naar voren komt, waarbij dinosaurussen struggelen met het afval dat de mens heeft geproduceerd en heeft gedumpt.',
-  date: '2026',
-  category: ['Art'],
+  startDate: '2026',
+  endDate: '2026',
+  categories: ['Art'],
   featuredImage: {
     altText: 'Dinosaur trapped in garbage',
     srcPath: 'assets/images/art/modern-dinosaur/t-rex-tin-can.png',

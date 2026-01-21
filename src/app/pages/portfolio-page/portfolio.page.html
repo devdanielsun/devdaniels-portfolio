@@ -153,34 +153,37 @@
         </div>
       </div>
     </div>
-    <br />
     <div>
       <a
+        class="old-skool-button old-skool-button--primary"
+        href="https://www.linkedin.com/in/danielgeerts/"
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.linkedin.com/in/danielgeerts"
-        class="view-all-articles-link"
-        >View More On My LinkedIn</a
       >
+        View More On My LinkedIn
+      </a>
     </div>
   </div>
 </app-container-component>
 
 <app-container-component [fullWidth]="true">
   <div class="section">
+    <h1>Projects</h1>
     <div class="projects-section">
-      <h1>Projects</h1>
-      <div>
+      <div class="inner-section">
         <app-articles-list-page
           [onlyShowArticles]="true"
           [maxItemsToShow]="3"
         ></app-articles-list-page>
       </div>
-      <div>
-        <a [routerLink]="['/articles']" class="view-all-articles-link"
-          >View All Articles</a
-        >
-      </div>
+    </div>
+    <div>
+      <a
+        class="old-skool-button old-skool-button--primary"
+        [routerLink]="['/articles']"
+      >
+        View All Articles
+      </a>
     </div>
   </div>
 </app-container-component>

@@ -1,10 +1,16 @@
 import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ArticlesService } from '../../services/articles.service';
 import { ContainerComponent } from '../../components/container-component/container.component';
 import { Article } from '../../models/article.model';
+import { isDevMode } from '@angular/core';
 
 @Component({
   selector: 'app-articles-list-page',
@@ -15,8 +21,11 @@ import { Article } from '../../models/article.model';
 })
 export class ArticlesListPage implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private articlesService = inject(ArticlesService);
   private routeSub?: Subscription;
+
+  protected isDevMode = isDevMode();
 
   @Input() onlyShowArticles = false;
   @Input() maxItemsToShow?: number;
@@ -54,5 +63,9 @@ export class ArticlesListPage implements OnInit, OnDestroy {
     this.articlesService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
+  }
+
+  navigateToArticle(articleSlug: string): void {
+    this.router.navigate(['/articles', articleSlug]);
   }
 }

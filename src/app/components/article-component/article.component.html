@@ -2,16 +2,16 @@
   @if (article(); as a) {
     <p class="breadcrumb">
       <span>
-        <a routerLink="/">Home</a>
+        <a [routerLink]="['/']">Home</a>
       </span>
       <span>
         &gt;
-        <a routerLink="/articles">Articles</a>
+        <a [routerLink]="['/articles']">Articles</a>
       </span>
       <span>
         &gt;
-        @for (cat of a.category; track cat; let last = $last) {
-          <a [routerLink]="['/articles', 'category', cat]">{{ cat || "" }}</a>
+        @for (cat of a.categories; track cat; let last = $last) {
+          <a [routerLink]="['/articles/category/' + cat]">{{ cat || "" }}</a>
 
           @if (!last) {
             {{ ", " }}
@@ -27,21 +27,16 @@
       <h1 style="color: red">NOT PUBLISHED YET</h1>
     }
 
-    <p id="article-author">Written by {{ a.author || "" }}</p>
-    <h1 id="article-title">{{ a.title || "" }}</h1>
-    <p id="article-date">Date: {{ a.date || "" }}</p>
-    <p id="article-category">Category: {{ a.category || "" }}</p>
-    <!-- TODO: tags into MUI badges and make clickable (apply filter in '/article') -->
-    <p id="article-tags">
-      {{ "Tags: " }}
-      @for (tag of a.tags; track tag; let last = $last) {
-        {{ tag }}
-
-        @if (!last) {
-          {{ ", " }}
-        }
-      }
+    <p id="article-author">Written by {{ a.author }}</p>
+    <h1 id="article-title">{{ a.title }}</h1>
+    <p id="article-date">
+      Date: {{ a.startDate }} t/m {{ a.endDate || "heden" }}
     </p>
+    <p id="article-category">Category: {{ a.categories.join(", ") }}</p>
+    <!-- TODO: tags into MUI badges and make clickable (apply filter in '/article') -->
+    @if (a.tags) {
+      <p id="article-tags">Tags: {{ a.tags.join(", ") }}</p>
+    }
 
     <img
       [hidden]="!a.featuredImage"

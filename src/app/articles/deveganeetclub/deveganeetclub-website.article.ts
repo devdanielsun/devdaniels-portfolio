@@ -8,15 +8,15 @@ export const DEVEGANEETCLUB_ARTICLE: Article = {
   title: 'Deveganeetclub',
   shortDescription:
     'Een vegan recepten website. Lees meer over hoe dit is opgezet. Frontend: Hugo. Backend: Decap CMS. Check de Github repo en het architectuur plaatje.',
-  date: '2026',
-  category: ['Project', 'Web Development'],
+  startDate: '2026',
+  categories: ['Project', 'Web Development'],
   featuredImage: {
     altText: 'Deveganeetclub Logo',
     srcPath:
       'assets/images/project/deveganeetclub-website/deveganeetclub-website-logo.png',
   },
   githubRepo: {
-    lable: 'Github - deveganeetclub',
+    label: 'Github - deveganeetclub',
     link: 'https://github.com/devdanielsun/deveganeetclub',
   },
   tags: [

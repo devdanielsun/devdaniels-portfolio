@@ -6,7 +6,7 @@
   ></ngx-particles>
   <div class="main-menu">
     <div class="logo-container">
-      <a routerLink="/">
+      <a [routerLink]="['/']">
         <div class="logo-svg" [innerHTML]="logoSvg"></div>
         @if (router.url !== "/") {
           <div class="site-info">
@@ -20,7 +20,7 @@
       <!-- @if (router.url !== '/') { -->
       @for (route of navRoutes; track route) {
         <a
-          [routerLink]="route.path"
+          [routerLink]="['/' + route.path]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >

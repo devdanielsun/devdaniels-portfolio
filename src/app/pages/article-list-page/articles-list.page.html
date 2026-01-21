@@ -6,7 +6,7 @@
   @if (!onlyShowArticles) {
     <h1>Articles</h1>
 
-    <nav>
+    <nav class="articles-category-nav">
       <a
         [routerLink]="['/articles']"
         routerLinkActive="active"
@@ -18,7 +18,7 @@
         @for (c of categories; track c) {
           |
           <a
-            [routerLink]="['/articles', 'category', c]"
+            [routerLink]="['/articles/category/' + c]"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >{{ c }}</a
@@ -28,20 +28,23 @@
     </nav>
   }
 
-  <ul>
-    <li>
-      @for (a of items | slice: 0 : maxItemsToShow ?? items.length; track a) {
-        <p>
-          <a [routerLink]="['/articles', a.slug]" routerLinkActive="active">{{
-            a.title
-          }}</a>
-          <small>
-            - {{ a.date }} ({{ a.published ? "Published" : "Draft" }})
+  <div class="articles-list-grid">
+    @for (a of items | slice: 0 : maxItemsToShow ?? items.length; track a) {
+      <a class="article-card" [routerLink]="['/articles/' + a.slug]">
+        <div class="article-information">
+          <small>{{ a.startDate }} t/m {{ a.endDate || "heden" }}</small>
+          <small class="article-categories">
+            @for (c of a.categories; track c; let last = $last) {
+              <span class="article-category-badge">{{ c }}</span>
+            }
           </small>
-          <br />
-          {{ a.shortDescription }}..
-        </p>
-      }
-    </li>
-  </ul>
+        </div>
+        <h2>{{ a.title }}</h2>
+        <p>{{ a.shortDescription }}..</p>
+        <small class="article-published-status">
+          {{ isDevMode ? (a.published ? "Published" : "Draft") : "" }}
+        </small>
+      </a>
+    }
+  </div>
 </app-container-component>

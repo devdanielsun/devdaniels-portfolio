@@ -7,15 +7,15 @@ export const DEVDANIELS_WEBSITE_ARTICLE: Article = {
   author: Author.DanielGeerts,
   title: 'DevDaniels Website',
   shortDescription: 'Project DevDaniels Website.',
-  date: '2025-heden',
-  category: ['Project', 'Web Development'],
+  startDate: '2025',
+  categories: ['Project', 'Web Development'],
   featuredImage: {
     altText: 'DevDaniels Website Architecture',
     srcPath:
       'assets/images/project/devdaniels-website/devdaniels-website-architecture.jpg',
   },
   githubRepo: {
-    lable: 'Github - DevDaniels Website',
+    label: 'Github - DevDaniels Website',
     link: 'https://github.com/devdanielsun/devdaniels-website',
   },
   tags: [

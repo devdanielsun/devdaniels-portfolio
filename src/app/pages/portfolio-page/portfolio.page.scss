@@ -3,35 +3,20 @@
 .section {
   display: grid;
   max-width: var(--content-max-width);
+  margin: 0 auto;
 
   .about-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2em;
     align-items: center;
     justify-items: center;
-    padding: 5em 0em;
+    padding: 3em;
 
     .inner-section {
       padding: 1em;
-      text-align: left;
-
-      // .profile-picture {
-      //   display: flex;
-      //   align-items: center;
-      //   justify-content: center;
-
-      //   img {
-      //     width: 150px;
-      //     height: auto;
-      //     border-radius: 25%;
-      //   }
-      // }
     }
 
     .about-text-section {
-      text-align: left;
-
       .subtitle {
         font-size: 1.2em;
         margin-bottom: 1em;
@@ -60,7 +45,7 @@
           height: auto;
 
           &:hover {
-            color: var(--terminal-color);
+            color: var(--mat-sys-primary);
           }
         }
       }
@@ -72,10 +57,11 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     align-items: start;
     justify-items: center;
-    gap: 2em;
-    padding: 5em 0em;
+    text-align: left;
 
     .inner-section {
+      padding: 1em;
+
       h1,
       h2,
       h3,
@@ -108,17 +94,17 @@
 @include vars.respond-to(tablet) {
   .section {
     .inner-section {
-      padding: 0em;
+      padding: 0;
     }
 
-    .about-section {
-      grid-template-columns: auto;
-      padding: 0em 5em;
+    .about-text-section {
+      text-align: center;
     }
 
-    .experience-section {
-      grid-template-columns: auto;
-      padding: 0em;
+    .about-section,
+    .experience-section,
+    .projects-section {
+      padding: 1em;
     }
   }
 }
@@ -126,17 +112,18 @@
 @include vars.respond-to(mobile) {
   .section {
     .inner-section {
-      padding: 1em;
+      padding: 0;
     }
 
-    .about-section {
-      grid-template-columns: auto;
-      padding: 0em;
+    .about-text-section {
+      text-align: center;
     }
 
-    .experience-section {
+    .about-section,
+    .experience-section,
+    .projects-section {
+      padding: 0;
       grid-template-columns: auto;
-      padding: 0em;
     }
   }
 }

@@ -7,9 +7,10 @@ export interface Article {
   slug: string;
   author: Author;
   title: string;
-  date: string;
+  startDate: string;
+  endDate?: string;
   shortDescription: string;
-  category: string[];
+  categories: string[];
   featuredImage?: FeaturedImage;
   githubRepo?: GithubRepo;
   tags?: string[];
@@ -22,7 +23,7 @@ interface FeaturedImage {
 
 interface GithubRepo {
   link: string;
-  lable: string;
+  label: string;
 }
 
 export enum Author {

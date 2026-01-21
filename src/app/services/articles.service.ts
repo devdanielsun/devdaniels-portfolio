@@ -15,7 +15,7 @@ export class ArticlesService {
     const source = category ? findArticlesByCategory(category) : ARTICLES;
     return of(
       [...source].sort(
-        (a, b) => this.extractYear(b.date) - this.extractYear(a.date),
+        (a, b) => this.extractYear(b.startDate) - this.extractYear(a.startDate),
       ),
     );
   }

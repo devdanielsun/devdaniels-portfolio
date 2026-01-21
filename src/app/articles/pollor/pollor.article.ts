@@ -8,8 +8,8 @@ export const POLLOR_ARTICLE: Article = {
   title: 'Pollor',
   shortDescription:
     'In dit artikel vertel ik over het project genaamd Pollor. Dit is een platform waar gebruikers enquêtes kunnen maken en delen, waarbij de nadruk ligt op anoniem stemmen. Ik bespreek de gebruikte technologieën, uitdagingen tijdens de ontwikkeling en de behaalde resultaten.',
-  date: '2023 t/m heden',
-  category: ['Project', 'Web Development'],
+  startDate: '2023',
+  categories: ['Project', 'Web Development'],
   featuredImage: {
     altText: 'Pollor Logo',
     srcPath: 'assets/images/project/pollor/pollor-logo.png',

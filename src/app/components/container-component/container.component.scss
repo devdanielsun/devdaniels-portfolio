@@ -9,23 +9,9 @@
   .content {
     text-align: center;
     margin: 0 auto;
-    transition: opacity 0.3s ease;
-    padding: 4em;
-    // min-width: 50%;
     background-color: var(--mat-sys-primary-container);
     margin-bottom: 5em;
-
-    // @include vars.respond-to(tablet) {
-    //   margin: 1em;
-    //   padding: 2em;
-    //   min-width: 80%;
-    // }
-
-    // @include vars.respond-to(mobile) {
-    //   margin: 1em;
-    //   padding: 2em;
-    //   min-width: 90%;
-    // }
+    border-radius: 4px;
   }
 }
 
@@ -39,15 +25,6 @@
   .full-width-content {
     padding: 1em;
     width: 100%;
+    border-radius: 4px;
   }
-
-  // @include vars.respond-to(tablet) {
-  //   width: auto;
-  //   margin: 1rem;
-  // }
-
-  // @include vars.respond-to(mobile) {
-  //   width: auto;
-  //   margin: 1rem;
-  // }
 }

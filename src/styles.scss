@@ -22,6 +22,17 @@ html {
     )
   );
 
+  @include mat.theme-overrides(
+    (
+      // TODO: create own custom palette
+      // https://github.com/angular/components/blob/main/src/material/schematics/ng-generate/theme-color/README.md
+      //primary: #ce925d,
+      //primary: #8e4d1d,
+      //primary-container: #5c3026,
+       //on-primary: #fff
+    )
+  );
+
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
@@ -83,4 +94,54 @@ h4,
 h5,
 h6 {
   line-height: normal;
+}
+
+/** Old skool button styles **/
+.old-skool-button {
+  @mixin old-skool-button-variant($bg-var, $text-var) {
+    --button-bg-color: var(#{$bg-var});
+    --button-text-color: var(#{$text-var});
+  }
+
+  display: inline-block;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  font-weight: bold;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  box-shadow: 4px 4px 0px black;
+  border: solid 2px black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    translate 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &--primary {
+    @include old-skool-button-variant(--mat-sys-primary, --mat-sys-on-primary);
+  }
+
+  &--secondary {
+    @include old-skool-button-variant(
+      --mat-sys-secondary,
+      --mat-sys-on-secondary
+    );
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active {
+    color: var(--button-text-color);
+    translate: 4px 4px;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: var(--mat-sys-on-surface-variant);
+    color: var(--mat-sys-surface-variant);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
 }
