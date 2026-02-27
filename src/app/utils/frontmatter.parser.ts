@@ -14,7 +14,7 @@ export function parseFrontmatter<T>(raw: string): ParsedMarkdown<T> {
   if (!match) {
     return { data: {} as T, content: raw };
   }
-  const data = yaml.load(match[1], { schema: yaml.FAILSAFE_SCHEMA }) as T;
+  const data = yaml.load(match[1]) as T;
   const content = match[2].trim();
   return { data, content };
 }
