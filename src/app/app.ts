@@ -115,7 +115,6 @@ export class App implements OnInit {
 
   // Handle particles loaded event
   async particlesLoaded(container: Container): Promise<void> {
-    console.log('Particles loaded', container);
     this.particlesContainer = container;
   }
 

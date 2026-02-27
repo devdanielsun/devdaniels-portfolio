@@ -1,67 +1,33 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { findLoaderBySlug } from '../../articles/articles.registery';
-import { Article } from '../../models/article.model';
+import { ActivatedRoute } from '@angular/router';
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
+import { ResolvedArticle } from '../../models/article.model';
 
 @Component({
   selector: 'app-article-loader',
   standalone: true,
-  template: `<ng-container #vc></ng-container>`,
+  imports: [CommonModule],
+  template: `<div class="markdown-content" [innerHTML]="sanitizedHtml"></div>`,
 })
 export class ArticleLoaderComponent implements OnInit {
-  @ViewChild('vc', { read: ViewContainerRef, static: true })
-  vc!: ViewContainerRef;
-
   private route = inject(ActivatedRoute);
   private title = inject(Title);
 
-  async ngOnInit(): Promise<void> {
-    const article = this.getArticleFromRoute();
-    if (!article) {
-      this.handleMissingArticle();
+  sanitizedHtml = '';
+
+  ngOnInit(): void {
+    const resolved = this.route.snapshot.data['article'] as
+      | ResolvedArticle
+      | undefined;
+    if (!resolved) {
+      console.warn('No article found in route data.');
       return;
     }
-
-    this.setPageTitle(article.title);
-    await this.loadArticleComponent(article.slug);
-  }
-
-  private getArticleFromRoute(): Article | undefined {
-    return this.route.snapshot.data['article'] as Article | undefined;
-  }
-
-  private setPageTitle(title?: string): void {
-    if (title) {
-      this.title.setTitle(`${title} - DevDaniels`);
-    }
-  }
-
-  private handleMissingArticle(): void {
-    console.warn('No article found in route data.');
-    // TODO: display a "Not Found" message in the UI (optional)
-  }
-
-  private async loadArticleComponent(slug: string): Promise<void> {
-    const loader = findLoaderBySlug(slug);
-    if (!loader) {
-      console.warn(`No loader found for slug: ${slug}`);
-      return;
-    }
-
-    try {
-      const comp = await loader();
-      this.vc.clear();
-      this.vc.createComponent(comp);
-    } catch (e) {
-      console.error('Failed to load article component', e);
-      // TODO: display an error message in the UI (optional )
-    }
+    this.title.setTitle(`${resolved.article.title} - DevDaniels`);
+    const rawHtml = marked.parse(resolved.markdownContent) as string;
+    this.sanitizedHtml = DOMPurify.sanitize(rawHtml);
   }
 }

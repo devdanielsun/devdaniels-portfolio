@@ -1,11 +1,9 @@
 <app-container-component
-  [fullWidth]="true"
   [hideContainerView]="onlyShowArticles"
+  containerTitle="Articles"
   class="portfolio-article-container"
 >
   @if (!onlyShowArticles) {
-    <h1>Articles</h1>
-
     <nav class="articles-category-nav">
       <a
         [routerLink]="['/articles']"
