@@ -8,16 +8,13 @@
     <div class="logo-container">
       <a [routerLink]="['/']">
         <div class="logo-svg" [innerHTML]="logoSvg"></div>
-        @if (router.url !== "/") {
-          <div class="site-info">
-            <span class="title">DevDaniels</span>
-            <span class="subtitle">Software/DevOps engineer</span>
-          </div>
-        }
+        <div class="site-info">
+          <span class="title">DevDaniels</span>
+          <span class="subtitle">Software/DevOps engineer</span>
+        </div>
       </a>
     </div>
     <nav>
-      <!-- @if (router.url !== '/') { -->
       @for (route of navRoutes; track route) {
         <a
           [routerLink]="['/' + route.path]"
@@ -27,7 +24,6 @@
           {{ route.data?.["navTitle"] }}
         </a>
       }
-      <!-- } -->
       @if (isDarkMode) {
         <fa-icon
           [icon]="faSun"
