@@ -35,6 +35,6 @@ export class ArticleComponent {
     while (r?.firstChild) {
       r = r.firstChild;
     }
-    return (r?.snapshot.data as ArticleRouteData | undefined)?.article;
+    return (r?.snapshot.data as ArticleRouteData | undefined)?.article?.article;
   });
 }

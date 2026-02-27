@@ -1,5 +1,10 @@
-export interface ArticleRouteData {
+export interface ResolvedArticle {
   article: Article;
+  markdownContent: string;
+}
+
+export interface ArticleRouteData {
+  article: ResolvedArticle;
 }
 
 export interface Article {

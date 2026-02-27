@@ -3,7 +3,7 @@ import { PortfolioPage } from './pages/portfolio-page/portfolio.page';
 import { NotFound404Page } from './pages/not-found-404-page/not-found-404.page';
 import { ArticlesListPage } from './pages/article-list-page/articles-list.page';
 import { ArticleComponent } from './components/article-component/article.component';
-import { ArticleResolver } from './resolvers/article.resolver';
+import { articleResolver } from './resolvers/article.resolver';
 import { ArticleLoaderComponent } from './components/article-component/article-loader.component';
 
 export const routes: Routes = [
@@ -35,7 +35,7 @@ export const routes: Routes = [
           {
             path: '',
             component: ArticleLoaderComponent,
-            resolve: { article: ArticleResolver },
+            resolve: { article: articleResolver },
           },
         ],
       },

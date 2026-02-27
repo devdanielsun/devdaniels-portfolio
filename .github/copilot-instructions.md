@@ -22,15 +22,21 @@ The pre-commit hook runs `lint → format → test` in order.
 This is an **Angular 20 standalone-component portfolio app** deployed to Azure Static Web Apps.
 
 ### Article system
-Articles are **Angular components** (not markdown files), each living in `src/app/articles/<slug>/`. Every article exports:
-- A `const ARTICLE_XXXX: Article` metadata object (title, slug, dates, categories, tags, `published` flag)
-- An `@Component` class that renders the article HTML
+Articles are **Markdown files with YAML frontmatter** in `src/assets/articles/<slug>.md`. The frontmatter maps 1:1 to the `Article` interface in `article.model.ts` (published, slug, title, author, startDate, endDate, categories, tags, featuredImage, githubRepo).
 
-**Registration:** Add both exports to `src/app/articles/articles.registery.ts` — both the metadata entry in `ARTICLE_REGISTRY` and the `loadComponent` promise.
+**To add an article:** create the `.md` file, then add the slug to `ARTICLE_SLUGS` in `src/app/articles/articles.registry.ts`. See `src/app/articles/ARTICLES.md` for the full guide.
 
-**Routing flow:** `/:slug` → `ArticleResolver` (validates slug + `published`) → `ArticleLoaderComponent` (dynamically creates the component via `ViewContainerRef`) — the article component is rendered inside `ArticleComponent`'s router-outlet.
+**Routing/loading flow:**
+1. `/:slug` route → `articleResolver` (functional `ResolveFn`) loads the `.md` file via HTTP, parses frontmatter, validates `published` flag
+2. Resolver returns `ResolvedArticle = { article: Article; markdownContent: string }` stored under route data key `article`
+3. `ArticleComponent` reads `data.article.article` (metadata) to render the header/breadcrumb
+4. `ArticleLoaderComponent` reads `data.article.markdownContent`, converts it to HTML with `marked`, and renders via `[innerHTML]` + `DomSanitizer`
 
 In dev mode (`isDevMode()`), unpublished articles are visible; in production they redirect to 404.
+
+**Articles list:** `ArticlesService` uses `forkJoin` to load all slugs from the registry in parallel, parses frontmatter for metadata, and caches with `shareReplay(1)`. Frontmatter is parsed via `src/app/utils/frontmatter.parser.ts` (uses `js-yaml`).
+
+**Key files:** `src/app/articles/articles.registry.ts`, `src/app/utils/frontmatter.parser.ts`, `src/app/resolvers/article.resolver.ts`, `src/app/components/article-component/article-loader.component.ts`
 
 ### Pages & components
 - `src/app/pages/` — route-level page components (`PortfolioPage`, `ArticlesListPage`, `NotFound404Page`)
