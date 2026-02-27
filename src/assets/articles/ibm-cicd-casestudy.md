@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 slug: ibm-cicd-casestudy
 author: Daniël Geerts
 title: IBM CICD Casestudy

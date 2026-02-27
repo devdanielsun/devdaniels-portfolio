@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 slug: devdaniels-website
 author: Daniël Geerts
 title: DevDaniels Website
