@@ -15,7 +15,13 @@ Run a single test file with Karma's `--include` flag:
 npx ng test --watch=false --browsers=ChromeHeadless --include="src/app/articles/codeerts/codeerts.article.spec.ts"
 ```
 
-The pre-commit hook runs `lint → format → test` in order.
+After making code changes, always run lint and format before committing:
+```bash
+npm run lint       # must pass with no errors
+npm run format     # auto-fixes formatting in place
+```
+
+The pre-commit hook enforces `lint → format → test` in order.
 
 ## Architecture
 
