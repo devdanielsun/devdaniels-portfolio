@@ -9,4 +9,5 @@ import { CommonModule } from '@angular/common';
 })
 export class ContainerComponent {
   @Input() hideContainerView = false;
+  @Input() containerTitle = '';
 }
