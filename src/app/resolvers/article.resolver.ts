@@ -18,21 +18,18 @@ export const articleResolver: ResolveFn<ResolvedArticle | undefined> = (
     return of(undefined);
   }
 
-  return http
-    .get(`assets/articles/${slug}.md`, { responseType: 'text' })
-    .pipe(
-      map((raw) => {
-        const { data, content } = parseFrontmatter<Article>(raw);
-        if (!isDevMode() && !data.published) {
-          router.navigate(['/404']);
-          return undefined;
-        }
-        return { article: data, markdownContent: content } as ResolvedArticle;
-      }),
-      catchError(() => {
+  return http.get(`assets/articles/${slug}.md`, { responseType: 'text' }).pipe(
+    map((raw) => {
+      const { data, content } = parseFrontmatter<Article>(raw);
+      if (!isDevMode() && !data.published) {
         router.navigate(['/404']);
-        return of(undefined);
-      }),
-    );
+        return undefined;
+      }
+      return { article: data, markdownContent: content } as ResolvedArticle;
+    }),
+    catchError(() => {
+      router.navigate(['/404']);
+      return of(undefined);
+    }),
+  );
 };
-

@@ -1,13 +1,6 @@
 import { inject, Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {
-  catchError,
-  forkJoin,
-  map,
-  Observable,
-  of,
-  shareReplay,
-} from 'rxjs';
+import { catchError, forkJoin, map, Observable, of, shareReplay } from 'rxjs';
 import { ARTICLE_SLUGS } from '../articles/articles.registry';
 import { Article } from '../models/article.model';
 import { parseFrontmatter } from '../utils/frontmatter.parser';
@@ -52,7 +45,8 @@ export class ArticlesService {
           ? articles.filter((a) => a.categories?.includes(category))
           : articles;
         return [...filtered].sort(
-          (a, b) => this.extractYear(b.startDate) - this.extractYear(a.startDate),
+          (a, b) =>
+            this.extractYear(b.startDate) - this.extractYear(a.startDate),
         );
       }),
     );
@@ -62,7 +56,9 @@ export class ArticlesService {
     return this.loadAll().pipe(
       map((articles) => {
         const set = new Set<string>();
-        articles.forEach((a) => (a.categories ?? []).forEach((c) => set.add(c)));
+        articles.forEach((a) =>
+          (a.categories ?? []).forEach((c) => set.add(c)),
+        );
         return Array.from(set);
       }),
     );
@@ -74,4 +70,3 @@ export class ArticlesService {
     return match ? parseInt(match[1], 10) : 0;
   }
 }
-

@@ -31,4 +31,3 @@ export class ArticleLoaderComponent implements OnInit {
     this.sanitizedHtml = DOMPurify.sanitize(rawHtml);
   }
 }
-
