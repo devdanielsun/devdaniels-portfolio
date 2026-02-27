@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './pages/home-page/home.page';
 import { PortfolioPage } from './pages/portfolio-page/portfolio.page';
 import { NotFound404Page } from './pages/not-found-404-page/not-found-404.page';
 import { ArticlesListPage } from './pages/article-list-page/articles-list.page';
@@ -10,12 +9,6 @@ import { ArticleLoaderComponent } from './components/article-component/article-l
 export const routes: Routes = [
   {
     path: '',
-    component: HomePage,
-    title: 'Home - DevDaniels',
-    data: { navTitle: 'Home' },
-  },
-  {
-    path: 'portfolio',
     component: PortfolioPage,
     title: 'Portfolio - DevDaniels',
     data: { navTitle: 'Portfolio' },

@@ -8,6 +8,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './container.component.scss',
 })
 export class ContainerComponent {
-  @Input() fullWidth = false;
   @Input() hideContainerView = false;
 }

@@ -10,15 +10,15 @@ import {
   diCsharpPlain,
   diGitPlain,
   diAngularPlain,
-  diNodejsPlainWordmark,
-  diStackoverflowPlain,
   diAzuredevopsPlain,
+  diAzurePlain,
   diAzuresqldatabasePlain,
   diGithubcodespacesPlain,
   diTypescriptPlain,
   diCloudflarePlain,
   diVscodePlain,
   diNpmPlain,
+  diTerraformPlain,
   diJsonPlain,
 } from '@ng-icons/devicon/plain';
 import {
@@ -48,15 +48,15 @@ import { ArticlesListPage } from '../article-list-page/articles-list.page';
       diCsharpPlain,
       diGitPlain,
       diAngularPlain,
-      diNodejsPlainWordmark,
       diTypescriptPlain,
-      diStackoverflowPlain,
+      diAzurePlain,
       diAzuredevopsPlain,
       diAzuresqldatabasePlain,
       diGithubcodespacesPlain,
       diCloudflarePlain,
       diVscodePlain,
       diNpmPlain,
+      diTerraformPlain,
       diJsonPlain,
     }),
   ],
@@ -75,10 +75,11 @@ export class PortfolioPage {
 
   protected readonly listOfBrandIcons: BrandIcon[] = [
     // Column 1
-    { col: 1, icon: 'diAzuredevopsPlain', tooltip: 'Azure DevOps' },
+    { col: 1, icon: 'diAzurePlain', tooltip: 'Azure' },
     { col: 1, icon: 'diCloudflarePlain', tooltip: 'Cloudflare' },
     { col: 1, icon: 'diLinuxPlain', tooltip: 'Linux' },
     // Column 2
+    { col: 2, icon: 'diTerraformPlain', tooltip: 'Terraform / Bicep' },
     { col: 2, icon: 'diCsharpPlain', tooltip: 'C# .net' },
     {
       col: 2,
@@ -86,16 +87,15 @@ export class PortfolioPage {
       tooltip: 'SQL Databases',
     },
     { col: 2, icon: 'diJsonPlain', tooltip: 'JSON / XML' },
-    { col: 2, icon: 'diVscodePlain', tooltip: 'Visual Studio Code' },
     // Column 3
     { col: 3, icon: 'diTypescriptPlain', tooltip: 'TypeScript' },
     { col: 3, icon: 'diAngularPlain', tooltip: 'Angular' },
-    { col: 3, icon: 'diNodejsPlainWordmark', tooltip: 'Node.js' },
     { col: 3, icon: 'diNpmPlain', tooltip: 'npm' },
+    { col: 3, icon: 'diVscodePlain', tooltip: 'Visual Studio Code' },
     // Column 4
     { col: 4, icon: 'diGitPlain', tooltip: 'Git' },
     { col: 4, icon: 'diGithubcodespacesPlain', tooltip: 'GitHub' },
-    { col: 4, icon: 'diStackoverflowPlain', tooltip: 'Stack Overflow' },
+    { col: 4, icon: 'diAzuredevopsPlain', tooltip: 'Azure DevOps' },
   ];
 
   goToProject(projectUri: string) {
