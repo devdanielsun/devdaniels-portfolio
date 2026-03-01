@@ -17,8 +17,8 @@
   .article-card {
     background-color: var(--mat-sys-surface-container);
     padding: 0.5em 1em 1em 1em;
-    box-shadow: 4px 4px 0px black;
-    border: solid 2px black;
+    box-shadow: -4px 4px 0px black;
+    border: solid 1px black;
     border-radius: 4px;
     text-align: left;
     max-width: 450px;
@@ -30,7 +30,7 @@
 
     &:hover {
       cursor: pointer;
-      translate: 4px 4px;
+      translate: -4px 4px;
       box-shadow: none;
     }
 
