@@ -1,5 +1,12 @@
 @use "../../../variables" as vars;
 
+.portfolio-page {
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: row;
+  gap: 5em;
+}
+
 .about-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -13,7 +20,7 @@
 
   img {
     width: 100%;
-    max-width: 300px;
+    max-width: 200px;
     height: auto;
     border-radius: 5px;
   }

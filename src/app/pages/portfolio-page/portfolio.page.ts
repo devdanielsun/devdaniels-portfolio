@@ -13,14 +13,13 @@ import {
   diAzuredevopsPlain,
   diAzurePlain,
   diAzuresqldatabasePlain,
-  diGithubcodespacesPlain,
   diTypescriptPlain,
   diCloudflarePlain,
   diVscodePlain,
   diNpmPlain,
   diTerraformPlain,
-  diJsonPlain,
 } from '@ng-icons/devicon/plain';
+import { simpleGithub, simpleKubernetes } from '@ng-icons/simple-icons';
 import {
   faGraduationCap,
   faAward,
@@ -52,12 +51,12 @@ import { ArticlesListPage } from '../article-list-page/articles-list.page';
       diAzurePlain,
       diAzuredevopsPlain,
       diAzuresqldatabasePlain,
-      diGithubcodespacesPlain,
+      simpleGithub,
       diCloudflarePlain,
       diVscodePlain,
       diNpmPlain,
       diTerraformPlain,
-      diJsonPlain,
+      simpleKubernetes,
     }),
   ],
   templateUrl: './portfolio.page.html',
@@ -86,7 +85,7 @@ export class PortfolioPage {
       icon: 'diAzuresqldatabasePlain',
       tooltip: 'SQL Databases',
     },
-    { col: 2, icon: 'diJsonPlain', tooltip: 'JSON / XML' },
+    { col: 2, icon: 'simpleKubernetes', tooltip: 'Docker / Kubernetes' },
     // Column 3
     { col: 3, icon: 'diTypescriptPlain', tooltip: 'TypeScript' },
     { col: 3, icon: 'diAngularPlain', tooltip: 'Angular' },
@@ -94,7 +93,7 @@ export class PortfolioPage {
     { col: 3, icon: 'diVscodePlain', tooltip: 'Visual Studio Code' },
     // Column 4
     { col: 4, icon: 'diGitPlain', tooltip: 'Git' },
-    { col: 4, icon: 'diGithubcodespacesPlain', tooltip: 'GitHub' },
+    { col: 4, icon: 'simpleGithub', tooltip: 'GitHub' },
     { col: 4, icon: 'diAzuredevopsPlain', tooltip: 'Azure DevOps' },
   ];
 
