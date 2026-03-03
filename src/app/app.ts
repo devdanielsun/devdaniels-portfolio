@@ -12,6 +12,10 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SvgLoaderService } from './services/svg-loader.service';
 import { SafeHtml } from '@angular/platform-browser';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { diLinkedinPlain } from '@ng-icons/devicon/plain';
+import { simpleGithub } from '@ng-icons/simple-icons';
+import { faSolidHeart } from '@ng-icons/font-awesome/solid';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +25,9 @@ import { SafeHtml } from '@angular/platform-browser';
     NgxParticlesModule,
     FontAwesomeModule,
     MatTooltipModule,
+    NgIconComponent,
   ],
+  providers: [provideIcons({ diLinkedinPlain, simpleGithub, faSolidHeart })],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -39,6 +45,8 @@ export class App implements OnInit {
   navRoutes = routes
     .filter((r) => r.title)
     .filter((r) => r.path !== '404' && r.path !== '**');
+
+  protected readonly currentYear = new Date().getFullYear();
 
   isDarkMode = true; // Default to dark theme
 

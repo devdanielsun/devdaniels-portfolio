@@ -46,4 +46,29 @@
   <section class="content">
     <router-outlet></router-outlet>
   </section>
+  <div class="footer">
+    <span
+      >&copy; {{ currentYear }}, made with
+      <ng-icon name="faSolidHeart" size="1em" matTooltip="love"></ng-icon> by
+      Daniël Geerts.
+    </span>
+  </div>
+  <div class="sidebar">
+    <a
+      href="https://github.com/devdanielsun"
+      target="_blank"
+      matTooltip="Check my GitHub"
+      matTooltipPosition="right"
+    >
+      <ng-icon name="simpleGithub" size="2em"></ng-icon>
+    </a>
+    <a
+      href="https://www.linkedin.com/in/danielgeerts/"
+      target="_blank"
+      matTooltip="Connect with me on LinkedIn"
+      matTooltipPosition="right"
+    >
+      <ng-icon name="diLinkedinPlain" size="2em"></ng-icon>
+    </a>
+  </div>
 </main>
