@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ContainerComponent } from '../../components/container-component/container.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -29,7 +29,20 @@ import {
 } from '@ng-icons/font-awesome/solid';
 import { ArticlesListPage } from '../article-list-page/articles-list.page';
 
-export type ExperienceTab = 'skills' | 'certifications' | 'education';
+interface ExperienceSection {
+  icon: string;
+  title: string;
+  institution?: string;
+  year?: number;
+  tags: string[];
+}
+
+interface ExperienceTabConfig {
+  id: string;
+  icon: string;
+  label: string;
+  sections: ExperienceSection[];
+}
 
 @Component({
   selector: 'app-portfolio-page',
@@ -71,10 +84,122 @@ export type ExperienceTab = 'skills' | 'certifications' | 'education';
 export class PortfolioPage {
   private router = inject(Router);
 
-  protected readonly activeTab = signal<ExperienceTab>('skills');
+  protected readonly activeTab = signal<string>('skills');
 
-  protected setTab(tab: ExperienceTab): void {
-    this.activeTab.set(tab);
+  protected readonly experienceTabs: ExperienceTabConfig[] = [
+    {
+      id: 'skills',
+      icon: 'faSolidCode',
+      label: 'Skills',
+      sections: [
+        {
+          icon: 'faSolidCodeBranch',
+          title: 'DevOps & Software Engineering',
+          tags: [
+            'Software Architecture',
+            'Software Development',
+            'Infrastructure - Deployment / Orchestration',
+            'Cloud (Azure, AWS, IBM, Google)',
+            'DevOps Practices',
+            'CI/CD',
+            'Azure DevOps, GitHub Actions, Jenkins',
+            'Bicep, Terraform, CloudFormation',
+            'Git, GitHub, Azure Repos',
+            'Azure Monitor, Grafana',
+            'Docker, Kubernetes',
+          ],
+        },
+        {
+          icon: 'faSolidCloud',
+          title: 'Backend',
+          tags: [
+            'C#/.NET',
+            'Node.js',
+            'Python',
+            'Azure (App Services, Functions, DevOps, etc.)',
+            'AWS (Lambda, S3, CloudFormation, etc.)',
+            'RESTful API Development',
+            'Cloudflare, DNS Management, SSL/TLS',
+            'Docker, Kubernetes, Terraform, Bicep',
+            'SQL, NoSQL & PL/SQL',
+          ],
+        },
+        {
+          icon: 'faSolidCode',
+          title: 'Frontend',
+          tags: [
+            'Angular',
+            'React',
+            'HTML, CSS, SCSS',
+            'PHP',
+            'TypeScript, JavaScript, jQuery',
+            'Responsive Web Design',
+            'UX/UI Principles',
+            'Cross-Browser Compatibility',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'certifications',
+      icon: 'faSolidAward',
+      label: 'Certifications',
+      sections: [
+        {
+          icon: 'faSolidAward',
+          title: 'Cloud Certifications',
+          tags: [
+            'Azure Fundamentals (AZ-900)',
+            'Azure AI Fundamentals (AI-900)',
+            'AWS Certified Cloud Practitioner',
+            'AWS Certified Developer Associate',
+          ],
+        },
+        {
+          icon: 'faSolidAward',
+          title: 'Other Certifications',
+          tags: [
+            'Professional Scrum Master™ I (PSM I)',
+            'Docker Essentials: A Developer Introduction',
+            'First Aid / Emergency Response',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'education',
+      icon: 'faSolidGraduationCap',
+      label: 'Education',
+      sections: [
+        {
+          icon: 'faSolidGraduationCap',
+          title: 'Bachelor of Applied Sciences | HBO-ICT',
+          institution: 'Hanzehogeschool Groningen',
+          year: 2021,
+          tags: [
+            'Software Engineering',
+            'Minor: Smart Energy',
+            'Energy Academy Certificate',
+            'Graduation project at Rijkswaterstaat',
+          ],
+        },
+        {
+          icon: 'faSolidGraduationCap',
+          title: 'Game Development',
+          institution: 'Alfa College Groningen',
+          year: 2017,
+          tags: ['Game Developer'],
+        },
+      ],
+    },
+  ];
+
+  protected readonly activeTabData = computed(
+    () => this.experienceTabs.find((t) => t.id === this.activeTab()) ?? null,
+  );
+
+  protected setTab(id: string): void {
+    this.activeTab.set(id);
   }
 
   protected readonly listOfBrandIcons: BrandIcon[] = [

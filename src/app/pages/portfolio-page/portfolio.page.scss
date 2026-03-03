@@ -62,8 +62,6 @@
 }
 
 .experience-tabs {
-  border: 2px solid black;
-  box-shadow: -4px 4px 0px 0px black;
   margin-bottom: 1.5em;
 
   &__header {
@@ -77,27 +75,29 @@
     align-items: center;
     gap: 0.5em;
     background-color: transparent;
-    color: inherit;
     font-weight: bold;
     font-size: 1em;
     padding: 0.6em 1.2em;
     border: none;
-    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
     cursor: pointer;
     transition: background-color 0.15s ease;
 
+    &:first-child {
+      margin-left: 1.5em;
+    }
+
     &:last-child {
-      border-right: none;
+      border-right: 2px solid black;
     }
 
     &--active {
-      background-color: var(--mat-sys-primary);
-      color: var(--mat-sys-on-primary);
+      background-color: var(--mat-sys-secondary-container);
     }
 
     &:hover:not(&--active) {
       background-color: var(--mat-sys-secondary-container);
-      color: var(--mat-sys-on-secondary-container);
     }
   }
 
@@ -112,22 +112,61 @@
     align-items: start;
     text-align: left;
 
+    &__item {
+      border: 2px solid black;
+    }
+
     h2 {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.4em;
-      margin-top: 0;
+      background-color: var(--mat-sys-primary);
+      color: var(--mat-sys-on-primary);
+      padding: 0.3em 0.8em;
+      margin: 0 0 1em 0;
       margin-block-start: 0;
+      font-size: 1em;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    div {
+      border-left: 0.25em solid var(--mat-sys-primary);
+    }
+
+    p {
+      margin: 0 0 0 1em;
+      font-size: 0.9em;
+      font-weight: bold;
+      color: var(--mat-sys-on-surface-variant);
     }
 
     ul {
-      margin-top: 0;
-      padding-top: 0;
-      margin-block-start: 0;
-      list-style: "- ";
+      // list-style: none;
+      // padding: 0;
+      // margin: 0;
+      // //display: flex;
+      // flex-wrap: wrap;
+      // gap: 0.4em;
+      // margin-left: 1em;
 
       li {
-        line-height: 1.8em;
+        //border: 2px solid black;
+        //box-shadow: -2px 2px 0px black;
+        // padding: 0.25em 0.65em;
+        // font-size: 0.85em;
+        // transition:
+        //   translate 0.15s ease,
+        //   box-shadow 0.15s ease,
+        //   background-color 0.15s ease;
+
+        // &:hover {
+        //   translate: -2px 2px;
+        //   box-shadow: none;
+        //   background-color: var(--mat-sys-primary-container);
+        //   color: var(--mat-sys-on-primary-container);
+        // }
       }
     }
   }
