@@ -13,7 +13,11 @@ import { SafeHtml } from '@angular/platform-browser';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { diLinkedinPlain } from '@ng-icons/devicon/plain';
 import { simpleGithub } from '@ng-icons/simple-icons';
-import { faSolidHeart, faSolidMoon, faSolidSun } from '@ng-icons/font-awesome/solid';
+import {
+  faSolidHeart,
+  faSolidMoon,
+  faSolidSun,
+} from '@ng-icons/font-awesome/solid';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +28,15 @@ import { faSolidHeart, faSolidMoon, faSolidSun } from '@ng-icons/font-awesome/so
     MatTooltipModule,
     NgIconComponent,
   ],
-  providers: [provideIcons({ diLinkedinPlain, simpleGithub, faSolidHeart, faSolidMoon, faSolidSun })],
+  providers: [
+    provideIcons({
+      diLinkedinPlain,
+      simpleGithub,
+      faSolidHeart,
+      faSolidMoon,
+      faSolidSun,
+    }),
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
