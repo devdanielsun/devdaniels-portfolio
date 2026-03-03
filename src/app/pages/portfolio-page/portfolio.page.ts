@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ContainerComponent } from '../../components/container-component/container.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -28,6 +28,8 @@ import {
   faSolidCodeBranch,
 } from '@ng-icons/font-awesome/solid';
 import { ArticlesListPage } from '../article-list-page/articles-list.page';
+
+export type ExperienceTab = 'skills' | 'certifications' | 'education';
 
 @Component({
   selector: 'app-portfolio-page',
@@ -68,6 +70,12 @@ import { ArticlesListPage } from '../article-list-page/articles-list.page';
 })
 export class PortfolioPage {
   private router = inject(Router);
+
+  protected readonly activeTab = signal<ExperienceTab>('skills');
+
+  protected setTab(tab: ExperienceTab): void {
+    this.activeTab.set(tab);
+  }
 
   protected readonly listOfBrandIcons: BrandIcon[] = [
     // Column 1

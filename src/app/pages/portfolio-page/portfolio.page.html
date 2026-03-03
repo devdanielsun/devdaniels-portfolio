@@ -45,114 +45,176 @@
 
   <app-container-component containerTitle="Experience">
     <div class="section">
-      <div class="experience-section">
-        <div class="inner-section">
-          <div>
-            <h2>
-              <ng-icon name="faSolidAward" size="1em"></ng-icon>
-              Certifications
-            </h2>
-            <h3>Microsoft Azure</h3>
-            <ul>
-              <li>Microsoft Certified: Azure Fundamentals (AZ-900)</li>
-              <li>Microsoft Certified: Azure AI Fundamentals (AI-900)</li>
-            </ul>
-            <h3>Amazon Web Services (AWS)</h3>
-            <ul>
-              <li>Certified Cloud Practitioner</li>
-              <li>Certified Developer Associate</li>
-            </ul>
-            <h3>Other certifications</h3>
-            <ul>
-              <li>Professional Scrum Master™ I (PSM I)</li>
-              <li>Docker Essentials: A Developer Introduction</li>
-              <li>First Aid / Emergency Response</li>
-            </ul>
-          </div>
-          <div>
-            <h2>
-              <ng-icon name="faSolidGraduationCap" size="1em"></ng-icon>
-              Bachelor of Applied Sciences
-            </h2>
-            <p>
-              Hanzehogeschool Groningen
-              <br />
-              Graduated: 2021
-            </p>
-            <ul>
-              <li>Major: ICT - Software Engineer (at Hanzehogeschool)</li>
-              <li>Minor: Smart Energy (at NewEnergyAcademy)</li>
-              <li>
-                Certificate: Energy Academy Certificate (at NewEnergyAcademy)
-              </li>
-              <li>Graduation project at Rijkswaterstaat</li>
-            </ul>
-          </div>
-          <div>
-            <h2>
-              <ng-icon name="faSolidGraduationCap" size="1em"></ng-icon>
-              Game Development
-            </h2>
-            <p>
-              Alfa College Groningen
-              <br />
-              Graduated: 2017
-            </p>
-            <ul>
-              <li>Major: Game Developer</li>
-            </ul>
-          </div>
+      <div class="experience-tabs">
+        <div class="experience-tabs__header" role="tablist">
+          <button
+            class="experience-tabs__tab"
+            [class.experience-tabs__tab--active]="activeTab() === 'skills'"
+            (click)="setTab('skills')"
+            role="tab"
+            [attr.aria-selected]="activeTab() === 'skills'"
+          >
+            <ng-icon name="faSolidCode" size="1em"></ng-icon>
+            Skills
+          </button>
+          <button
+            class="experience-tabs__tab"
+            [class.experience-tabs__tab--active]="
+              activeTab() === 'certifications'
+            "
+            (click)="setTab('certifications')"
+            role="tab"
+            [attr.aria-selected]="activeTab() === 'certifications'"
+          >
+            <ng-icon name="faSolidAward" size="1em"></ng-icon>
+            Certifications
+          </button>
+          <button
+            class="experience-tabs__tab"
+            [class.experience-tabs__tab--active]="activeTab() === 'education'"
+            (click)="setTab('education')"
+            role="tab"
+            [attr.aria-selected]="activeTab() === 'education'"
+          >
+            <ng-icon name="faSolidGraduationCap" size="1em"></ng-icon>
+            Education
+          </button>
         </div>
-        <div class="inner-section">
-          <div>
-            <h2>
-              <ng-icon name="faSolidCode" size="1em"></ng-icon>
-              DevOps & Software Engineering
-            </h2>
-            <ul>
-              <li>Software Architecture</li>
-              <li>Software Development</li>
-              <li>Infrastructure - Deployment / Orchestration</li>
-              <li>Cloud (Azure, AWS, IBM, Google)</li>
-              <li>DevOps Practices</li>
-              <li>Continuous Integration/Continuous Deployment (CI/CD)</li>
-              <li>CI/CD Pipelines (Azure DevOps, GitHub Actions, Jenkins)</li>
-              <li>Infrastructure as Code (Bicep, Terraform, CloudFormation)</li>
-              <li>Version Control (Git, GitHub, Azure Repos)</li>
-              <li>Monitoring & Logging (Azure Monitor, Grafana, Alerts)</li>
-              <li>Containerization (Docker, Kubernetes)</li>
-            </ul>
-          </div>
-          <div>
-            <h2>
-              <ng-icon name="faSolidCode" size="1em"></ng-icon>
-              Backend
-            </h2>
-            <ul>
-              <li>C#/.NET, Node.js, Python</li>
-              <li>Azure (App Services, Functions, DevOps, etc.)</li>
-              <li>AWS (Lambda, S3, CloudFormation, etc.)</li>
-              <li>RESTful API Development</li>
-              <li>Cloudflare, DNS Management, SSL/TLS</li>
-              <li>Docker, Kubernetes, Terraform, Bicep</li>
-              <li>SQL, NoSQL & PL/SQL databases</li>
-            </ul>
-          </div>
-          <div>
-            <h2>
-              <ng-icon name="faSolidCode" size="1em"></ng-icon>
-              Frontend
-            </h2>
-            <ul>
-              <li>Angular, React, HTML, PHP, CSS, SCSS</li>
-              <li>TypeScript, JavaScript, jQuery</li>
-              <li>Responsive Web Design</li>
-              <li>UX/UI Principles</li>
-              <li>Cross-Browser Compatibility</li>
-            </ul>
-          </div>
+
+        <div class="experience-tabs__content" role="tabpanel">
+          @if (activeTab() === "skills") {
+            <div class="experience-tabs__grid">
+              <div>
+                <h2>
+                  <ng-icon name="faSolidCodeBranch" size="1em"></ng-icon>
+                  DevOps & Software Engineering
+                </h2>
+                <ul>
+                  <li>Software Architecture</li>
+                  <li>Software Development</li>
+                  <li>Infrastructure - Deployment / Orchestration</li>
+                  <li>Cloud (Azure, AWS, IBM, Google)</li>
+                  <li>DevOps Practices</li>
+                  <li>Continuous Integration/Continuous Deployment (CI/CD)</li>
+                  <li>
+                    CI/CD Pipelines (Azure DevOps, GitHub Actions, Jenkins)
+                  </li>
+                  <li>
+                    Infrastructure as Code (Bicep, Terraform, CloudFormation)
+                  </li>
+                  <li>Version Control (Git, GitHub, Azure Repos)</li>
+                  <li>Monitoring & Logging (Azure Monitor, Grafana, Alerts)</li>
+                  <li>Containerization (Docker, Kubernetes)</li>
+                </ul>
+              </div>
+              <div>
+                <h2>
+                  <ng-icon name="faSolidCloud" size="1em"></ng-icon>
+                  Backend
+                </h2>
+                <ul>
+                  <li>C#/.NET, Node.js, Python</li>
+                  <li>Azure (App Services, Functions, DevOps, etc.)</li>
+                  <li>AWS (Lambda, S3, CloudFormation, etc.)</li>
+                  <li>RESTful API Development</li>
+                  <li>Cloudflare, DNS Management, SSL/TLS</li>
+                  <li>Docker, Kubernetes, Terraform, Bicep</li>
+                  <li>SQL, NoSQL & PL/SQL databases</li>
+                </ul>
+              </div>
+              <div>
+                <h2>
+                  <ng-icon name="faSolidCode" size="1em"></ng-icon>
+                  Frontend
+                </h2>
+                <ul>
+                  <li>Angular, React, HTML, PHP, CSS, SCSS</li>
+                  <li>TypeScript, JavaScript, jQuery</li>
+                  <li>Responsive Web Design</li>
+                  <li>UX/UI Principles</li>
+                  <li>Cross-Browser Compatibility</li>
+                </ul>
+              </div>
+            </div>
+          }
+
+          @if (activeTab() === "certifications") {
+            <div class="experience-tabs__grid">
+              <div>
+                <h2>
+                  <ng-icon name="faSolidAward" size="1em"></ng-icon>
+                  Microsoft Azure
+                </h2>
+                <ul>
+                  <li>Microsoft Certified: Azure Fundamentals (AZ-900)</li>
+                  <li>Microsoft Certified: Azure AI Fundamentals (AI-900)</li>
+                </ul>
+              </div>
+              <div>
+                <h2>
+                  <ng-icon name="faSolidAward" size="1em"></ng-icon>
+                  Amazon Web Services (AWS)
+                </h2>
+                <ul>
+                  <li>Certified Cloud Practitioner</li>
+                  <li>Certified Developer Associate</li>
+                </ul>
+              </div>
+              <div>
+                <h2>
+                  <ng-icon name="faSolidAward" size="1em"></ng-icon>
+                  Other Certifications
+                </h2>
+                <ul>
+                  <li>Professional Scrum Master™ I (PSM I)</li>
+                  <li>Docker Essentials: A Developer Introduction</li>
+                  <li>First Aid / Emergency Response</li>
+                </ul>
+              </div>
+            </div>
+          }
+
+          @if (activeTab() === "education") {
+            <div class="experience-tabs__grid">
+              <div>
+                <h2>
+                  <ng-icon name="faSolidGraduationCap" size="1em"></ng-icon>
+                  Bachelor of Applied Sciences
+                </h2>
+                <p>
+                  Hanzehogeschool Groningen
+                  <br />
+                  Graduated: 2021
+                </p>
+                <ul>
+                  <li>Major: ICT - Software Engineer (at Hanzehogeschool)</li>
+                  <li>Minor: Smart Energy (at NewEnergyAcademy)</li>
+                  <li>
+                    Certificate: Energy Academy Certificate (at
+                    NewEnergyAcademy)
+                  </li>
+                  <li>Graduation project at Rijkswaterstaat</li>
+                </ul>
+              </div>
+              <div>
+                <h2>
+                  <ng-icon name="faSolidGraduationCap" size="1em"></ng-icon>
+                  Game Development
+                </h2>
+                <p>
+                  Alfa College Groningen
+                  <br />
+                  Graduated: 2017
+                </p>
+                <ul>
+                  <li>Major: Game Developer</li>
+                </ul>
+              </div>
+            </div>
+          }
         </div>
       </div>
+
       <div>
         <a
           class="old-skool-button old-skool-button--primary"
