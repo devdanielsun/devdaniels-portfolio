@@ -7,15 +7,13 @@ import { loadSlim } from '@tsparticles/slim';
 import { NgParticlesService } from '@tsparticles/angular';
 import type { Container } from '@tsparticles/engine';
 import { routes } from './app.routes';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SvgLoaderService } from './services/svg-loader.service';
 import { SafeHtml } from '@angular/platform-browser';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { diLinkedinPlain } from '@ng-icons/devicon/plain';
 import { simpleGithub } from '@ng-icons/simple-icons';
-import { faSolidHeart } from '@ng-icons/font-awesome/solid';
+import { faSolidHeart, faSolidMoon, faSolidSun } from '@ng-icons/font-awesome/solid';
 
 @Component({
   selector: 'app-root',
@@ -23,11 +21,10 @@ import { faSolidHeart } from '@ng-icons/font-awesome/solid';
     CommonModule,
     RouterModule,
     NgxParticlesModule,
-    FontAwesomeModule,
     MatTooltipModule,
     NgIconComponent,
   ],
-  providers: [provideIcons({ diLinkedinPlain, simpleGithub, faSolidHeart })],
+  providers: [provideIcons({ diLinkedinPlain, simpleGithub, faSolidHeart, faSolidMoon, faSolidSun })],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -37,9 +34,6 @@ export class App implements OnInit {
   private readonly svgLoader = inject(SvgLoaderService);
 
   protected logoSvg?: SafeHtml;
-
-  protected readonly faMoon = faMoon;
-  protected readonly faSun = faSun;
 
   protected readonly routes = routes;
   navRoutes = routes

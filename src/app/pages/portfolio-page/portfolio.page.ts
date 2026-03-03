@@ -3,7 +3,6 @@ import { ContainerComponent } from '../../components/container-component/contain
 import { Router, RouterLink } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
   diLinuxPlain,
@@ -21,13 +20,13 @@ import {
 } from '@ng-icons/devicon/plain';
 import { simpleGithub, simpleKubernetes } from '@ng-icons/simple-icons';
 import {
-  faGraduationCap,
-  faAward,
-  faCode,
-  faTimeline,
-  faCloud,
-  faCodeBranch,
-} from '@fortawesome/free-solid-svg-icons';
+  faSolidGraduationCap,
+  faSolidAward,
+  faSolidCode,
+  faSolidTimeline,
+  faSolidCloud,
+  faSolidCodeBranch,
+} from '@ng-icons/font-awesome/solid';
 import { ArticlesListPage } from '../article-list-page/articles-list.page';
 
 @Component({
@@ -35,7 +34,6 @@ import { ArticlesListPage } from '../article-list-page/articles-list.page';
   imports: [
     RouterLink,
     ContainerComponent,
-    FontAwesomeModule,
     MatGridListModule,
     NgIconComponent,
     ArticlesListPage,
@@ -57,6 +55,12 @@ import { ArticlesListPage } from '../article-list-page/articles-list.page';
       diNpmPlain,
       diTerraformPlain,
       simpleKubernetes,
+      faSolidGraduationCap,
+      faSolidAward,
+      faSolidCode,
+      faSolidTimeline,
+      faSolidCloud,
+      faSolidCodeBranch,
     }),
   ],
   templateUrl: './portfolio.page.html',
@@ -64,13 +68,6 @@ import { ArticlesListPage } from '../article-list-page/articles-list.page';
 })
 export class PortfolioPage {
   private router = inject(Router);
-
-  protected readonly faGraduationCap = faGraduationCap;
-  protected readonly faAward = faAward;
-  protected readonly faCode = faCode;
-  protected readonly faTimeline = faTimeline;
-  protected readonly faCloud = faCloud;
-  protected readonly faCodeBranch = faCodeBranch;
 
   protected readonly listOfBrandIcons: BrandIcon[] = [
     // Column 1

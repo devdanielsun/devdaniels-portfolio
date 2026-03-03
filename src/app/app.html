@@ -25,21 +25,21 @@
         </a>
       }
       @if (isDarkMode) {
-        <fa-icon
-          [icon]="faSun"
+        <ng-icon
+          name="faSolidSun"
           (click)="toggleTheme()"
           class="clickable-icon switch-theme"
-          size="2x"
+          size="2em"
           matTooltip="Switch to light mode"
-        ></fa-icon>
+        ></ng-icon>
       } @else {
-        <fa-icon
-          [icon]="faMoon"
+        <ng-icon
+          name="faSolidMoon"
           (click)="toggleTheme()"
           class="clickable-icon switch-theme"
-          size="2x"
+          size="2em"
           matTooltip="Switch to dark mode"
-        ></fa-icon>
+        ></ng-icon>
       }
     </nav>
   </div>
