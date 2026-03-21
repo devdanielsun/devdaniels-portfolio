@@ -7,13 +7,14 @@ import {
   RouterLink,
 } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { MatChipsModule } from '@angular/material/chips';
 import { filter } from 'rxjs/operators';
 import { ContainerComponent } from '../container-component/container.component';
 import { ArticleRouteData } from '../../models/article.model';
 
 @Component({
   selector: 'app-portfolio-article-component',
-  imports: [ContainerComponent, RouterOutlet, RouterLink],
+  imports: [ContainerComponent, RouterOutlet, RouterLink, MatChipsModule],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })

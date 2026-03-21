@@ -27,26 +27,32 @@
       <h1 style="color: red">NOT PUBLISHED YET</h1>
     }
 
-    <p id="article-author">Written by {{ a.author }}</p>
-    <h1 id="article-title">{{ a.title }}</h1>
-    <p id="article-date">
-      Date: {{ a.startDate }} t/m {{ a.endDate || "heden" }}
-    </p>
-    <p id="article-category">Category: {{ a.categories.join(", ") }}</p>
-    <!-- TODO: tags into MUI badges and make clickable (apply filter in '/article') -->
-    @if (a.tags) {
-      <p id="article-tags">Tags: {{ a.tags.join(", ") }}</p>
-    }
+    <h1 class="article-title">{{ a.title }}</h1>
+    <div class="article">
+      <div class="article-metadata">
+        <img
+          [hidden]="!a.featuredImage"
+          [src]="a.featuredImage?.srcPath"
+          [alt]="a.featuredImage?.altText"
+          class="article-image"
+        />
 
-    <img
-      [hidden]="!a.featuredImage"
-      [src]="a.featuredImage?.srcPath"
-      [alt]="a.featuredImage?.altText"
-      class="portfolio-image"
-    />
+        @if (a.tags) {
+          <div class="article-tags">
+            @for (tag of a.tags; track tag) {
+              <mat-chip>{{ tag }}</mat-chip>
+            }
+          </div>
+        }
 
-    <div class="article-content">
-      <router-outlet></router-outlet>
+        <div class="article-details">
+          <p>Actief van {{ a.startDate }} t/m {{ a.endDate || "heden" }}</p>
+          <p>Written by {{ a.author }}</p>
+        </div>
+      </div>
+      <div class="article-content">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   } @else {
     <p>Error loading article</p>
