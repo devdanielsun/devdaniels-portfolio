@@ -24,6 +24,10 @@
     max-width: 200px;
     height: auto;
     border-radius: 5px;
+
+    @include vars.respond-to(mobile) {
+      margin-top: 2em;
+    }
   }
 
   .about-text-section {
@@ -37,6 +41,10 @@
   .about-icons-section {
     align-items: center;
     justify-items: center;
+
+    @include vars.respond-to(mobile) {
+      margin-top: 2em;
+    }
 
     .skill-icons {
       display: flex;
@@ -56,6 +64,10 @@
 
         &:hover {
           color: var(--mat-sys-primary);
+        }
+
+        @include vars.respond-to(mobile) {
+          width: 3em;
         }
       }
     }
