@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { NgxParticlesModule } from '@tsparticles/angular';
@@ -17,6 +17,8 @@ import {
   faSolidHeart,
   faSolidMoon,
   faSolidSun,
+  faSolidBars,
+  faSolidXmark,
 } from '@ng-icons/font-awesome/solid';
 
 @Component({
@@ -35,6 +37,8 @@ import {
       faSolidHeart,
       faSolidMoon,
       faSolidSun,
+      faSolidBars,
+      faSolidXmark,
     }),
   ],
   templateUrl: './app.html',
@@ -55,6 +59,7 @@ export class App implements OnInit {
   protected readonly currentYear = new Date().getFullYear();
 
   isDarkMode = true; // Default to dark theme
+  isMobileMenuOpen = signal(false);
 
   // Set particles options based on the current theme
   private particlesContainer?: Container;
@@ -145,6 +150,16 @@ export class App implements OnInit {
     if (this.particlesContainer) {
       this.particlesContainer.reset(this.particlesOptions);
     }
+  }
+
+  // Toggle mobile menu
+  toggleMobileMenu() {
+    this.isMobileMenuOpen.set(!this.isMobileMenuOpen());
+  }
+
+  // Close mobile menu when a nav link is clicked
+  closeMobileMenu() {
+    this.isMobileMenuOpen.set(false);
   }
 }
 

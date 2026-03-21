@@ -6,7 +6,7 @@
   ></ngx-particles>
   <div class="main-menu">
     <div class="logo-container">
-      <a [routerLink]="['/']">
+      <a [routerLink]="['/']" (click)="closeMobileMenu()">
         <div class="logo-svg" [innerHTML]="logoSvg"></div>
         <div class="site-info">
           <span class="title">DevDaniels</span>
@@ -14,12 +14,29 @@
         </div>
       </a>
     </div>
-    <nav>
+
+    <!-- Hamburger menu button for mobile -->
+    <button class="hamburger-btn" (click)="toggleMobileMenu()" type="button">
+      @if (isMobileMenuOpen()) {
+        <ng-icon name="faSolidXmark" size="1.5em"></ng-icon>
+      } @else {
+        <ng-icon name="faSolidBars" size="1.5em"></ng-icon>
+      }
+    </button>
+
+    <!-- Mobile menu overlay -->
+    @if (isMobileMenuOpen()) {
+      <div class="mobile-menu-overlay" (click)="closeMobileMenu()"></div>
+    }
+
+    <!-- Navigation menu -->
+    <nav [class.mobile-menu-open]="isMobileMenuOpen()">
       @for (route of navRoutes; track route) {
         <a
           [routerLink]="['/' + route.path]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMobileMenu()"
         >
           {{ route.data?.["navTitle"] }}
         </a>
