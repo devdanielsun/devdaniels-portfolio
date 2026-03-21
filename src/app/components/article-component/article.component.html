@@ -1,5 +1,10 @@
 <app-container-component class="portfolio-article-container">
   @if (article(); as a) {
+    @if (!a.published) {
+      <h1 style="color: red">NOT PUBLISHED YET</h1>
+    }
+
+    <h1 class="article-title">{{ a.title }}</h1>
     <p class="breadcrumb">
       <span>
         <a [routerLink]="['/']">Home</a>
@@ -23,11 +28,6 @@
         <span class="active">{{ a.title || "" }}</span>
       </span>
     </p>
-    @if (!a.published) {
-      <h1 style="color: red">NOT PUBLISHED YET</h1>
-    }
-
-    <h1 class="article-title">{{ a.title }}</h1>
     <div class="article">
       <div class="article-metadata">
         <img
@@ -46,8 +46,10 @@
         }
 
         <div class="article-details">
-          <p>Actief van {{ a.startDate }} t/m {{ a.endDate || "heden" }}</p>
-          <p>Written by {{ a.author }}</p>
+          <p>
+            Project periode: {{ a.startDate }} t/m {{ a.endDate || "heden" }}
+          </p>
+          <p>Geschreven door {{ a.author }}</p>
         </div>
       </div>
       <div class="article-content">
