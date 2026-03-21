@@ -41,6 +41,27 @@
           {{ route.data?.["navTitle"] }}
         </a>
       }
+
+      <!-- Social icons - shared between desktop sidebar and mobile menu -->
+      <div class="social-icons">
+        <a
+          href="https://github.com/devdanielsun"
+          target="_blank"
+          matTooltip="Check my GitHub"
+          [matTooltipPosition]="isMobileMenuOpen() ? 'left' : 'right'"
+        >
+          <ng-icon name="simpleGithub" size="2em"></ng-icon>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/danielgeerts/"
+          target="_blank"
+          matTooltip="Connect with me on LinkedIn"
+          [matTooltipPosition]="isMobileMenuOpen() ? 'left' : 'right'"
+        >
+          <ng-icon name="diLinkedinPlain" size="2em"></ng-icon>
+        </a>
+      </div>
+
       @if (isDarkMode) {
         <ng-icon
           name="faSolidSun"
@@ -76,23 +97,5 @@
         GitHub
       </a>
     </span>
-  </div>
-  <div class="sidebar">
-    <a
-      href="https://github.com/devdanielsun"
-      target="_blank"
-      matTooltip="Check my GitHub"
-      matTooltipPosition="right"
-    >
-      <ng-icon name="simpleGithub" size="2em"></ng-icon>
-    </a>
-    <a
-      href="https://www.linkedin.com/in/danielgeerts/"
-      target="_blank"
-      matTooltip="Connect with me on LinkedIn"
-      matTooltipPosition="right"
-    >
-      <ng-icon name="diLinkedinPlain" size="2em"></ng-icon>
-    </a>
   </div>
 </main>

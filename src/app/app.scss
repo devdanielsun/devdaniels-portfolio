@@ -126,6 +126,36 @@ main {
       }
     }
 
+    .social-icons {
+      // Desktop: positioned as fixed sidebar on center-left
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      z-index: 999;
+
+      a {
+        padding: 0.5rem;
+        transition: color 0.3s ease;
+        font-size: 1em;
+
+        &:hover {
+          color: var(--mat-sys-primary);
+        }
+
+        ng-icon {
+          width: 2em;
+          height: 2em;
+        }
+      }
+    }
+
     .switch-theme {
       transition: transform 1s ease-in-out 0s;
     }
@@ -159,9 +189,24 @@ main {
       }
 
       a {
-        font-size: 1.4em;
-        padding: 1rem 0;
+        padding: 0.5rem 0;
         text-align: left;
+      }
+
+      .social-icons {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        flex-direction: row;
+        gap: 1.5rem;
+        justify-content: center;
+        width: 100%;
+        padding: 1rem 0;
+        margin: 1rem 0;
+        border-top: 1px solid var(--mat-sys-outline-variant);
+        border-bottom: 1px solid var(--mat-sys-outline-variant);
+        z-index: auto;
       }
 
       ng-icon {
@@ -194,34 +239,4 @@ ngx-particles {
   justify-content: center;
   align-items: center;
   padding: 1rem;
-}
-
-.sidebar {
-  position: fixed;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  z-index: 1000;
-
-  ng-icon {
-    width: 2em;
-    height: auto;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: var(--mat-sys-primary);
-    }
-  }
-}
-
-@include vars.respond-to(mobile) {
-  .sidebar {
-    display: none;
-  }
 }
