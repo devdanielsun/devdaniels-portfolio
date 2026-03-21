@@ -12,10 +12,11 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   align-items: center;
   justify-items: center;
-  padding: 3em 0em;
+  padding-top: 3em;
+  padding-bottom: 0em;
 
   .inner-section {
-    padding: 1em;
+    padding: 0em 1em;
   }
 
   img {
@@ -62,7 +63,7 @@
 }
 
 .experience-tabs {
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 
   &__header {
     display: flex;
@@ -183,7 +184,7 @@
 
   .about-section,
   .projects-section {
-    padding: 1em;
+    padding-bottom: 1em;
   }
 }
 

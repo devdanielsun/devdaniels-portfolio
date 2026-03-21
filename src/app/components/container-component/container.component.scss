@@ -4,7 +4,7 @@
   min-height: 0;
   display: flex;
   margin: 0 auto;
-  width: 90%;
+  width: 85%;
   align-items: center;
   justify-content: center;
   background-color: var(--mat-sys-primary-container);
@@ -12,15 +12,15 @@
 
   .content {
     max-width: var(--content-max-width);
-    padding: 2em 0em;
     text-align: center;
     margin: 0 auto;
     width: 100%;
     border-radius: 4px;
+    //padding: 2em 0em;
+    padding-bottom: 2em;
 
     .title {
       font-size: 2.5em;
-      margin-bottom: 1.5em;
       text-align: center;
     }
   }

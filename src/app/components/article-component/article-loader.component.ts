@@ -11,6 +11,7 @@ import { ResolvedArticle } from '../../models/article.model';
   standalone: true,
   imports: [CommonModule],
   template: `<div class="markdown-content" [innerHTML]="sanitizedHtml"></div>`,
+  styleUrls: ['./article-loader.component.scss'],
 })
 export class ArticleLoaderComponent implements OnInit {
   private route = inject(ActivatedRoute);

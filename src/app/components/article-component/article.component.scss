@@ -4,10 +4,7 @@ h1 {
   font-size: 28pt;
 }
 
-.article {
-  display: flex;
-  flex-direction: row;
-  gap: 2em;
+.article-parent {
   padding: 0em 1em;
 
   .breadcrumb {
@@ -17,77 +14,84 @@ h1 {
 
     .active {
       font-weight: bold;
-      text-decoration: underline;
     }
   }
 
-  .article-metadata {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    max-width: 50%;
-
-    .article-title {
-      justify-self: center;
-      padding: 0;
-      margin: 0;
-    }
-
-    .article-image {
-      max-width: 300px;
-      width: 100%;
-      height: auto;
-      text-align: center;
-      align-self: center;
-    }
-
-    .article-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5em;
-
-      mat-chip {
-        background-color: var(--mat-sys-primary-container);
-        color: var(--mat-sys-on-primary-container);
-      }
-    }
-
-    .article-details {
-      p {
-        padding: 0;
-        margin: 0;
-        text-align: left;
-      }
-    }
-  }
-
-  .article-content {
-    max-width: 50%;
-    text-align: left;
-    margin: 0 auto;
-  }
-}
-
-@include vars.respond-to(mobile) {
   .article {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
 
     .article-metadata {
-      text-align: center;
-      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      max-width: 50%;
 
-      .breadcrumb {
-        justify-content: center;
+      .article-title {
+        justify-self: center;
+        padding: 0;
+        margin: 0;
       }
 
       .article-image {
-        max-width: none;
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        align-self: center;
+      }
+
+      .article-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+
+        mat-chip {
+          background-color: var(--mat-sys-primary-container);
+          color: var(--mat-sys-on-primary-container);
+        }
+      }
+
+      .article-details {
+        p {
+          padding: 0;
+          margin: 0;
+          text-align: left;
+        }
       }
     }
 
     .article-content {
-      max-width: 100%;
+      max-width: 50%;
+      text-align: left;
+      margin: 0 auto;
+    }
+  }
+}
+
+@include vars.respond-to(mobile) {
+  .article-parent {
+    .article {
+      flex-direction: column;
+      align-items: center;
+
+      .article-metadata {
+        text-align: center;
+        max-width: 100%;
+
+        .breadcrumb {
+          justify-content: center;
+        }
+
+        .article-image {
+          max-width: none;
+        }
+      }
+
+      .article-content {
+        max-width: 100%;
+      }
     }
   }
 }
