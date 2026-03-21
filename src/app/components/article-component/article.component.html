@@ -35,9 +35,9 @@
         </p>
 
         <img
-          [hidden]="!a.featuredImage"
           [src]="a.featuredImage?.srcPath"
           [alt]="a.featuredImage?.altText"
+          (error)="$event.target.src = '/assets/images/placeholder.jpeg'"
           class="article-image"
         />
 
