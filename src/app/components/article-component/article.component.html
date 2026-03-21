@@ -5,31 +5,35 @@
     }
 
     <h1 class="article-title">{{ a.title }}</h1>
-    <p class="breadcrumb">
-      <span>
-        <a [routerLink]="['/']">Home</a>
-      </span>
-      <span>
-        &gt;
-        <a [routerLink]="['/articles']">Articles</a>
-      </span>
-      <span>
-        &gt;
-        @for (cat of a.categories; track cat; let last = $last) {
-          <a [routerLink]="['/articles/category/' + cat]">{{ cat || "" }}</a>
 
-          @if (!last) {
-            {{ ", " }}
-          }
-        }
-      </span>
-      <span>
-        &gt;
-        <span class="active">{{ a.title || "" }}</span>
-      </span>
-    </p>
     <div class="article">
       <div class="article-metadata">
+        <p class="breadcrumb">
+          <span>
+            <a [routerLink]="['/']">Home</a>
+          </span>
+          <span>
+            &gt;
+            <a [routerLink]="['/articles']">Articles</a>
+          </span>
+          <span>
+            &gt;
+            @for (cat of a.categories; track cat; let last = $last) {
+              <a [routerLink]="['/articles/category/' + cat]">{{
+                cat || ""
+              }}</a>
+
+              @if (!last) {
+                {{ ", " }}
+              }
+            }
+          </span>
+          <span>
+            &gt;
+            <span class="active">{{ a.title || "" }}</span>
+          </span>
+        </p>
+
         <img
           [hidden]="!a.featuredImage"
           [src]="a.featuredImage?.srcPath"
