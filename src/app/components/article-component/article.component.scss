@@ -1,5 +1,9 @@
 @use "../../../variables" as vars;
 
+h1 {
+  font-size: 28pt;
+}
+
 .article {
   display: flex;
   flex-direction: row;
@@ -9,6 +13,7 @@
   .breadcrumb {
     color: var(--mat-sys-on-surface);
     padding: 0;
+    text-align: left;
 
     .active {
       font-weight: bold;
