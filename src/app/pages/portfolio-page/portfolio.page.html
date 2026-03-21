@@ -69,8 +69,8 @@
                     <ng-icon [name]="section.icon" size="1em"></ng-icon>
                     {{ section.title }}
                   </h2>
-                  @if (section.institution) {
-                    <p>{{ section.institution }} | {{ section.year }}</p>
+                  @if (section.subtitle) {
+                    <p>{{ section.subtitle }}</p>
                   }
                   <ul>
                     @for (tag of section.tags; track tag) {

@@ -32,8 +32,7 @@ import { ArticlesListPage } from '../article-list-page/articles-list.page';
 interface ExperienceSection {
   icon: string;
   title: string;
-  institution?: string;
-  year?: number;
+  subtitle?: string;
   tags: string[];
 }
 
@@ -94,48 +93,34 @@ export class PortfolioPage {
       sections: [
         {
           icon: 'faSolidCodeBranch',
-          title: 'DevOps & Software Engineering',
+          title: 'Engineering',
           tags: [
-            'Software Architecture',
             'Software Development',
-            'Infrastructure - Deployment / Orchestration',
-            'Cloud (Azure, AWS, IBM, Google)',
-            'DevOps Practices',
-            'CI/CD',
-            'Azure DevOps, GitHub Actions, Jenkins',
-            'Bicep, Terraform, CloudFormation',
-            'Git, GitHub, Azure Repos',
-            'Azure Monitor, Grafana',
+            'Cloud (Azure, AWS, Cloudflare)',
+            'Terraform, Bicep',
             'Docker, Kubernetes',
+            'DNS Management, SSL/TLS',
+            'CI/CD (Azure DevOps, GitHub Actions)',
           ],
         },
         {
           icon: 'faSolidCloud',
           title: 'Backend',
           tags: [
-            'C#/.NET',
-            'Node.js',
-            'Python',
-            'Azure (App Services, Functions, DevOps, etc.)',
-            'AWS (Lambda, S3, CloudFormation, etc.)',
+            'C# .net',
             'RESTful API Development',
-            'Cloudflare, DNS Management, SSL/TLS',
-            'Docker, Kubernetes, Terraform, Bicep',
-            'SQL, NoSQL & PL/SQL',
+            'Azure services',
+            'AWS services',
+            'SQL / NoSQL',
           ],
         },
         {
           icon: 'faSolidCode',
           title: 'Frontend',
           tags: [
-            'Angular',
-            'React',
-            'HTML, CSS, SCSS',
-            'PHP',
-            'TypeScript, JavaScript, jQuery',
+            'Typescript (Angular, React)',
+            'HTML, PHP, CSS, SCSS',
             'Responsive Web Design',
-            'UX/UI Principles',
-            'Cross-Browser Compatibility',
           ],
         },
       ],
@@ -173,11 +158,10 @@ export class PortfolioPage {
       sections: [
         {
           icon: 'faSolidGraduationCap',
-          title: 'Bachelor of Applied Sciences | HBO-ICT',
-          institution: 'Hanzehogeschool Groningen',
-          year: 2021,
+          title: 'Bachelor of Applied Sciences',
+          subtitle: 'Hanzehogeschool Groningen | HBO-ICT | 2017-2021',
           tags: [
-            'Software Engineering',
+            'Major: Software Engineering',
             'Minor: Smart Energy',
             'Energy Academy Certificate',
             'Graduation project at Rijkswaterstaat',
@@ -186,8 +170,7 @@ export class PortfolioPage {
         {
           icon: 'faSolidGraduationCap',
           title: 'Game Development',
-          institution: 'Alfa College Groningen',
-          year: 2017,
+          subtitle: 'Alfa College Groningen | 2014-2017',
           tags: ['Game Developer'],
         },
       ],
