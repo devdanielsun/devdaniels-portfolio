@@ -49,12 +49,6 @@ Het laden van een artikel werkt als volgt:
 
 Om een nieuw artikel toe te voegen hoef ik alleen een Markdown-bestand aan te maken en de slug te registreren in een simpele array. Geen database, geen CMS, gewoon bestanden in de repository. Dat houdt het lekker simpel.
 
-## Theming: dark mode en light mode
-
-De website ondersteunt zowel een **dark** als een **light** thema, gebouwd bovenop Angular Material 3. Het donkere thema gebruikt het `cyan`-palet en het lichte thema het `azure`-palet. De voorkeur van de gebruiker wordt opgeslagen in `localStorage`, zodat je bij een volgend bezoek niet opnieuw hoeft te schakelen.
-
-Alle kleuren worden aangestuurd via SCSS-variabelen (`--mat-sys-*`), wat het makkelijk maakt om consistent kleuren te gebruiken door de hele applicatie heen.
-
 ## CI/CD met GitHub Actions
 
 Met alleen code schrijven ben je er niet. Ik wilde dat alles rondom testen, linting en deployment volledig geautomatiseerd zou zijn. Daar komen **GitHub Actions** om de hoek kijken.
