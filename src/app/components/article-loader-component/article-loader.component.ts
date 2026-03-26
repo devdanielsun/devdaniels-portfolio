@@ -51,6 +51,11 @@ export class ArticleLoaderComponent implements OnInit {
         publishedTime: a.startDate,
         tags: a.tags,
       },
+      breadcrumbs: [
+        { name: 'Home', url: '/' },
+        { name: 'Articles', url: '/articles' },
+        { name: a.title, url: `/articles/${a.slug}` },
+      ],
     });
     const rawHtml = marked.parse(resolved.markdownContent) as string;
     if (isPlatformBrowser(this.platformId)) {

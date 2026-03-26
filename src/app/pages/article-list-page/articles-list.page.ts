@@ -57,6 +57,13 @@ export class ArticlesListPage implements OnInit, OnDestroy {
   private subscribeToRouteParams(): void {
     this.routeSub = this.route.paramMap.subscribe((paramMap) => {
       this.currentCategory = paramMap.get('category') || undefined;
+      if (this.currentCategory && !this.onlyShowArticles) {
+        this.seo.update({
+          title: `${this.currentCategory} Articles`,
+          description: `Articles about ${this.currentCategory} by Daniël Geerts (DevDaniels).`,
+          url: `/articles/category/${this.currentCategory}`,
+        });
+      }
       this.loadArticles();
     });
   }
