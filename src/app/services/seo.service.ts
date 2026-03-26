@@ -124,11 +124,13 @@ export class SeoService {
         author: {
           '@type': 'Person',
           name: page.article?.author || 'Daniël Geerts',
+          alternateName: 'Daniel Geerts',
           url: BASE_URL,
         },
         publisher: {
           '@type': 'Person',
           name: 'Daniël Geerts',
+          alternateName: 'Daniel Geerts',
           url: BASE_URL,
         },
         ...(page.article?.publishedTime && {
@@ -149,11 +151,12 @@ export class SeoService {
         author: {
           '@type': 'Person',
           name: 'Daniël Geerts',
+          alternateName: 'Daniel Geerts',
           jobTitle: 'Software/DevOps Engineer',
           url: BASE_URL,
           sameAs: [
-            'https://github.com/DevDanielsun',
-            'https://linkedin.com/in/danielgeerts',
+            'https://github.com/devdanielsun',
+            'https://www.linkedin.com/in/danielgeerts/',
           ],
         },
       });
