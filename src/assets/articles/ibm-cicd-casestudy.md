@@ -5,7 +5,7 @@ author: Daniël Geerts
 title: IBM CICD Casestudy
 startDate: "2021"
 endDate: "2021"
-shortDescription: "IBM Associate. Twee weekse casestudy naar CI/CD en IBM Cloud services."
+shortDescription: "IBM Associate. A two-week case study on CI/CD and IBM Cloud services."
 categories:
   - Project
   - Casestudy
@@ -19,8 +19,7 @@ tags:
   - Terraform
   - IBM Cloud
   - CI/CD
-  - Azure
   - Github Workflow
 ---
 
-Beschrijving twee week durende CI/CD casestudy als IBM associate. Terraform, IBM Cloud, as example deploy a Node.JS app.
+A two-week CI/CD case study as an IBM associate. Terraform, IBM Cloud, with an example deployment of a Node.js app.

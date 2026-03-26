@@ -4,7 +4,7 @@ slug: devdaniels-website
 author: Daniël Geerts
 title: DevDaniels Website
 startDate: "2025"
-shortDescription: "Een portfolio website gebouwd met Angular, gehost op Azure Static Web Apps en volledig geautomatiseerd met GitHub Actions."
+shortDescription: "A portfolio website built with Angular, hosted on Azure Static Web Apps and fully automated with GitHub Actions."
 categories:
   - Project
   - Web Development
@@ -24,78 +24,78 @@ tags:
   - Markdown to HTML
 ---
 
-## Waarom een eigen portfolio?
+## Why a personal portfolio?
 
-Als software engineer had ik al langer het idee om een eigen plek op het internet te hebben. Niet zomaar een standaard template, maar iets dat ik zelf gebouwd heb en waar ik trots op kan zijn. Een website waar ik projecten kan laten zien, artikelen kan schrijven en waar de techniek achter de schermen net zo interessant is als wat je als bezoeker ziet. Dus ben ik ermee aan de slag gegaan.
+As a software engineer, I had been wanting to have my own place on the internet for a while. Not just a standard template, but something I built myself and can be proud of. A website where I can showcase projects, visualize my art, write articles, and where the technology behind the scenes is just as interesting as what you see as a visitor. So I got to work.
 
-## De keuze voor Angular en TypeScript
+## Choosing Angular and TypeScript
 
-Voor het framework viel de keuze op **Angular**. Niet per se omdat het het hippe framework van het moment is, maar omdat ik er bijna dagelijks mee werk en het goed ken. Angular biedt een stevige structuur voor grotere projecten, en met de nieuwere versies (op moment van schrijven draait deze site op Angular 20) is het framework een stuk frisser geworden. Standalone components, signals en de `inject()` functie in plaats van constructor injection maken de code een stuk schoner.
+For the framework I went with **Angular**. Not because it's the trendiest framework of the moment, but because I work with it almost regularly and know it well. Angular provides a solid structure for larger projects, and with the newer versions (at the time of writing this site runs on Angular 20) the framework has become a lot more modern. Standalone components, signals, and the `inject()` function instead of constructor injection make the code much cleaner.
 
-**TypeScript** was daarbij een vanzelfsprekende keuze. Sterke typering helpt enorm bij het voorkomen van bugs, zeker als een project groeit. Het geeft vertrouwen dat wat je schrijft ook daadwerkelijk klopt, en je IDE doet een groot deel van het denkwerk voor je.
+**TypeScript** was a natural choice alongside it. Strong typing helps enormously in preventing bugs, especially as a project grows. It gives confidence that what you write actually works correctly, and your IDE does a large part of the thinking for you.
 
-De hele applicatie is opgebouwd uit standalone components. Dat betekent dat elk component zelfstandig is en expliciet aangeeft welke dependencies het nodig heeft. Geen losse `NgModules` meer die overal doorheen geweven zitten. Dat maakt het makkelijker om te begrijpen wat elk onderdeel doet.
+The entire application is built from standalone components. This means each component is self-contained and explicitly declares which dependencies it needs. No more loose `NgModules` woven throughout the codebase. That makes it easier to understand what each part does.
 
-## Het artikelsysteem
+## The article system
 
-Een van de leukste onderdelen om te bouwen was het artikelsysteem. De artikelen (waaronder dit artikel) zijn gewoon **Markdown-bestanden** met YAML-frontmatter bovenaan. Daarin staan metadata zoals de titel, auteur, datum, tags en een afbeelding.
+One of the most enjoyable parts to build was the article system. The articles (including this one) are simply **Markdown files** with YAML frontmatter at the top. This contains metadata such as the title, author, date, tags, and a featured image.
 
-Het laden van een artikel werkt als volgt:
+Loading an article MD file works as follows:
 
-1. De slug uit de URL wordt opgepikt door de Angular router.
-2. Een **resolver** haalt het bijbehorende `.md`-bestand op via een HTTP-call.
-3. De frontmatter wordt geparsed met `js-yaml` en de Markdown-content wordt omgezet naar HTML met `marked`.
-4. De HTML wordt gesanitized met `DOMPurify` om XSS-aanvallen te voorkomen, en vervolgens gerenderd in de pagina.
+1. The slug from the URL is picked up by the Angular router.
+2. A **resolver** fetches the corresponding `.md` file via an HTTP call.
+3. The frontmatter is parsed with `js-yaml` and the Markdown content is converted to HTML with `marked`.
+4. The HTML is sanitized with `DOMPurify` to prevent XSS attacks, and then rendered on the page.
 
-Om een nieuw artikel toe te voegen hoef ik alleen een Markdown-bestand aan te maken en de slug te registreren in een simpele array. Geen database, geen CMS, gewoon bestanden in de repository. Dat houdt het lekker simpel.
+To add a new article, all I need to do is create a Markdown file and register the slug in a simple array. No database, no CMS, just files in the repository. That keeps things nice and simple.
 
-## CI/CD met GitHub Actions
+## CI/CD with GitHub Actions
 
-Met alleen code schrijven ben je er niet. Ik wilde dat alles rondom testen, linting en deployment volledig geautomatiseerd zou zijn. Daar komen **GitHub Actions** om de hoek kijken.
+Writing code alone isn't enough. I wanted everything around testing, linting, and deployment to be fully automated. That's where **GitHub Actions** come in.
 
-Er zijn twee workflows ingericht:
+Two workflows are set up:
 
-### 1. Run Tests (bij pull requests)
+### 1. Run Tests (on pull requests)
 
-Bij elke pull request naar de `development`-branch worden automatisch de volgende stappen uitgevoerd:
+With every pull request to the `development` branch, the following steps are automatically executed:
 
-- Dependencies installeren
-- ESLint draaien om codekwaliteit te checken
-- Unit tests uitvoeren met Karma en Jasmine in een headless Chrome-omgeving
+- Install dependencies
+- Run ESLint to check code quality
+- Run unit tests with Karma and Jasmine in a headless Chrome environment
 
-Dit zorgt ervoor dat er geen kapotte code de development-branch in kan komen zonder dat het omvalt.
+This ensures that no broken code can make it into the development branch without being caught.
 
-### 2. Build and Deploy (bij push naar main)
+### 2. Build and Deploy (on push to main)
 
-Zodra code op de `main`-branch terechtkomt, wordt de volledige pipeline doorlopen:
+Once code lands on the `main` branch, the full pipeline runs:
 
-- Linting en tests draaien opnieuw als extra vangnet
-- De Angular-applicatie wordt geproduceerd gebouwd
-- Het resultaat wordt automatisch gedeployd naar **Azure Static Web Apps**
+- Linting and tests run again as an extra safety net
+- The Angular application is built for production
+- The result is automatically deployed to **Azure Static Web Apps**
 
-Alles draait op `ubuntu-latest` runners en het hele proces kost geen cent.
+Everything runs on `ubuntu-latest` runners and the entire process is completely free.
 
-### Lokale kwaliteitscontrole
+### Local quality control
 
-Naast de CI/CD-pipeline is er ook lokaal een vangnet ingericht met **Husky** en **lint-staged**. Bij elke commit worden automatisch Prettier (voor formatting) en ESLint (voor codekwaliteit) gedraaid over de gewijzigde bestanden. Zo kom je er al voor de push achter als er iets niet klopt.
+In addition to the CI/CD pipeline, there's also a local safety net set up with **Husky** and **lint-staged**. With every commit, Prettier (for formatting) and ESLint (for code quality) are automatically run on the changed files. This way you catch issues before even pushing.
 
 ## Hosting: Azure Static Web Apps
 
-Een van mijn eisen was dat de hosting **gratis** moest zijn. Het is tenslotte een persoonlijk project en ik wilde er niet maandelijks voor betalen, zoals een echte gierige Nederlander. **Azure Static Web Apps** biedt een gratis tier die perfect is voor dit soort projecten. Je krijgt:
+One of my requirements was that hosting had to be **free**. After all, it's a personal project. **Azure Static Web Apps** offers a free tier that's perfect for this kind of project. You get:
 
-- Gratis hosting voor statische content
-- Automatische SSL-certificaten
-- Globale distributie via een CDN
-- Naadloze integratie met GitHub Actions
+- Free hosting for static content
+- Automatic SSL certificates
+- Global distribution via a CDN
+- Seamless integration with GitHub Actions
 
-De configuratie is minimaal. Een klein `staticwebapp.config.json`-bestand regelt de SPA-routing door alle verzoeken naar `index.html` door te sturen, met uitzonderingen voor statische bestanden zoals afbeeldingen.
+The configuration is minimal. A small `staticwebapp.config.json` file handles the SPA routing by forwarding all requests to `index.html`, with exceptions for static assets like images.
 
-Voor de DNS en extra caching heb ik **Cloudflare** ervoor gezet. Dat geeft een extra laag bescherming en snelheid, ook weer zonder kosten.
+For DNS and additional caching, I put **Cloudflare** in front of it. That adds an extra layer of protection and speed, again at no cost.
 
-## Wat ik ervan geleerd heb
+## What I learned from it
 
-Dit project was een goede manier om bekend te raken met de nieuwere features van Angular, zoals signals en standalone components. Daarnaast was het opzetten van een volledige CI/CD-pipeline met GitHub Actions en Azure Static Web Apps leerzaam. Het is fijn om te zien dat je met gratis tooling een professionele workflow kunt neerzetten.
+This project was a great way to get familiar with the newer features of Angular, such as signals and standalone components. Additionally, setting up a complete CI/CD pipeline with GitHub Actions and Azure Static Web Apps was a valuable learning experience. It's nice to see that you can set up a professional workflow with free tooling.
 
-Het artikelsysteem met Markdown en frontmatter is daarnaast een patroon dat ik in toekomstige projecten zeker vaker ga toepassen. Het is simpel, flexibel, en de content staat gewoon in versiebeheer.
+The article system with Markdown and frontmatter is a pattern I'll definitely apply more often in future projects. It's simple, flexible, and the content lives right in version control.
 
-Mocht je benieuwd zijn naar de broncode, die is te vinden op [GitHub](https://github.com/devdanielsun/devdaniels-portfolio)
+If you're curious about the source code, it can be found on [GitHub](https://github.com/devdanielsun/devdaniels-portfolio)

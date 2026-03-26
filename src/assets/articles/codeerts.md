@@ -5,7 +5,7 @@ author: Daniël Geerts
 title: Codeerts
 startDate: "2019"
 endDate: "2021"
-shortDescription: "Tijdens mijn studententijd ben ik als freelance developer actief geweest onder de naam Codeerts, van 2019 tot 2021. Mijn verantwoordelijkheden omvatten het ontwikkelen en onderhouden van websites en webshops voor verschillende klanten."
+shortDescription: "During my time as a student, I worked as a freelance developer under the name Codeerts, from 2019 to 2021. My responsibilities included developing and maintaining websites and webshops for various clients."
 categories:
   - Freelance
   - Web Development
@@ -13,8 +13,7 @@ featuredImage:
   altText: Codeerts Logo
   srcPath: assets/images/project/codeerts/codeerts-logo.png
 tags:
-  - Onderneming
-  - ZZP
+  - Freelance
   - Wordpress
   - Custom Plugins
   - UX/UI design
@@ -23,23 +22,23 @@ tags:
   - JQuery
 ---
 
-## Hoe het begon
+## How it started
 
-Tijdens mijn studie zocht ik een manier om naast mijn opleiding praktijkervaring op te doen. Ik merkte dat er in mijn omgeving best wat kleine ondernemers waren die wel een website wilden, maar daar niet het budget voor hadden om een groot bureau in te schakelen. Dat leek mij een mooie kans, dus in 2019 begon ik als freelance developer onder de naam **Codeerts**.
+During my studies, I was looking for a way to gain practical experience alongside my education. I noticed that there were quite a few small business owners in my area/network who wanted a website but didn't have the budget to hire a large agency. That seemed like a great opportunity, so in 2019 I started working as a freelance developer under the name **Codeerts**.
 
-Het idee was simpel: betaalbare websites en webshops bouwen voor kleine bedrijven. Geen enorme enterprise-projecten, maar praktische oplossingen die goed werkten en er netjes uitzagen. Van 2019 tot 2021 heb ik zo voor verschillende klanten gewerkt.
+The idea was simple: building affordable websites and webshops for small businesses. No massive enterprise projects, but practical solutions that worked well and looked professional. From 2019 to 2021, I worked for various clients this way.
 
-## De techniek
+## The tech
 
-Het overgrote deel van mijn werk draaide om **WordPress**. Niet omdat ik daar per se fan van was, maar omdat het voor deze doelgroep gewoon de beste keuze was. Klanten konden na oplevering zelf content beheren zonder dat ze mij nodig hadden voor elke kleine wijziging. Dat was voor hen belangrijk, en voor mij maakte het de projecten beheersbaar.
+The vast majority of my work revolved around **WordPress**. Not because I was necessarily a fan of it, but because it was simply the best choice for this target audience. After delivery, clients could manage their own content without needing me for every small change. That was important to them, and for me it kept the projects manageable.
 
-Waar standaard themes en plugins niet voldeden, schreef ik **custom WordPress plugins** in **PHP**. Denk aan specifieke formulieren, koppelingen met externe systemen of functionaliteit die gewoon niet bestond als kant-en-klare plugin. Dat was eigenlijk het leukste onderdeel, want daar kwam echt programmeren bij kijken.
+Where standard themes and plugins fell short, I wrote **custom WordPress themes and plugins** in **PHP**. Including but not limited to specific forms, integrations with external systems, and functionality that simply didn't exist as an off-the-shelf plugin. That was actually the most enjoyable part, because that's where real programming came into play.
 
-Aan de frontend-kant gebruikte ik **JavaScript** en **jQuery** voor interactieve elementen. Niet het modernste framework, maar voor WordPress-projecten van deze schaal was het meer dan voldoende. Het ging erom dat het werkte, snel laadde en op elk apparaat goed te gebruiken was.
+On the frontend side, I used **JavaScript** and **jQuery** for interactive elements. Not the most modern framework, but for WordPress projects of this scale it was more than sufficient. The goal was for it to work, load fast, and be usable on every device.
 
-## De klanten
+## The clients
 
-In die twee jaar heb ik voor een mix van klanten gewerkt, van horeca tot koeriersdiensten en van mode tot tweedehandswinkels. Enkele van de websites die ik gebouwd of geupdate heb:
+Over those two years, I worked for a mix of clients, from hospitality to courier services and from fashion to second-hand shops. Some of the websites I built or updated:
 
 - [El Suvon](https://elsuvon.nl)
 - [Melisse Su Wei Spijkers](https://melissesuweispijkers.nl)
@@ -50,12 +49,12 @@ In die twee jaar heb ik voor een mix van klanten gewerkt, van horeca tot koerier
 - [Fleurons & Prins](https://fleuronsprins.nl)
 - [Yara Jager](https://yarajager.nl/)
 
-Elk project was anders. Bij de een draaide het vooral om een strakke presentatie, bij de ander om een werkende webshop met betalingen en voorraadbeheer. Die diversiteit dwong me om snel te schakelen en me steeds in een nieuwe branche te verdiepen.
+Every project was different. For some it was mainly about a clean presentation, for others it was about a functioning webshop with payments and inventory management. That diversity forced me to adapt quickly and immerse myself in a new industry each time.
 
-## Wat het mij gebracht heeft
+## What it taught me
 
-Codeerts was veel meer dan alleen websites bouwen. Het was mijn eerste echte ervaring met klantcontact, het inschatten van werk, het stellen van deadlines en het opleveren van een product waar iemand anders mee verder moest. Dat zijn vaardigheden die je op school niet leert, maar die wel het verschil maken als je professioneel aan de slag gaat.
+Codeerts was much more than just building websites. It was my first real experience with client communication, estimating work, setting deadlines, and delivering a product that someone else had to continue working with. These are skills you don't learn in school, but they make all the difference when you start working professionally.
 
-Technisch gezien heb ik er een stevige basis in PHP, WordPress en frontend-development aan overgehouden. Maar minstens zo waardevol was de les dat techniek maar de helft van het verhaal is. Communicatie, verwachtingen managen en een project van begin tot eind begeleiden, daar draait het uiteindelijk om.
+From a technical standpoint, I gained a solid foundation in PHP, WordPress, and frontend development. But equally valuable was the lesson that technology is only half the story. Communication, managing expectations, and guiding a project from start to finish — that's what it ultimately comes down to.
 
-In 2021 heb ik Codeerts afgesloten om me te richten op mijn verdere carriere, maar het was een periode waar ik met veel plezier op terugkijk.
+In 2021 I wrapped up Codeerts to focus on the next steps in my career, but it was a period I look back on fondly.

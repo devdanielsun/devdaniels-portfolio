@@ -4,7 +4,7 @@ slug: deveganeetclub-website
 author: Daniël Geerts
 title: Deveganeetclub
 startDate: "2026"
-shortDescription: "Een vegan recepten website. Lees meer over hoe dit is opgezet. Frontend: Hugo. Backend: Decap CMS. Check de Github repo en het architectuur plaatje."
+shortDescription: "A vegan recipe website. Frontend: Hugo. Backend: Decap CMS. Check the GitHub repo and the architecture diagram."
 categories:
   - Project
   - Web Development
@@ -23,4 +23,4 @@ tags:
   - Github Workflow
 ---
 
-Dit is een vegan recepten website project.
+This is a vegan recipe website project.
