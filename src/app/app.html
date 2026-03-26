@@ -1,9 +1,11 @@
 <main>
-  <ngx-particles
-    [id]="id"
-    [options]="particlesOptions"
-    (particlesLoaded)="particlesLoaded($event)"
-  ></ngx-particles>
+  @defer (when isBrowser) {
+    <ngx-particles
+      [id]="id"
+      [options]="particlesOptions"
+      (particlesLoaded)="particlesLoaded($event)"
+    ></ngx-particles>
+  }
   <div class="main-menu">
     <div class="logo-container">
       <a [routerLink]="['/']" (click)="closeMobileMenu()">

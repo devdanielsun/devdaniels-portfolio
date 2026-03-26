@@ -50,7 +50,10 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:site_name', content: SITE_NAME });
 
     // Twitter Card
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+    this.meta.updateTag({
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    });
     this.meta.updateTag({ name: 'twitter:title', content: fullTitle });
     this.meta.updateTag({
       name: 'twitter:description',

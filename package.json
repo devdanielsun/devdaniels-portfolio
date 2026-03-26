@@ -9,7 +9,8 @@
     "test": "ng test --watch=false --browsers=ChromeHeadless",
     "prepare": "husky && husky install",
     "format": "prettier --write \"src/**/*.{ts,html,scss}\"",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "serve:ssr:devdaniels-portfolio": "node dist/devdaniels-portfolio/server/server.mjs"
   },
   "lint-staged": {
     "src/**/*.{ts,html,scss}": [
@@ -32,14 +33,16 @@
     "node": ">=22.12"
   },
   "dependencies": {
-    "@angular/cdk": "^20.1.3",
-    "@angular/common": "^20.1.0",
-    "@angular/compiler": "^20.1.0",
-    "@angular/core": "^20.1.0",
-    "@angular/forms": "^20.3.16",
-    "@angular/material": "^20.2.14",
-    "@angular/platform-browser": "^20.1.0",
-    "@angular/router": "^20.3.16",
+    "@angular/cdk": "^21.2.4",
+    "@angular/common": "^21.2.6",
+    "@angular/compiler": "^21.2.6",
+    "@angular/core": "^21.2.6",
+    "@angular/forms": "^21.2.6",
+    "@angular/material": "^21.2.4",
+    "@angular/platform-browser": "^21.2.6",
+    "@angular/platform-server": "^21.2.6",
+    "@angular/router": "^21.2.6",
+    "@angular/ssr": "^21.2.4",
     "@ng-icons/core": "^32.5.0",
     "@ng-icons/devicon": "^32.5.0",
     "@ng-icons/font-awesome": "^32.5.0",
@@ -48,20 +51,23 @@
     "@tsparticles/engine": "^3.9.0",
     "@tsparticles/preset-links": "^3.2.0",
     "@tsparticles/slim": "^3.9.1",
-    "dompurify": "^3.3.1",
+    "dompurify": "^3.3.3",
     "js-yaml": "^4.1.1",
     "marked": "^17.0.3",
     "rxjs": "~7.8.0",
+    "sanitize-html": "^2.17.2",
     "tslib": "^2.8.1",
     "zone.js": "^0.15.1"
   },
   "devDependencies": {
-    "@angular/build": "^20.3.14",
-    "@angular/cli": "^21.1.0",
-    "@angular/compiler-cli": "^20.3.16",
+    "@angular/build": "^21.2.4",
+    "@angular/cli": "^21.2.4",
+    "@angular/compiler-cli": "^21.2.6",
     "@types/dompurify": "^3.0.5",
     "@types/jasmine": "~5.1.0",
     "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.17.19",
+    "@types/sanitize-html": "^2.16.1",
     "angular-eslint": "21.0.1",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
@@ -75,7 +81,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "lint-staged": "^16.2.7",
     "prettier": "3.7.4",
-    "typescript": "~5.8.2",
+    "typescript": "~5.9.3",
     "typescript-eslint": "8.46.4"
   }
 }

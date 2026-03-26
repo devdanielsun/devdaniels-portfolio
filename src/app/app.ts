@@ -1,5 +1,12 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { NgxParticlesModule } from '@tsparticles/angular';
 import { loadLinksPreset } from '@tsparticles/preset-links';
@@ -24,7 +31,6 @@ import {
 @Component({
   selector: 'app-root',
   imports: [
-    CommonModule,
     RouterModule,
     NgxParticlesModule,
     MatTooltipModule,
@@ -48,6 +54,9 @@ export class App implements OnInit {
   public router = inject(Router);
   private readonly ngParticlesService = inject(NgParticlesService);
   private readonly svgLoader = inject(SvgLoaderService);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly destroyRef = inject(DestroyRef);
+  readonly isBrowser = isPlatformBrowser(this.platformId);
 
   protected logoSvg?: SafeHtml;
 
@@ -67,10 +76,14 @@ export class App implements OnInit {
   particlesOptions = {};
 
   ngOnInit(): void {
-    // load svg logo
-    this.svgLoader
-      .loadSvg('assets/logo-devdaniels.svg')
-      .subscribe((svg) => (this.logoSvg = svg as SafeHtml));
+    // load svg logo (browser only — HTTP to relative path fails during prerender)
+    if (this.isBrowser) {
+      this.svgLoader
+        .loadSvg('assets/logo-devdaniels.svg')
+        .subscribe((svg) => (this.logoSvg = svg as SafeHtml));
+    }
+
+    if (!this.isBrowser) return;
 
     // Initialize particles with the slim engine and links preset
     this.ngParticlesService.init(async (engine) => {
@@ -91,11 +104,17 @@ export class App implements OnInit {
     }
 
     // Listen for resize to adjust particle count dynamically
-    window.addEventListener('resize', () => this.createOptions());
+    const onResize = () => this.createOptions();
+    window.addEventListener('resize', onResize);
+    this.destroyRef.onDestroy(() =>
+      window.removeEventListener('resize', onResize),
+    );
   }
 
   // Create particles options based on the current theme
   createOptions() {
+    if (!this.isBrowser) return {};
+
     const particleColor = resolveCssColor('--mat-sys-primary');
     const bgColor = resolveCssColor('--mat-sys-background');
 
@@ -139,6 +158,8 @@ export class App implements OnInit {
 
   // Toggle theme
   toggleTheme() {
+    if (!this.isBrowser) return;
+
     this.isDarkMode = !this.isDarkMode;
     localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
 
