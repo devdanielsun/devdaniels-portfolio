@@ -1,6 +1,7 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ContainerComponent } from '../../components/container-component/container.component';
 import { Router, RouterLink } from '@angular/router';
+import { SeoService } from '../../services/seo.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -80,10 +81,20 @@ interface ExperienceTabConfig {
   templateUrl: './portfolio.page.html',
   styleUrl: './portfolio.page.scss',
 })
-export class PortfolioPage {
+export class PortfolioPage implements OnInit {
   private router = inject(Router);
+  private seo = inject(SeoService);
 
   protected readonly activeTab = signal<string>('skills');
+
+  ngOnInit(): void {
+    this.seo.update({
+      title: 'Portfolio',
+      description:
+        'Portfolio of Daniël Geerts (DevDaniels) — Software and DevOps engineer from the Netherlands. Projects, articles, and experience with C# .NET, Azure, TypeScript, and more.',
+      url: '/',
+    });
+  }
 
   protected readonly experienceTabs: ExperienceTabConfig[] = [
     {

@@ -24,8 +24,23 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src"]
             },
-            "assets": ["src/assets"],
-            "styles": ["src/styles.scss", "src/variables.scss"]
+            "assets": [
+              "src/assets",
+              {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "src",
+                "output": "/"
+              }
+            ],
+            "styles": ["src/styles.scss", "src/variables.scss"],
+            "allowedCommonJsDependencies": ["sanitize-html"],
+            "server": "src/main.server.ts",
+            "outputMode": "static"
           },
           "configurations": {
             "production": {
@@ -75,7 +90,19 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src"]
             },
-            "assets": ["src/assets"],
+            "assets": [
+              "src/assets",
+              {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "src",
+                "output": "/"
+              }
+            ],
             "styles": ["src/styles.scss", "src/variables.scss"]
           }
         },
