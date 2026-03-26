@@ -11,6 +11,7 @@ import { ArticlesService } from '../../services/articles.service';
 import { ContainerComponent } from '../../components/container-component/container.component';
 import { Article } from '../../models/article.model';
 import { isDevMode } from '@angular/core';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-articles-list-page',
@@ -23,6 +24,7 @@ export class ArticlesListPage implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private articlesService = inject(ArticlesService);
+  private seo = inject(SeoService);
   private routeSub?: Subscription;
 
   protected isDevMode = isDevMode();
@@ -35,6 +37,14 @@ export class ArticlesListPage implements OnInit, OnDestroy {
   categories: string[] = [];
 
   ngOnInit(): void {
+    if (!this.onlyShowArticles) {
+      this.seo.update({
+        title: 'Articles',
+        description:
+          'Articles and project write-ups by Daniël Geerts (DevDaniels) covering software engineering, DevOps, and web development.',
+        url: '/articles',
+      });
+    }
     this.subscribeToRouteParams();
     this.loadCategories();
     this.loadArticles();

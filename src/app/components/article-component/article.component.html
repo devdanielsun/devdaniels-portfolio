@@ -41,6 +41,7 @@
               [alt]="a.featuredImage?.altText"
               (error)="$event.target.src = '/assets/images/placeholder.jpg'"
               class="article-image"
+              loading="lazy"
             />
 
             <div class="article-details">

@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { marked, Renderer } from 'marked';
 import DOMPurify from 'dompurify';
 import { ResolvedArticle } from '../../models/article.model';
+import { SeoService } from '../../services/seo.service';
 
 const renderer = new Renderer();
 renderer.link = ({ href, title, text }) => {
@@ -26,7 +26,7 @@ marked.use({ renderer });
 })
 export class ArticleLoaderComponent implements OnInit {
   private route = inject(ActivatedRoute);
-  private title = inject(Title);
+  private seo = inject(SeoService);
 
   sanitizedHtml = '';
 
@@ -38,7 +38,19 @@ export class ArticleLoaderComponent implements OnInit {
       console.warn('No article found in route data.');
       return;
     }
-    this.title.setTitle(`${resolved.article.title} - DevDaniels`);
+    const a = resolved.article;
+    this.seo.update({
+      title: a.title,
+      description: a.shortDescription,
+      url: `/articles/${a.slug}`,
+      image: a.featuredImage?.srcPath,
+      type: 'article',
+      article: {
+        author: a.author,
+        publishedTime: a.startDate,
+        tags: a.tags,
+      },
+    });
     const rawHtml = marked.parse(resolved.markdownContent) as string;
     this.sanitizedHtml = DOMPurify.sanitize(rawHtml, {
       ADD_ATTR: ['target'],
