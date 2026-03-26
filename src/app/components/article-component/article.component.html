@@ -1,52 +1,71 @@
-<app-container-component class="portfolio-article-container">
+<app-container-component>
   @if (article(); as a) {
-    <p class="breadcrumb">
-      <span>
-        <a [routerLink]="['/']">Home</a>
-      </span>
-      <span>
-        &gt;
-        <a [routerLink]="['/articles']">Articles</a>
-      </span>
-      <span>
-        &gt;
-        @for (cat of a.categories; track cat; let last = $last) {
-          <a [routerLink]="['/articles/category/' + cat]">{{ cat || "" }}</a>
+    <div class="article-container">
+      @if (!a.published) {
+        <h1 style="color: red">NOT PUBLISHED YET</h1>
+      }
 
-          @if (!last) {
-            {{ ", " }}
-          }
-        }
-      </span>
-      <span>
-        &gt;
-        <span class="active">{{ a.title || "" }}</span>
-      </span>
-    </p>
-    @if (!a.published) {
-      <h1 style="color: red">NOT PUBLISHED YET</h1>
-    }
+      <div class="article-parent">
+        <p class="breadcrumb">
+          <span>
+            <a [routerLink]="['/']">Home</a>
+          </span>
+          <span>
+            &gt;
+            <a [routerLink]="['/articles']">Articles</a>
+          </span>
+          <span>
+            &gt;
+            @for (cat of a.categories; track cat; let last = $last) {
+              <a [routerLink]="['/articles/category/' + cat]">{{
+                cat || ""
+              }}</a>
 
-    <p id="article-author">Written by {{ a.author }}</p>
-    <h1 id="article-title">{{ a.title }}</h1>
-    <p id="article-date">
-      Date: {{ a.startDate }} t/m {{ a.endDate || "heden" }}
-    </p>
-    <p id="article-category">Category: {{ a.categories.join(", ") }}</p>
-    <!-- TODO: tags into MUI badges and make clickable (apply filter in '/article') -->
-    @if (a.tags) {
-      <p id="article-tags">Tags: {{ a.tags.join(", ") }}</p>
-    }
+              @if (!last) {
+                {{ ", " }}
+              }
+            }
+          </span>
+          <span>
+            &gt;
+            <span class="active">{{ a.title || "" }}</span>
+          </span>
+        </p>
 
-    <img
-      [hidden]="!a.featuredImage"
-      [src]="a.featuredImage?.srcPath"
-      [alt]="a.featuredImage?.altText"
-      class="portfolio-image"
-    />
+        <h1 class="article-title">{{ a.title }}</h1>
 
-    <div class="article-content">
-      <router-outlet></router-outlet>
+        <div class="article">
+          <div class="article-metadata">
+            <img
+              [src]="a.featuredImage?.srcPath"
+              [alt]="a.featuredImage?.altText"
+              (error)="$event.target.src = '/assets/images/placeholder.jpg'"
+              class="article-image"
+            />
+
+            <div class="article-details">
+              <p>
+                Written by <b>{{ a.author }}</b>
+              </p>
+              <p>
+                Project period {{ a.startDate }} –
+                {{ a.endDate || "present" }}
+              </p>
+            </div>
+
+            @if (a.tags) {
+              <div class="article-tags">
+                @for (tag of a.tags; track tag) {
+                  <mat-chip>{{ tag }}</mat-chip>
+                }
+              </div>
+            }
+          </div>
+          <div class="article-content">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
     </div>
   } @else {
     <p>Error loading article</p>

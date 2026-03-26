@@ -4,7 +4,7 @@ slug: pollor
 author: Daniël Geerts
 title: Pollor
 startDate: "2023"
-shortDescription: "In dit artikel vertel ik over het project genaamd Pollor. Dit is een platform waar gebruikers enquêtes kunnen maken en delen, waarbij de nadruk ligt op anoniem stemmen. Ik bespreek de gebruikte technologieën, uitdagingen tijdens de ontwikkeling en de behaalde resultaten."
+shortDescription: "Pollor is a platform where users can create and share surveys, with an emphasis on anonymous voting. I cover the technologies used, challenges during development, and the results achieved."
 categories:
   - Project
   - Web Development
@@ -19,10 +19,10 @@ tags:
   - Azure
 ---
 
-Pollor is een platform waar gebruikers enquêtes kunnen maken en delen, waarbij de nadruk ligt op anoniem stemmen. Ik bespreek de gebruikte technologieën, uitdagingen tijdens de ontwikkeling en de behaalde resultaten.
+Pollor is a platform where users can create and share surveys, with an emphasis on anonymous voting. I cover the technologies used, challenges during development, and the results achieved.
 
-De tech stack van Pollor bestaat uit Angular, C# .NET Core, (MS) SQL database, Github Actions en Azure als cloud host.
+The tech stack of Pollor consists of Angular, C# .NET Core, (MS) SQL database, GitHub Actions, and Azure as cloud host.
 
-Voor de frontend heb ik gekozen voor Angular vanwege mijn ervaring met dit framework en de uitgebreide mogelijkheden die het biedt voor het bouwen van dynamische webapplicaties. De backend is ontwikkeld met C# .NET Core, wat zorgt voor een robuuste en schaalbare serveromgeving. De (MS) SQL database wordt gebruikt voor het opslaan van enquêtes en gebruikersgegevens.
+For the frontend I chose Angular because of my experience with the framework and the extensive capabilities it offers for building dynamic web applications. The backend is built with C# .NET Core, providing a robust and scalable server environment. The (MS) SQL database is used for storing surveys and user data.
 
-Tijdens de ontwikkeling van Pollor ben ik verschillende uitdagingen tegengekomen, zoals het waarborgen van anonimiteit bij het stemmen en het optimaliseren van de prestaties van de applicatie. Deze uitdagingen heb ik aangepakt door middel van zorgvuldige architectuurkeuzes en het implementeren van best practices op het gebied van beveiliging en schaalbaarheid.
+During the development of Pollor I encountered several challenges, such as ensuring anonymity when voting and optimizing application performance. I tackled these challenges through careful architectural decisions and by implementing best practices in the areas of security and scalability.

@@ -1,6 +1,7 @@
 @use "../../../variables" as vars;
 
 .articles-category-nav {
+  margin: 0em 1em;
   margin-bottom: 2em;
 }
 
@@ -9,7 +10,7 @@
   grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   list-style: none;
   margin: 0 auto;
-  padding: 0;
+  padding: 0em 1em;
   gap: 2em;
   margin-bottom: 2em;
   justify-items: center;
@@ -17,8 +18,8 @@
   .article-card {
     background-color: var(--mat-sys-surface-container);
     padding: 0.5em 1em 1em 1em;
-    box-shadow: 4px 4px 0px black;
-    border: solid 2px black;
+    box-shadow: -4px 4px 0px black;
+    border: solid 1px black;
     border-radius: 4px;
     text-align: left;
     max-width: 450px;
@@ -30,7 +31,7 @@
 
     &:hover {
       cursor: pointer;
-      translate: 4px 4px;
+      translate: -4px 4px;
       box-shadow: none;
     }
 

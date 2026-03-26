@@ -1,10 +1,19 @@
-app-container-component {
-  h1 {
+.not-found-404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  .page-title {
     color: var(--mat-sys-error);
-    margin-bottom: 3rem;
+    font-size: 24pt;
+    font-weight: 600;
+    margin: 2rem 0;
   }
 
   p {
     color: var(--mat-sys-on-surface);
+    max-width: 600px;
   }
 }

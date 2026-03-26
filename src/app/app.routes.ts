@@ -4,7 +4,7 @@ import { NotFound404Page } from './pages/not-found-404-page/not-found-404.page';
 import { ArticlesListPage } from './pages/article-list-page/articles-list.page';
 import { ArticleComponent } from './components/article-component/article.component';
 import { articleResolver } from './resolvers/article.resolver';
-import { ArticleLoaderComponent } from './components/article-component/article-loader.component';
+import { ArticleLoaderComponent } from './components/article-loader-component/article-loader.component';
 
 export const routes: Routes = [
   {

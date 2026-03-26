@@ -6,7 +6,7 @@
   ></ngx-particles>
   <div class="main-menu">
     <div class="logo-container">
-      <a [routerLink]="['/']">
+      <a [routerLink]="['/']" (click)="closeMobileMenu()">
         <div class="logo-svg" [innerHTML]="logoSvg"></div>
         <div class="site-info">
           <span class="title">DevDaniels</span>
@@ -14,36 +14,81 @@
         </div>
       </a>
     </div>
-    <nav>
+
+    <!-- Hamburger menu button for mobile -->
+    <button class="hamburger-btn" (click)="toggleMobileMenu()" type="button">
+      @if (isMobileMenuOpen()) {
+        <ng-icon name="faSolidXmark" size="1.5em"></ng-icon>
+      } @else {
+        <ng-icon name="faSolidBars" size="1.5em"></ng-icon>
+      }
+    </button>
+
+    <!-- Mobile menu overlay -->
+    @if (isMobileMenuOpen()) {
+      <div class="mobile-menu-overlay" (click)="closeMobileMenu()"></div>
+    }
+
+    <!-- Navigation menu -->
+    <nav [class.mobile-menu-open]="isMobileMenuOpen()">
       @for (route of navRoutes; track route) {
         <a
           [routerLink]="['/' + route.path]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMobileMenu()"
         >
           {{ route.data?.["navTitle"] }}
         </a>
       }
+
+      <!-- Social icons - shared between desktop sidebar and mobile menu -->
+      <div class="social-icons">
+        <a
+          href="https://github.com/devdanielsun"
+          target="_blank"
+          matTooltip="Check my GitHub"
+          [matTooltipPosition]="isMobileMenuOpen() ? 'left' : 'right'"
+        >
+          <ng-icon name="simpleGithub" size="2em"></ng-icon>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/danielgeerts/"
+          target="_blank"
+          matTooltip="Connect with me on LinkedIn"
+          [matTooltipPosition]="isMobileMenuOpen() ? 'left' : 'right'"
+        >
+          <ng-icon name="diLinkedinPlain" size="2em"></ng-icon>
+        </a>
+      </div>
+
       @if (isDarkMode) {
-        <fa-icon
-          [icon]="faSun"
+        <ng-icon
+          name="faSolidSun"
           (click)="toggleTheme()"
           class="clickable-icon switch-theme"
-          size="2x"
+          size="2em"
           matTooltip="Switch to light mode"
-        ></fa-icon>
+        ></ng-icon>
       } @else {
-        <fa-icon
-          [icon]="faMoon"
+        <ng-icon
+          name="faSolidMoon"
           (click)="toggleTheme()"
           class="clickable-icon switch-theme"
-          size="2x"
+          size="2em"
           matTooltip="Switch to dark mode"
-        ></fa-icon>
+        ></ng-icon>
       }
     </nav>
   </div>
   <section class="content">
     <router-outlet></router-outlet>
   </section>
+  <div class="footer">
+    <span
+      >&copy; 2023 - {{ currentYear }} | made with
+      <ng-icon name="faSolidHeart" size="1em" matTooltip="love"></ng-icon> by
+      Daniël Geerts
+    </span>
+  </div>
 </main>

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { NgxParticlesModule } from '@tsparticles/angular';
@@ -7,11 +7,19 @@ import { loadSlim } from '@tsparticles/slim';
 import { NgParticlesService } from '@tsparticles/angular';
 import type { Container } from '@tsparticles/engine';
 import { routes } from './app.routes';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SvgLoaderService } from './services/svg-loader.service';
 import { SafeHtml } from '@angular/platform-browser';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { diLinkedinPlain } from '@ng-icons/devicon/plain';
+import { simpleGithub } from '@ng-icons/simple-icons';
+import {
+  faSolidHeart,
+  faSolidMoon,
+  faSolidSun,
+  faSolidBars,
+  faSolidXmark,
+} from '@ng-icons/font-awesome/solid';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +27,19 @@ import { SafeHtml } from '@angular/platform-browser';
     CommonModule,
     RouterModule,
     NgxParticlesModule,
-    FontAwesomeModule,
     MatTooltipModule,
+    NgIconComponent,
+  ],
+  providers: [
+    provideIcons({
+      diLinkedinPlain,
+      simpleGithub,
+      faSolidHeart,
+      faSolidMoon,
+      faSolidSun,
+      faSolidBars,
+      faSolidXmark,
+    }),
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -32,15 +51,15 @@ export class App implements OnInit {
 
   protected logoSvg?: SafeHtml;
 
-  protected readonly faMoon = faMoon;
-  protected readonly faSun = faSun;
-
   protected readonly routes = routes;
   navRoutes = routes
     .filter((r) => r.title)
     .filter((r) => r.path !== '404' && r.path !== '**');
 
+  protected readonly currentYear = new Date().getFullYear();
+
   isDarkMode = true; // Default to dark theme
+  isMobileMenuOpen = signal(false);
 
   // Set particles options based on the current theme
   private particlesContainer?: Container;
@@ -131,6 +150,16 @@ export class App implements OnInit {
     if (this.particlesContainer) {
       this.particlesContainer.reset(this.particlesOptions);
     }
+  }
+
+  // Toggle mobile menu
+  toggleMobileMenu() {
+    this.isMobileMenuOpen.set(!this.isMobileMenuOpen());
+  }
+
+  // Close mobile menu when a nav link is clicked
+  closeMobileMenu() {
+    this.isMobileMenuOpen.set(false);
   }
 }
 

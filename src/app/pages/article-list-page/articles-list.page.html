@@ -30,7 +30,7 @@
     @for (a of items | slice: 0 : maxItemsToShow ?? items.length; track a) {
       <a class="article-card" [routerLink]="['/articles/' + a.slug]">
         <div class="article-information">
-          <small>{{ a.startDate }} t/m {{ a.endDate || "heden" }}</small>
+          <small>{{ a.startDate }} – {{ a.endDate || "present" }}</small>
           <small class="article-categories">
             @for (c of a.categories; track c; let last = $last) {
               <span class="article-category-badge">{{ c }}</span>

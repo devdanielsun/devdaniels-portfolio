@@ -5,7 +5,7 @@ author: Daniël Geerts
 title: Modern Dinosaurs
 startDate: "2026"
 endDate: "2026"
-shortDescription: "Hoe overleven dinosaurussen in de moderne tijd? Dit is een art project, waarbij vervuiling en afval naar voren komt, waarbij dinosaurussen struggelen met het afval dat de mens heeft geproduceerd en heeft gedumpt."
+shortDescription: "How do dinosaurs survive in modern times? This is an art project that highlights pollution and waste, showing dinosaurs struggling with the garbage that humans have produced and dumped."
 categories:
   - Art
 featuredImage:
@@ -15,4 +15,4 @@ tags:
   - Photography
 ---
 
-Dit is een art project.
+This is an art project.
