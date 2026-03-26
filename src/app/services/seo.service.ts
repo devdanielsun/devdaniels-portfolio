@@ -152,8 +152,8 @@ export class SeoService {
           jobTitle: 'Software/DevOps Engineer',
           url: BASE_URL,
           sameAs: [
-            'https://github.com/DevDanielsun',
-            'https://linkedin.com/in/danielgeerts',
+            'https://github.com/devdanielsun',
+            'https://www.linkedin.com/in/danielgeerts/',
           ],
         },
       });
