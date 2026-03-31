@@ -31,6 +31,7 @@ export class ArticlesListPage implements OnInit, OnDestroy {
 
   @Input() onlyShowArticles = false;
   @Input() maxItemsToShow?: number;
+  @Input() centerItems = false;
 
   currentCategory?: string;
   items: Article[] = [];

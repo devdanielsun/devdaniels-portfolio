@@ -34,6 +34,10 @@
   margin-bottom: 2em;
   justify-items: flex-start;
 
+  &--center {
+    justify-items: center;
+  }
+
   .article-card {
     background-color: var(--mat-sys-surface-container);
     padding: 0.5em 1em 1em 1em;
