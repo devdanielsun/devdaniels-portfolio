@@ -4,7 +4,7 @@ main {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -260,4 +260,5 @@ ngx-particles {
   align-items: center;
   padding: 1rem;
   text-align: center;
+  margin-top: auto;
 }
