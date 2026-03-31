@@ -16,12 +16,7 @@ import { SeoService } from '../../services/seo.service';
 @Component({
   selector: 'app-articles-list-page',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterLink,
-    RouterLinkActive,
-    ContainerComponent,
-  ],
+  imports: [CommonModule, RouterLink, RouterLinkActive, ContainerComponent],
   templateUrl: './articles-list.page.html',
   styleUrls: ['./articles-list.page.scss'],
 })

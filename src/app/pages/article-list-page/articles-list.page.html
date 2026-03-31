@@ -9,13 +9,17 @@
         class="category-chip"
         [class.selected]="!currentCategory"
         (click)="navigateToCategory(null)"
-      >All</button>
+      >
+        All
+      </button>
       @for (c of categories; track c) {
         <button
           class="category-chip"
           [class.selected]="currentCategory === c"
           (click)="navigateToCategory(c)"
-        >{{ c }}</button>
+        >
+          {{ c }}
+        </button>
       }
     </div>
   }
