@@ -59,6 +59,49 @@ In dev mode (`isDevMode()`), unpublished articles are visible; in production the
 
 Dark/light theme is toggled via `html.dark-theme` / `html.light-theme` classes and persisted in `localStorage`. Angular Material M3 theming uses `mat.$cyan-palette` (dark) and `mat.$azure-palette` (light), configured in `src/styles.scss`. Use `var(--mat-sys-*)` CSS variables for color references.
 
+### Neo-brutalism button style
+
+Buttons and interactive card-like elements follow a **neo-brutalism** style defined globally in `src/styles.scss`. Use the `.old-skool-button` class (never Angular Material button directives like `mat-stroked-button`) for custom buttons and links styled as buttons:
+
+```html
+<a href="..." class="old-skool-button old-skool-button--primary">Label</a>
+
+<button class="old-skool-button old-skool-button--secondary">Label</button>
+```
+
+Available modifiers:
+
+- `--primary` — `--mat-sys-primary` background
+- `--secondary` — `--mat-sys-secondary` background
+
+The class provides: bold border, `-4px 4px 0px black` box-shadow, and a translate+shadow-removal hover animation.
+
+### Icons
+
+The project uses **ng-icons** — never use inline SVGs for icons. Three icon sets are available:
+
+| Package                  | Import prefix                  | Use case             |
+| ------------------------ | ------------------------------ | -------------------- |
+| `@ng-icons/simple-icons` | `simple` (e.g. `simpleGithub`) | Brand/logo icons     |
+| `@ng-icons/devicon`      | `di` (e.g. `diAngularPlain`)   | Dev-tool brand icons |
+| `@ng-icons/font-awesome` | `faSolid` (e.g. `faSolidCode`) | UI / general icons   |
+
+Register icons per-component with `provideIcons()` and render with `<ng-icon>`:
+
+```typescript
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { simpleGithub } from '@ng-icons/simple-icons';
+
+@Component({
+  imports: [NgIconComponent],
+  providers: [provideIcons({ simpleGithub })],
+})
+```
+
+```html
+<ng-icon name="simpleGithub" size="1.2em" />
+```
+
 ### Responsive breakpoints
 
 Defined in `src/variables.scss` as SCSS variables and a `respond-to()` mixin:
