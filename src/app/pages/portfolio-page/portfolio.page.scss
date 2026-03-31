@@ -23,7 +23,7 @@
     width: 100%;
     max-width: 200px;
     height: auto;
-    border-radius: 5px;
+    border-radius: 4px;
 
     @include vars.respond-to(mobile) {
       margin-top: 2em;
