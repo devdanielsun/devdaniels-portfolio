@@ -98,6 +98,11 @@ h6 {
   letter-spacing: 0.05em;
 }
 
+p {
+  margin-bottom: 1.5em;
+  line-height: 1.6;
+}
+
 /** Old skool button styles **/
 .old-skool-button {
   @mixin old-skool-button-variant($bg-var, $text-var) {
