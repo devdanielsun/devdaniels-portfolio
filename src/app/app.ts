@@ -18,7 +18,7 @@ import { fromEvent, debounceTime } from 'rxjs';
 import { routes } from './app.routes';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SvgLoaderService } from './services/svg-loader.service';
-import { readCssVar, resolveCssColor } from './utils/css-utils';
+import { readCssVar } from './utils/css-utils';
 import { SafeHtml } from '@angular/platform-browser';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { diLinkedinPlain } from '@ng-icons/devicon/plain';
@@ -102,8 +102,8 @@ export class App implements OnInit {
   }
 
   private buildParticleOptions(): object {
-    const particleColor = resolveCssColor('--mat-sys-primary');
-    const bgColor = resolveCssColor('--mat-sys-background');
+    const particleColor = readCssVar('--particle-primary');
+    const bgColor = readCssVar('--particle-bg');
 
     const breakTablet = parseInt(readCssVar('--break-tablet'));
     const breakMobile = parseInt(readCssVar('--break-mobile'));

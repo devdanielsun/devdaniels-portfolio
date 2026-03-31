@@ -6,6 +6,26 @@
 @use "@angular/material" as mat;
 @use "variables" as vars;
 
+// Theme objects used to extract resolved color values for JS-readable CSS custom properties.
+// Using mat.define-theme() + mat.get-theme-color() avoids light-dark() and keeps colors
+// in sync with the palettes used in mat.theme() below.
+$dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$cyan-palette,
+    ),
+  )
+);
+$light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+    ),
+  )
+);
+
 // This makes sure that the padding and border are included in the total width and height of the elements.
 * {
   box-sizing: border-box;
@@ -33,6 +53,11 @@ html {
     )
   );
 
+  // Particle colors derived from the Material theme object — resolved hex values
+  // so JS can read them via getPropertyValue() without a DOM element workaround.
+  --particle-primary: #{mat.get-theme-color($dark-theme, primary)};
+  --particle-bg: #{mat.get-theme-color($dark-theme, background)};
+
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
@@ -50,6 +75,9 @@ html.light-theme {
       density: 0,
     )
   );
+
+  --particle-primary: #{mat.get-theme-color($light-theme, primary)};
+  --particle-bg: #{mat.get-theme-color($light-theme, background)};
 }
 
 html,
