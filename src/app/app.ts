@@ -7,15 +7,18 @@ import {
   signal,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, RouterModule } from '@angular/router';
 import { NgxParticlesModule } from '@tsparticles/angular';
 import { loadLinksPreset } from '@tsparticles/preset-links';
 import { loadSlim } from '@tsparticles/slim';
 import { NgParticlesService } from '@tsparticles/angular';
 import type { Container } from '@tsparticles/engine';
+import { fromEvent, debounceTime } from 'rxjs';
 import { routes } from './app.routes';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SvgLoaderService } from './services/svg-loader.service';
+import { readCssVar, resolveCssColor } from './utils/css-utils';
 import { SafeHtml } from '@angular/platform-browser';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { diLinkedinPlain } from '@ng-icons/devicon/plain';
@@ -67,16 +70,14 @@ export class App implements OnInit {
 
   protected readonly currentYear = new Date().getFullYear();
 
-  isDarkMode = true; // Default to dark theme
+  isDarkMode = true;
   isMobileMenuOpen = signal(false);
 
-  // Set particles options based on the current theme
   private particlesContainer?: Container;
   protected readonly id = 'tsparticles';
-  particlesOptions = {};
+  particlesOptions = signal<object>({});
 
   ngOnInit(): void {
-    // load svg logo (browser only — HTTP to relative path fails during prerender)
     if (this.isBrowser) {
       this.svgLoader
         .loadSvg('assets/logo-devdaniels.svg')
@@ -85,55 +86,35 @@ export class App implements OnInit {
 
     if (!this.isBrowser) return;
 
-    // Initialize particles with the slim engine and links preset
     this.ngParticlesService.init(async (engine) => {
       await loadSlim(engine);
-      await loadLinksPreset(engine); // << important for 'links' preset
+      await loadLinksPreset(engine);
     });
 
     const theme = localStorage.getItem('theme');
-    this.isDarkMode = theme === 'dark' || theme === null; // Default to dark if not set
+    this.isDarkMode = theme === 'dark' || theme === null;
 
     document.documentElement.classList.toggle('dark-theme', this.isDarkMode);
     document.documentElement.classList.toggle('light-theme', !this.isDarkMode);
 
-    this.particlesOptions = this.createOptions();
+    this.particlesOptions.set(this.buildParticleOptions());
 
-    if (this.particlesContainer) {
-      this.particlesContainer.refresh();
-    }
-
-    // Listen for resize to adjust particle count dynamically
-    const onResize = () => this.createOptions();
-    window.addEventListener('resize', onResize);
-    this.destroyRef.onDestroy(() =>
-      window.removeEventListener('resize', onResize),
-    );
+    fromEvent(window, 'resize')
+      .pipe(debounceTime(150), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.updateParticles());
   }
 
-  // Create particles options based on the current theme
-  createOptions() {
-    if (!this.isBrowser) return {};
-
+  private buildParticleOptions(): object {
     const particleColor = resolveCssColor('--mat-sys-primary');
     const bgColor = resolveCssColor('--mat-sys-background');
 
-    // Set default number of particles
-    let particleCount = 80; // desktop default
-
-    // Reduce particles on smaller screens — breakpoints read from CSS custom properties
-    // so they stay in sync with variables.scss ($break-tablet / $break-mobile)
-    const style = getComputedStyle(document.documentElement);
-    const breakTablet = parseInt(style.getPropertyValue('--break-tablet'));
-    const breakMobile = parseInt(style.getPropertyValue('--break-mobile'));
+    const breakTablet = parseInt(readCssVar('--break-tablet'));
+    const breakMobile = parseInt(readCssVar('--break-mobile'));
     const width = window.innerWidth;
 
-    if (width <= breakTablet) {
-      particleCount = 40;
-    }
-    if (width <= breakMobile) {
-      particleCount = 20;
-    }
+    let particleCount = 80;
+    if (width <= breakTablet) particleCount = 40;
+    if (width <= breakMobile) particleCount = 20;
 
     return {
       preset: 'links',
@@ -153,12 +134,16 @@ export class App implements OnInit {
     };
   }
 
-  // Handle particles loaded event
-  async particlesLoaded(container: Container): Promise<void> {
+  private updateParticles(): void {
+    const options = this.buildParticleOptions();
+    this.particlesOptions.set(options);
+    this.particlesContainer?.reset(options);
+  }
+
+  protected async particlesLoaded(container: Container): Promise<void> {
     this.particlesContainer = container;
   }
 
-  // Toggle theme
   toggleTheme() {
     if (!this.isBrowser) return;
 
@@ -168,36 +153,14 @@ export class App implements OnInit {
     document.documentElement.classList.toggle('dark-theme', this.isDarkMode);
     document.documentElement.classList.toggle('light-theme', !this.isDarkMode);
 
-    this.particlesOptions = this.createOptions();
-
-    if (this.particlesContainer) {
-      this.particlesContainer.reset(this.particlesOptions);
-    }
+    this.updateParticles();
   }
 
-  // Toggle mobile menu
   toggleMobileMenu() {
     this.isMobileMenuOpen.set(!this.isMobileMenuOpen());
   }
 
-  // Close mobile menu when a nav link is clicked
   closeMobileMenu() {
     this.isMobileMenuOpen.set(false);
   }
-}
-
-function resolveCssColor(varName: string): string {
-  // Create a temporary element
-  const el = document.createElement('div');
-  el.style.display = 'none';
-  el.style.backgroundColor = `var(${varName})`;
-
-  document.body.appendChild(el);
-
-  // Browser resolves "light-dark(...)" into actual rgb(...)
-  const resolved = getComputedStyle(el).backgroundColor;
-
-  document.body.removeChild(el);
-
-  return resolved.trim();
 }
