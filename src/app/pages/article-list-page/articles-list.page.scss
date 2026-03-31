@@ -20,11 +20,15 @@
     padding: 0.5em 1em 1em 1em;
     box-shadow: -4px 4px 0px black;
     border: solid 1px black;
+    border-bottom: solid 1px black;
     border-radius: 4px;
     text-align: left;
     max-width: 450px;
     width: 100%;
     position: relative;
+    color: var(--mat-sys-on-surface);
+    font-weight: normal;
+    line-height: normal;
     transition:
       translate 0.2s ease,
       box-shadow 0.2s ease;
@@ -33,6 +37,8 @@
       cursor: pointer;
       translate: -4px 4px;
       box-shadow: none;
+      background-color: var(--mat-sys-surface-container);
+      color: var(--mat-sys-on-surface);
     }
 
     .article-information {
