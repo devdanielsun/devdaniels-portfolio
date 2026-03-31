@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NgxParticlesModule } from '@tsparticles/angular';
 import { loadLinksPreset } from '@tsparticles/preset-links';
 import { loadSlim } from '@tsparticles/slim';
@@ -54,28 +54,25 @@ import {
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
-  public router = inject(Router);
   private readonly ngParticlesService = inject(NgParticlesService);
   private readonly svgLoader = inject(SvgLoaderService);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly destroyRef = inject(DestroyRef);
-  readonly isBrowser = isPlatformBrowser(this.platformId);
 
+  protected readonly isBrowser = isPlatformBrowser(this.platformId);
   protected logoSvg?: SafeHtml;
-
   protected readonly routes = routes;
-  navRoutes = routes
+  protected readonly currentYear = new Date().getFullYear();
+  protected readonly id = 'tsparticles';
+  protected isDarkMode = signal(true);
+  protected isMobileMenuOpen = signal(false);
+  protected particlesOptions = signal<object>({});
+
+  protected navRoutes = routes
     .filter((r) => r.title)
     .filter((r) => r.path !== '404' && r.path !== '**');
 
-  protected readonly currentYear = new Date().getFullYear();
-
-  isDarkMode = true;
-  isMobileMenuOpen = signal(false);
-
   private particlesContainer?: Container;
-  protected readonly id = 'tsparticles';
-  particlesOptions = signal<object>({});
 
   ngOnInit(): void {
     if (this.isBrowser) {
@@ -92,10 +89,10 @@ export class App implements OnInit {
     });
 
     const theme = localStorage.getItem('theme');
-    this.isDarkMode = theme === 'dark' || theme === null;
+    this.isDarkMode.set(theme === 'dark' || theme === null);
 
-    document.documentElement.classList.toggle('dark-theme', this.isDarkMode);
-    document.documentElement.classList.toggle('light-theme', !this.isDarkMode);
+    document.documentElement.classList.toggle('dark-theme', this.isDarkMode());
+    document.documentElement.classList.toggle('light-theme', !this.isDarkMode());
 
     this.particlesOptions.set(this.buildParticleOptions());
 
@@ -144,23 +141,24 @@ export class App implements OnInit {
     this.particlesContainer = container;
   }
 
-  toggleTheme() {
+  protected toggleTheme(): void {
     if (!this.isBrowser) return;
 
-    this.isDarkMode = !this.isDarkMode;
-    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+    this.isDarkMode.set(!this.isDarkMode());
+    localStorage.setItem('theme', this.isDarkMode() ? 'dark' : 'light');
 
-    document.documentElement.classList.toggle('dark-theme', this.isDarkMode);
-    document.documentElement.classList.toggle('light-theme', !this.isDarkMode);
+    document.documentElement.classList.toggle('dark-theme', this.isDarkMode());
+    document.documentElement.classList.toggle('light-theme', !this.isDarkMode());
 
     this.updateParticles();
   }
 
-  toggleMobileMenu() {
+  protected toggleMobileMenu(): void {
     this.isMobileMenuOpen.set(!this.isMobileMenuOpen());
   }
 
-  closeMobileMenu() {
+  protected closeMobileMenu(): void {
     this.isMobileMenuOpen.set(false);
   }
 }
+
