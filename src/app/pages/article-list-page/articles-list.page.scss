@@ -1,8 +1,27 @@
 @use "../../../variables" as vars;
 
 .articles-category-nav {
-  margin: 0em 1em;
-  margin-bottom: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  margin: 0 1em 2em;
+
+  .category-chip {
+    font-size: 0.8em;
+    padding: 0.4em 1.2em;
+    border-radius: 999px;
+    border: 1px solid var(--mat-sys-outline);
+    background-color: transparent;
+    color: var(--mat-sys-on-surface);
+    cursor: pointer;
+
+    &:hover,
+    &.selected {
+      background-color: var(--mat-sys-primary);
+      color: var(--mat-sys-on-primary);
+      border-color: var(--mat-sys-primary);
+    }
+  }
 }
 
 .articles-list-grid {
@@ -13,7 +32,7 @@
   padding: 0em 1em;
   gap: 2em;
   margin-bottom: 2em;
-  justify-items: center;
+  justify-items: flex-start;
 
   .article-card {
     background-color: var(--mat-sys-surface-container);
