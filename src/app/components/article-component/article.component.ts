@@ -16,7 +16,13 @@ import { ArticleRouteData } from '../../models/article.model';
 
 @Component({
   selector: 'app-portfolio-article-component',
-  imports: [ContainerComponent, RouterOutlet, RouterLink, MatChipsModule, NgIconComponent],
+  imports: [
+    ContainerComponent,
+    RouterOutlet,
+    RouterLink,
+    MatChipsModule,
+    NgIconComponent,
+  ],
   providers: [provideIcons({ simpleGithub })],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
