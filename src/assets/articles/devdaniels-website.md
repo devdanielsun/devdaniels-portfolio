@@ -10,7 +10,7 @@ categories:
   - Web Development
 featuredImage:
   altText: DevDaniels Website Architecture
-  srcPath: assets/images/project/devdaniels-website/devdaniels-website-architecture.jpg
+  srcPath: assets/logo-devdaniels.svg
 githubRepo:
   label: Github - DevDaniels Website
   link: https://github.com/devdanielsun/devdaniels-website
