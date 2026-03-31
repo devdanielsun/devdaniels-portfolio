@@ -24,7 +24,10 @@
     </div>
   }
 
-  <div class="articles-list-grid">
+  <div
+    class="articles-list-grid"
+    [class.articles-list-grid--center]="centerItems"
+  >
     @for (a of items | slice: 0 : maxItemsToShow ?? items.length; track a) {
       <a class="article-card" [routerLink]="['/articles/' + a.slug]">
         <div class="article-information">
