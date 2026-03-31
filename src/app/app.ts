@@ -121,15 +121,17 @@ export class App implements OnInit {
     // Set default number of particles
     let particleCount = 80; // desktop default
 
-    // Reduce particles on smaller screens
+    // Reduce particles on smaller screens — breakpoints read from CSS custom properties
+    // so they stay in sync with variables.scss ($break-tablet / $break-mobile)
+    const style = getComputedStyle(document.documentElement);
+    const breakTablet = parseInt(style.getPropertyValue('--break-tablet'));
+    const breakMobile = parseInt(style.getPropertyValue('--break-mobile'));
     const width = window.innerWidth;
 
-    if (width <= 768) {
-      // tablet
+    if (width <= breakTablet) {
       particleCount = 40;
     }
-    if (width <= 600) {
-      // mobile
+    if (width <= breakMobile) {
       particleCount = 20;
     }
 

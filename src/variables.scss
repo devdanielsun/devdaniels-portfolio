@@ -1,8 +1,13 @@
+@use "sass:math";
+
 $break-tablet: 1024px;
-$break-mobile: 769px;
+$break-mobile: 768px;
 
 :root {
   --content-max-width: 1200px;
+  // Expose breakpoints as unitless CSS custom properties so TS can read them
+  --break-tablet: #{math.div($break-tablet, 1px)};
+  --break-mobile: #{math.div($break-mobile, 1px)};
 }
 
 /* Override the custom property at different breakpoints */
