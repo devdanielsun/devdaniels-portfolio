@@ -85,4 +85,12 @@ export class ArticlesListPage implements OnInit, OnDestroy {
   navigateToArticle(articleSlug: string): void {
     this.router.navigate(['/articles', articleSlug]);
   }
+
+  navigateToCategory(category: string | null): void {
+    if (category) {
+      this.router.navigate(['/articles/category', category]);
+    } else {
+      this.router.navigate(['/articles']);
+    }
+  }
 }

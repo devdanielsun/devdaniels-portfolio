@@ -4,9 +4,9 @@ main {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .main-menu {
@@ -31,10 +31,12 @@ main {
       margin: 0 2em;
 
       .title {
+        font-family: "Orbitron", sans-serif;
         font-weight: 600;
         font-size: 16pt;
       }
       .subtitle {
+        font-family: "Orbitron", sans-serif;
         font-weight: 100;
         font-size: 11pt;
       }
@@ -55,12 +57,19 @@ main {
       display: flex;
       flex-direction: row;
       align-items: center;
-
       color: var(--mat-sys-on-surface);
+      font-weight: normal;
       text-decoration: none;
+      border-bottom: none;
+      padding: 0;
+      line-height: normal;
+      box-shadow: none;
 
       &:hover {
         color: var(--mat-sys-primary);
+        background-color: transparent;
+        box-shadow: none;
+        translate: none;
       }
 
       .logo-svg {
@@ -114,12 +123,20 @@ main {
 
     a {
       color: var(--mat-sys-on-surface);
+      font-weight: normal;
       text-decoration: none;
+      border-bottom: none;
+      padding: 0;
+      line-height: normal;
+      box-shadow: none;
       font-size: 1.2em;
       transition: color 0.3s ease;
 
       &:hover {
         color: var(--mat-sys-primary);
+        background-color: transparent;
+        box-shadow: none;
+        translate: none;
       }
 
       &.active {
@@ -243,4 +260,5 @@ ngx-particles {
   align-items: center;
   padding: 1rem;
   text-align: center;
+  margin-top: auto;
 }

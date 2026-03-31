@@ -4,26 +4,24 @@
   class="portfolio-article-container"
 >
   @if (!onlyShowArticles) {
-    <nav class="articles-category-nav">
-      <a
-        [routerLink]="['/articles']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
+    <div class="articles-category-nav">
+      <button
+        class="category-chip"
+        [class.selected]="!currentCategory"
+        (click)="navigateToCategory(null)"
       >
         All
-      </a>
-      <span>
-        @for (c of categories; track c) {
-          |
-          <a
-            [routerLink]="['/articles/category/' + c]"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >{{ c }}</a
-          >
-        }
-      </span>
-    </nav>
+      </button>
+      @for (c of categories; track c) {
+        <button
+          class="category-chip"
+          [class.selected]="currentCategory === c"
+          (click)="navigateToCategory(c)"
+        >
+          {{ c }}
+        </button>
+      }
+    </div>
   }
 
   <div class="articles-list-grid">

@@ -10,10 +10,10 @@ categories:
   - Web Development
 featuredImage:
   altText: DevDaniels Website Architecture
-  srcPath: assets/images/project/devdaniels-website/devdaniels-website-architecture.jpg
+  srcPath: assets/logo-devdaniels.svg
 githubRepo:
-  label: Github - DevDaniels Website
-  link: https://github.com/devdanielsun/devdaniels-website
+  label: Github - DevDaniels Portfolio
+  link: https://github.com/devdanielsun/devdaniels-portfolio
 tags:
   - Angular
   - Typescript
