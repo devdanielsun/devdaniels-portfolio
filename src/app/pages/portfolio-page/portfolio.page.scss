@@ -96,6 +96,7 @@
     border-top: 2px solid black;
     cursor: pointer;
     transition: background-color 0.15s ease;
+    color: var(--mat-sys-on-background);
 
     &:first-child {
       margin-left: 1.5em;
