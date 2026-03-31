@@ -61,6 +61,18 @@
                 }
               </div>
             }
+
+            @if (a.githubRepo) {
+              <a
+                [href]="a.githubRepo.link"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                class="old-skool-button old-skool-button--primary github-repo-button"
+              >
+                <ng-icon name="simpleGithub" size="1.2em" aria-hidden="true" />
+                {{ a.githubRepo.label }}
+              </a>
+            }
           </div>
           <div class="article-content">
             <router-outlet></router-outlet>

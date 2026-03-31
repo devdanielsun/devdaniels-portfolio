@@ -56,6 +56,13 @@ h1 {
         }
       }
 
+      .github-repo-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        margin-bottom: 0;
+      }
+
       .article-details {
         p {
           padding: 0;

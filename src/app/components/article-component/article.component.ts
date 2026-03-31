@@ -9,12 +9,15 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatChipsModule } from '@angular/material/chips';
 import { filter } from 'rxjs/operators';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { simpleGithub } from '@ng-icons/simple-icons';
 import { ContainerComponent } from '../container-component/container.component';
 import { ArticleRouteData } from '../../models/article.model';
 
 @Component({
   selector: 'app-portfolio-article-component',
-  imports: [ContainerComponent, RouterOutlet, RouterLink, MatChipsModule],
+  imports: [ContainerComponent, RouterOutlet, RouterLink, MatChipsModule, NgIconComponent],
+  providers: [provideIcons({ simpleGithub })],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })
