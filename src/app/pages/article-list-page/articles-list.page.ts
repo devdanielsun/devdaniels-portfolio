@@ -1,10 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
-import {
-  ActivatedRoute,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-} from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ArticlesService } from '../../services/articles.service';
@@ -16,7 +11,7 @@ import { SeoService } from '../../services/seo.service';
 @Component({
   selector: 'app-articles-list-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, ContainerComponent],
+  imports: [CommonModule, RouterLink, ContainerComponent],
   templateUrl: './articles-list.page.html',
   styleUrls: ['./articles-list.page.scss'],
 })

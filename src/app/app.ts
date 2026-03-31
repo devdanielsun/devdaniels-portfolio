@@ -7,15 +7,18 @@ import {
   signal,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterModule } from '@angular/router';
 import { NgxParticlesModule } from '@tsparticles/angular';
 import { loadLinksPreset } from '@tsparticles/preset-links';
 import { loadSlim } from '@tsparticles/slim';
 import { NgParticlesService } from '@tsparticles/angular';
 import type { Container } from '@tsparticles/engine';
+import { fromEvent, debounceTime } from 'rxjs';
 import { routes } from './app.routes';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SvgLoaderService } from './services/svg-loader.service';
+import { readCssVar } from './utils/css-utils';
 import { SafeHtml } from '@angular/platform-browser';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { diLinkedinPlain } from '@ng-icons/devicon/plain';
@@ -51,32 +54,27 @@ import {
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
-  public router = inject(Router);
   private readonly ngParticlesService = inject(NgParticlesService);
   private readonly svgLoader = inject(SvgLoaderService);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly destroyRef = inject(DestroyRef);
-  readonly isBrowser = isPlatformBrowser(this.platformId);
 
+  protected readonly isBrowser = isPlatformBrowser(this.platformId);
   protected logoSvg?: SafeHtml;
-
   protected readonly routes = routes;
-  navRoutes = routes
+  protected readonly currentYear = new Date().getFullYear();
+  protected readonly id = 'tsparticles';
+  protected isDarkMode = signal(true);
+  protected isMobileMenuOpen = signal(false);
+  protected particlesOptions = signal<object>({});
+
+  protected navRoutes = routes
     .filter((r) => r.title)
     .filter((r) => r.path !== '404' && r.path !== '**');
 
-  protected readonly currentYear = new Date().getFullYear();
-
-  isDarkMode = true; // Default to dark theme
-  isMobileMenuOpen = signal(false);
-
-  // Set particles options based on the current theme
   private particlesContainer?: Container;
-  protected readonly id = 'tsparticles';
-  particlesOptions = {};
 
   ngOnInit(): void {
-    // load svg logo (browser only — HTTP to relative path fails during prerender)
     if (this.isBrowser) {
       this.svgLoader
         .loadSvg('assets/logo-devdaniels.svg')
@@ -85,53 +83,35 @@ export class App implements OnInit {
 
     if (!this.isBrowser) return;
 
-    // Initialize particles with the slim engine and links preset
     this.ngParticlesService.init(async (engine) => {
       await loadSlim(engine);
-      await loadLinksPreset(engine); // << important for 'links' preset
+      await loadLinksPreset(engine);
     });
 
     const theme = localStorage.getItem('theme');
-    this.isDarkMode = theme === 'dark' || theme === null; // Default to dark if not set
+    this.isDarkMode.set(theme === 'dark' || theme === null);
 
-    document.documentElement.classList.toggle('dark-theme', this.isDarkMode);
-    document.documentElement.classList.toggle('light-theme', !this.isDarkMode);
+    document.documentElement.classList.toggle('dark-theme', this.isDarkMode());
+    document.documentElement.classList.toggle('light-theme', !this.isDarkMode());
 
-    this.particlesOptions = this.createOptions();
+    this.particlesOptions.set(this.buildParticleOptions());
 
-    if (this.particlesContainer) {
-      this.particlesContainer.refresh();
-    }
-
-    // Listen for resize to adjust particle count dynamically
-    const onResize = () => this.createOptions();
-    window.addEventListener('resize', onResize);
-    this.destroyRef.onDestroy(() =>
-      window.removeEventListener('resize', onResize),
-    );
+    fromEvent(window, 'resize')
+      .pipe(debounceTime(150), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.updateParticles());
   }
 
-  // Create particles options based on the current theme
-  createOptions() {
-    if (!this.isBrowser) return {};
+  private buildParticleOptions(): object {
+    const particleColor = readCssVar('--particle-primary');
+    const bgColor = readCssVar('--particle-bg');
 
-    const particleColor = resolveCssColor('--mat-sys-primary');
-    const bgColor = resolveCssColor('--mat-sys-background');
-
-    // Set default number of particles
-    let particleCount = 80; // desktop default
-
-    // Reduce particles on smaller screens
+    const breakTablet = parseInt(readCssVar('--break-tablet'));
+    const breakMobile = parseInt(readCssVar('--break-mobile'));
     const width = window.innerWidth;
 
-    if (width <= 768) {
-      // tablet
-      particleCount = 40;
-    }
-    if (width <= 600) {
-      // mobile
-      particleCount = 20;
-    }
+    let particleCount = 80;
+    if (width <= breakTablet) particleCount = 40;
+    if (width <= breakMobile) particleCount = 20;
 
     return {
       preset: 'links',
@@ -151,51 +131,34 @@ export class App implements OnInit {
     };
   }
 
-  // Handle particles loaded event
-  async particlesLoaded(container: Container): Promise<void> {
+  private updateParticles(): void {
+    const options = this.buildParticleOptions();
+    this.particlesOptions.set(options);
+    this.particlesContainer?.reset(options);
+  }
+
+  protected async particlesLoaded(container: Container): Promise<void> {
     this.particlesContainer = container;
   }
 
-  // Toggle theme
-  toggleTheme() {
+  protected toggleTheme(): void {
     if (!this.isBrowser) return;
 
-    this.isDarkMode = !this.isDarkMode;
-    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+    this.isDarkMode.set(!this.isDarkMode());
+    localStorage.setItem('theme', this.isDarkMode() ? 'dark' : 'light');
 
-    document.documentElement.classList.toggle('dark-theme', this.isDarkMode);
-    document.documentElement.classList.toggle('light-theme', !this.isDarkMode);
+    document.documentElement.classList.toggle('dark-theme', this.isDarkMode());
+    document.documentElement.classList.toggle('light-theme', !this.isDarkMode());
 
-    this.particlesOptions = this.createOptions();
-
-    if (this.particlesContainer) {
-      this.particlesContainer.reset(this.particlesOptions);
-    }
+    this.updateParticles();
   }
 
-  // Toggle mobile menu
-  toggleMobileMenu() {
+  protected toggleMobileMenu(): void {
     this.isMobileMenuOpen.set(!this.isMobileMenuOpen());
   }
 
-  // Close mobile menu when a nav link is clicked
-  closeMobileMenu() {
+  protected closeMobileMenu(): void {
     this.isMobileMenuOpen.set(false);
   }
 }
 
-function resolveCssColor(varName: string): string {
-  // Create a temporary element
-  const el = document.createElement('div');
-  el.style.display = 'none';
-  el.style.backgroundColor = `var(${varName})`;
-
-  document.body.appendChild(el);
-
-  // Browser resolves "light-dark(...)" into actual rgb(...)
-  const resolved = getComputedStyle(el).backgroundColor;
-
-  document.body.removeChild(el);
-
-  return resolved.trim();
-}
