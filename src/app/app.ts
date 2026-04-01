@@ -92,7 +92,10 @@ export class App implements OnInit {
     this.isDarkMode.set(theme === 'dark' || theme === null);
 
     document.documentElement.classList.toggle('dark-theme', this.isDarkMode());
-    document.documentElement.classList.toggle('light-theme', !this.isDarkMode());
+    document.documentElement.classList.toggle(
+      'light-theme',
+      !this.isDarkMode(),
+    );
 
     this.particlesOptions.set(this.buildParticleOptions());
 
@@ -148,7 +151,10 @@ export class App implements OnInit {
     localStorage.setItem('theme', this.isDarkMode() ? 'dark' : 'light');
 
     document.documentElement.classList.toggle('dark-theme', this.isDarkMode());
-    document.documentElement.classList.toggle('light-theme', !this.isDarkMode());
+    document.documentElement.classList.toggle(
+      'light-theme',
+      !this.isDarkMode(),
+    );
 
     this.updateParticles();
   }
@@ -161,4 +167,3 @@ export class App implements OnInit {
     this.isMobileMenuOpen.set(false);
   }
 }
-

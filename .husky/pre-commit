@@ -6,6 +6,7 @@ npm run lint || exit 1
 
 # Run formatting — fixes files in place but does NOT stage them
 npm run format
+git diff --quiet || { echo "Formatting fixed files above. Stage the changes and re-commit."; exit 1; }
 
 # Run tests
 npm run test || exit 1
