@@ -91,8 +91,7 @@ export class App implements OnInit {
     const theme = localStorage.getItem('theme');
     this.isDarkMode.set(theme === 'dark' || theme === null);
 
-    document.documentElement.classList.toggle('dark-theme', this.isDarkMode());
-    document.documentElement.classList.toggle('light-theme', !this.isDarkMode());
+    this.setThemeClass(this.isDarkMode());
 
     this.particlesOptions.set(this.buildParticleOptions());
 
@@ -137,6 +136,13 @@ export class App implements OnInit {
     this.particlesContainer?.reset(options);
   }
 
+  private setThemeClass(isDark: boolean): void {
+    document.documentElement.classList.toggle('dark-theme', isDark);
+    document.documentElement.classList.toggle('light-theme', !isDark);
+
+    localStorage.setItem('theme', this.isDarkMode() ? 'dark' : 'light');
+  }
+
   protected async particlesLoaded(container: Container): Promise<void> {
     this.particlesContainer = container;
   }
@@ -145,10 +151,8 @@ export class App implements OnInit {
     if (!this.isBrowser) return;
 
     this.isDarkMode.set(!this.isDarkMode());
-    localStorage.setItem('theme', this.isDarkMode() ? 'dark' : 'light');
 
-    document.documentElement.classList.toggle('dark-theme', this.isDarkMode());
-    document.documentElement.classList.toggle('light-theme', !this.isDarkMode());
+    this.setThemeClass(this.isDarkMode());
 
     this.updateParticles();
   }
@@ -161,4 +165,3 @@ export class App implements OnInit {
     this.isMobileMenuOpen.set(false);
   }
 }
-
