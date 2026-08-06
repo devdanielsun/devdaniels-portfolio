@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -20,6 +27,7 @@ export class ArticlesListPage implements OnInit, OnDestroy {
   private router = inject(Router);
   private articlesService = inject(ArticlesService);
   private seo = inject(SeoService);
+  private cdr = inject(ChangeDetectorRef);
   private routeSub?: Subscription;
 
   protected isDevMode = isDevMode();
@@ -69,12 +77,14 @@ export class ArticlesListPage implements OnInit, OnDestroy {
       .getArticles(this.currentCategory)
       .subscribe((articles: Article[]) => {
         this.items = articles;
+        this.cdr.markForCheck();
       });
   }
 
   private loadCategories(): void {
     this.articlesService.getCategories().subscribe((categories) => {
       this.categories = categories;
+      this.cdr.markForCheck();
     });
   }
 

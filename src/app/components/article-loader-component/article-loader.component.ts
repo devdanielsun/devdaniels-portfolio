@@ -1,4 +1,10 @@
-import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { marked, Renderer } from 'marked';
@@ -28,6 +34,7 @@ export class ArticleLoaderComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private seo = inject(SeoService);
   private platformId = inject(PLATFORM_ID);
+  private cdr = inject(ChangeDetectorRef);
 
   sanitizedHtml = '';
 
@@ -73,5 +80,6 @@ export class ArticleLoaderComponent implements OnInit {
         },
       });
     }
+    this.cdr.markForCheck();
   }
 }
