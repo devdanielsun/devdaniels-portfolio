@@ -10,8 +10,8 @@ categories:
   - Project
   - Case Study
 featuredImage:
-  altText: IBM Logo
-  srcPath: assets/images/project/IBM/IBM-logo.png
+  altText: CI/CD Case Study
+  srcPath: assets/images/articles/cicd-case-study.svg
 githubRepo:
   label: Github - CI/CD Case Study
   link: https://github.com/devdanielsun/cicd-pipeline
