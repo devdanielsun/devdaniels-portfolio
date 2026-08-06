@@ -11,7 +11,7 @@ categories:
   - Web Development
 featuredImage:
   altText: Codeerts Logo
-  srcPath: assets/images/codeerts/codeerts-logo.png
+  srcPath: assets/images/articles/codeerts-logo.png
 tags:
   - Freelance
   - Wordpress
