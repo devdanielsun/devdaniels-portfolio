@@ -6,5 +6,5 @@ export const ARTICLE_SLUGS: string[] = [
   'modern-dinosaurs',
   'devdaniels-website',
   'deveganeetclub-website',
-  'ibm-cicd-casestudy',
+  'cicd-case-study',
 ];
