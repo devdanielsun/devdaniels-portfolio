@@ -48,7 +48,7 @@ jobs:
       #   run: xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' npm run test
 
       - name: Run unit tests (headless)
-        run: npx ng test --watch=false --browsers=ChromeHeadless --code-coverage
+        run: npx ng test --watch=false --browsers=ChromeHeadless
 
       # Build Angular project
       - name: Build Angular
