@@ -1,5 +1,5 @@
 <main>
-  @defer (when isBrowser) {
+  @if (isBrowser) {
     <ngx-particles
       [id]="id"
       [options]="particlesOptions()"
