@@ -35,17 +35,20 @@ jobs:
       - name: Run linting
         run: npm run lint
 
-      # Install Chromium and Xvfb (needed to run Chrome in headless mode on CI)
-      - name: Install Chromium & Xvfb
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser xvfb
+      # # Install Chromium and Xvfb (needed to run Chrome in headless mode on CI)
+      # - name: Install Chromium & Xvfb
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y chromium-browser xvfb
 
-      # Run tests under Xvfb so Chrome can run without a display
-      - name: Run tests
-        env:
-          CHROME_BIN: /usr/bin/chromium-browser
-        run: xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' npm run test
+      # # Run tests under Xvfb so Chrome can run without a display
+      # - name: Run tests
+      #   env:
+      #     CHROME_BIN: /usr/bin/chromium-browser
+      #   run: xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' npm run test
+
+      - name: Run unit tests (headless)
+        run: npm run test --watch=false --browsers=ChromeHeadless --code-coverage
 
       # Build Angular project
       - name: Build Angular
@@ -60,4 +63,5 @@ jobs:
           action: "upload"
           app_location: ${{ env.APP_LOCATION }}
           output_location: ${{ env.APP_ARTIFACT_LOCATION }}
-          app_build_command: "echo 'Already built'"
+          skip_app_build: true
+          skip_api_build: true
