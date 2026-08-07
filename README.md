@@ -45,7 +45,7 @@ Build artifacts are stored in the `dist/` directory.
 Generate a new component:
 
 ```bash
-ng generate component component-name
+ng generate component components/my-component-name
 ```
 
 For more schematics (components, directives, pipes):

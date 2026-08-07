@@ -21,11 +21,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
-      # Setup Node.js (ensure version >= 22.12)
+      # Setup Node.js (ensure version >= 24.19)
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: ">=22.12"
+          node-version: ">=24.19"
 
       # Install dependencies
       - name: Install dependencies
