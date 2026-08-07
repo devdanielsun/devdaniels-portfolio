@@ -30,7 +30,7 @@
   },
   "private": true,
   "engines": {
-    "node": ">=24.19"
+    "node": ">=24.13"
   },
   "dependencies": {
     "@angular/cdk": "^22.1.1",
