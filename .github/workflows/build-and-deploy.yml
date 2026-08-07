@@ -43,6 +43,13 @@ jobs:
       - name: Build Angular
         run: npx ng build --configuration production
 
+      - name: Debug build output
+        run: |
+          echo "--- Listing dist/ ---"
+          find dist -type f -name "index.html" 2>/dev/null || echo "No index.html found in dist/"
+          echo "--- Full dist tree (first 50 lines) ---"
+          find dist -type f | head -50 || echo "No dist/ directory found"
+
       # Deploy to Azure Static Web App
       - name: Deploy to Azure Static Web App
         uses: Azure/static-web-apps-deploy@v1
@@ -53,4 +60,3 @@ jobs:
           app_location: ${{ env.APP_LOCATION }}
           output_location: ${{ env.APP_ARTIFACT_LOCATION }}
           skip_app_build: true
-          skip_api_build: true
