@@ -6,6 +6,34 @@
 @use "@angular/material" as mat;
 @use "variables" as vars;
 
+@each $weight in 300, 400, 500, 700 {
+  @font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-display: block;
+    font-weight: $weight;
+    src:
+      url("@fontsource/roboto/files/roboto-latin-#{$weight}-normal.woff2")
+        format("woff2"),
+      url("@fontsource/roboto/files/roboto-latin-#{$weight}-normal.woff")
+        format("woff");
+  }
+}
+
+@each $weight in 400, 700 {
+  @font-face {
+    font-family: "Orbitron";
+    font-style: normal;
+    font-display: block;
+    font-weight: $weight;
+    src:
+      url("@fontsource/orbitron/files/orbitron-latin-#{$weight}-normal.woff2")
+        format("woff2"),
+      url("@fontsource/orbitron/files/orbitron-latin-#{$weight}-normal.woff")
+        format("woff");
+  }
+}
+
 // Theme objects used to extract resolved color values for JS-readable CSS custom properties.
 // Using mat.define-theme() + mat.get-theme-color() avoids light-dark() and keeps colors
 // in sync with the palettes used in mat.theme() below.
@@ -61,9 +89,21 @@ html {
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-primary-container);
   color: var(--mat-sys-on-background);
   font: var(--mat-sys-body-medium);
+}
+
+html.dark-theme .switch-theme--moon,
+html:not(.light-theme) .switch-theme--moon {
+  display: none !important;
+}
+
+html.light-theme .switch-theme--sun {
+  display: none !important;
+}
+
+html.light-theme .switch-theme--moon {
+  display: inline-block !important;
 }
 
 html.light-theme {
