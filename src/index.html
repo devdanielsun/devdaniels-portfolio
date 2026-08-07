@@ -38,19 +38,22 @@
       content="https://devdaniels.com/assets/images/devdanielsProfilePicture.jpg"
     />
 
+    <script>
+      (function () {
+        var theme = localStorage.getItem("theme");
+        var isDark = theme === "dark" || theme === null;
+        document.documentElement.classList.add(
+          isDark ? "dark-theme" : "light-theme",
+        );
+      })();
+    </script>
     <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@400;700&display=swap"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
     <!-- Cloudflare Web Analytics -->
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "67889abc11024e3db7c7b30e1ed0b41d"}'></script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "67889abc11024e3db7c7b30e1ed0b41d"}'
+    ></script>
     <!-- End Cloudflare Web Analytics -->
   </head>
   <body>

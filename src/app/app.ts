@@ -64,7 +64,11 @@ export class App implements OnInit {
   protected readonly routes = routes;
   protected readonly currentYear = new Date().getFullYear();
   protected readonly id = 'tsparticles';
-  protected isDarkMode = signal(true);
+  protected isDarkMode = signal(
+    this.isBrowser
+      ? (localStorage.getItem('theme') ?? 'dark') === 'dark'
+      : true,
+  );
   protected isMobileMenuOpen = signal(false);
   protected particlesOptions = signal<object>({});
 

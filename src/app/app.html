@@ -73,23 +73,20 @@
         </a>
       </div>
 
-      @if (isDarkMode()) {
-        <ng-icon
-          name="faSolidSun"
-          (click)="toggleTheme()"
-          class="clickable-icon switch-theme"
-          size="2em"
-          matTooltip="Switch to light mode"
-        ></ng-icon>
-      } @else {
-        <ng-icon
-          name="faSolidMoon"
-          (click)="toggleTheme()"
-          class="clickable-icon switch-theme"
-          size="2em"
-          matTooltip="Switch to dark mode"
-        ></ng-icon>
-      }
+      <ng-icon
+        name="faSolidSun"
+        (click)="toggleTheme()"
+        class="clickable-icon switch-theme switch-theme--sun"
+        size="2em"
+        matTooltip="Switch to light mode"
+      ></ng-icon>
+      <ng-icon
+        name="faSolidMoon"
+        (click)="toggleTheme()"
+        class="clickable-icon switch-theme switch-theme--moon"
+        size="2em"
+        matTooltip="Switch to dark mode"
+      ></ng-icon>
     </nav>
   </div>
   <section class="content">
