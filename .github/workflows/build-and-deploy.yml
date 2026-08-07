@@ -35,28 +35,22 @@ jobs:
       - name: Run linting
         run: npm run lint
 
-      # Install Chromium and Xvfb (needed to run Chrome in headless mode on CI)
-      - name: Install Chromium & Xvfb
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser xvfb
-
-      # Run tests under Xvfb so Chrome can run without a display
-      - name: Run tests
-        env:
-          CHROME_BIN: /usr/bin/chromium-browser
-        run: xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' npm run test
+      # Run unit tests (headless)
+      - name: Run unit tests (headless)
+        run: npx ng test --watch=false --browsers=ChromeHeadless
 
       # Build Angular project
       - name: Build Angular
-        run: npm run build --prod
+        run: npx ng build --configuration production
 
-      # Deploy to Azure Static Web App (skip Oryx build — already built above)
+      # Deploy to Azure Static Web App
       - name: Deploy to Azure Static Web App
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
+          app_location: ${{ env.APP_LOCATION }}
+          output_location: ${{ env.APP_ARTIFACT_LOCATION }}
           skip_app_build: true
-          app_location: ${{ env.APP_ARTIFACT_LOCATION }}
+          skip_api_build: true
