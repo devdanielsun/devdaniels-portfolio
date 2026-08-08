@@ -36,6 +36,10 @@ jobs:
         with:
           node-version: "22.x"
 
+      # Stamp version
+      - name: Set app version
+        run: sed -i "s/0\.dev/0.${{ github.run_number }}/" src/environments/environment.ts
+
       # Install dependencies
       - name: Install dependencies
         run: npm install
