@@ -21,11 +21,24 @@
 
         &:first-child {
           width: 1%;
+          padding-right: 3em;
         }
 
         &:last-child {
           width: 100%;
+
+          input[type="text"],
+          input[type="range"] {
+            width: 80%;
+          }
         }
+      }
+
+      .info-icon {
+        font-size: 0.85em;
+        opacity: 0.5;
+        cursor: help;
+        margin-left: 0.3em;
       }
     }
   }
