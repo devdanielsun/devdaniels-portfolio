@@ -1,14 +1,14 @@
 import {
   ChangeDetectorRef,
   Component,
+  DestroyRef,
   Input,
-  OnDestroy,
   OnInit,
   inject,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { SlicePipe } from '@angular/common';
-import { Subscription } from 'rxjs';
 import { ArticlesService } from '../../services/articles.service';
 import { ContainerComponent } from '../../components/container-component/container.component';
 import { Article } from '../../models/article.model';
@@ -22,13 +22,13 @@ import { SeoService } from '../../services/seo.service';
   templateUrl: './articles-list.page.html',
   styleUrls: ['./articles-list.page.scss'],
 })
-export class ArticlesListPage implements OnInit, OnDestroy {
+export class ArticlesListPage implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private articlesService = inject(ArticlesService);
   private seo = inject(SeoService);
   private cdr = inject(ChangeDetectorRef);
-  private routeSub?: Subscription;
+  private destroyRef = inject(DestroyRef);
 
   protected isDevMode = isDevMode();
 
@@ -54,27 +54,26 @@ export class ArticlesListPage implements OnInit, OnDestroy {
     this.loadArticles();
   }
 
-  ngOnDestroy(): void {
-    this.routeSub?.unsubscribe();
-  }
-
   private subscribeToRouteParams(): void {
-    this.routeSub = this.route.paramMap.subscribe((paramMap) => {
-      this.currentCategory = paramMap.get('category') || undefined;
-      if (this.currentCategory && !this.onlyShowArticles) {
-        this.seo.update({
-          title: `${this.currentCategory} Articles`,
-          description: `Articles about ${this.currentCategory} by Daniël Geerts (DevDaniels).`,
-          url: `/articles/category/${this.currentCategory}`,
-        });
-      }
-      this.loadArticles();
-    });
+    this.route.paramMap
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((paramMap) => {
+        this.currentCategory = paramMap.get('category') || undefined;
+        if (this.currentCategory && !this.onlyShowArticles) {
+          this.seo.update({
+            title: `${this.currentCategory} Articles`,
+            description: `Articles about ${this.currentCategory} by Daniël Geerts (DevDaniels).`,
+            url: `/articles/category/${this.currentCategory}`,
+          });
+        }
+        this.loadArticles();
+      });
   }
 
   private loadArticles(): void {
     this.articlesService
       .getArticles(this.currentCategory)
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((articles: Article[]) => {
         this.items = articles;
         this.cdr.markForCheck();
@@ -82,10 +81,13 @@ export class ArticlesListPage implements OnInit, OnDestroy {
   }
 
   private loadCategories(): void {
-    this.articlesService.getCategories().subscribe((categories) => {
-      this.categories = categories;
-      this.cdr.markForCheck();
-    });
+    this.articlesService
+      .getCategories()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((categories) => {
+        this.categories = categories;
+        this.cdr.markForCheck();
+      });
   }
 
   navigateToArticle(articleSlug: string): void {

@@ -14,9 +14,7 @@ import type { Container } from '@tsparticles/engine';
 import { fromEvent, debounceTime } from 'rxjs';
 import { routes } from './app.routes';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { SvgLoaderService } from './services/svg-loader.service';
 import { readCssVar } from './utils/css-utils';
-import { SafeHtml } from '@angular/platform-browser';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { diLinkedinPlain } from '@ng-icons/devicon/plain';
 import { simpleGithub } from '@ng-icons/simple-icons';
@@ -52,12 +50,10 @@ import {
 })
 export class App implements OnInit {
   private readonly ngParticlesService = inject(NgParticlesService);
-  private readonly svgLoader = inject(SvgLoaderService);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly destroyRef = inject(DestroyRef);
 
   protected readonly isBrowser = isPlatformBrowser(this.platformId);
-  protected logoSvg?: SafeHtml;
   protected readonly routes = routes;
   protected readonly currentYear = new Date().getFullYear();
   protected readonly id = 'tsparticles';
@@ -76,12 +72,6 @@ export class App implements OnInit {
   private particlesContainer?: Container;
 
   ngOnInit(): void {
-    if (this.isBrowser) {
-      this.svgLoader
-        .loadSvg('assets/logo-devdaniels.svg')
-        .subscribe((svg) => (this.logoSvg = svg as SafeHtml));
-    }
-
     if (!this.isBrowser) return;
 
     this.ngParticlesService.init(async (engine) => {
