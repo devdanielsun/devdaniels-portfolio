@@ -147,7 +147,7 @@ export class App implements OnInit {
     localStorage.setItem('theme', this.isDarkMode() ? 'dark' : 'light');
   }
 
-  protected async particlesLoaded(container: Container): Promise<void> {
+  protected async particlesLoaded(container?: Container): Promise<void> {
     this.particlesContainer = container;
   }
 
