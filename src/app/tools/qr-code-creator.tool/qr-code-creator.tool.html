@@ -193,12 +193,13 @@
       </span>
 
       <a
+        class="old-skool-button old-skool-button--primary"
         [href]="qrCodeDownloadLink"
         download="qrcode.{{ downloadFormat() }}"
         [attr.disabled]="
           !qrCodeDownloadLink && qrCodeContent().length > 0 ? true : null
         "
-        >Download</a
+        >Download as {{ downloadFormat().toUpperCase() }}</a
       >
     } @else {
       <div class="qr-code-placeholder">

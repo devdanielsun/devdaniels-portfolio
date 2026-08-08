@@ -40,8 +40,7 @@ export class ArticleLoaderComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const resolved = this.route.snapshot.data['article'] as
-      | ResolvedArticle
-      | undefined;
+      ResolvedArticle | undefined;
     if (!resolved) {
       console.warn('No article found in route data.');
       return;
