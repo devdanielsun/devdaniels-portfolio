@@ -1,0 +1,100 @@
+<div class="qr-code">
+  <div class="qr-code-creator">
+    <h2>Create here uw QR Code</h2>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <label for="qrCodeContent">QR Code Content:</label>
+          </td>
+          <td>
+            <input
+              id="qrCodeContent"
+              type="text"
+              placeholder="Enter text or URL"
+              [value]="qrCodeContent()"
+              (input)="qrCodeContent.set($any($event.target).value)"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="qrCodeForegroundColor">QR Code Foreground Color:</label>
+          </td>
+          <td>
+            <input
+              id="qrCodeForegroundColor"
+              type="color"
+              title="Choose QR code foreground color"
+              [value]="qrCodeForegroundColor()"
+              (input)="qrCodeForegroundColor.set($any($event.target).value)"
+              list="foregroundPresetColors"
+            />
+            <datalist id="foregroundPresetColors">
+              <option>#000000</option>
+              <option>#ff0000</option>
+              <option>#00ff00</option>
+              <option>#0000ff</option>
+            </datalist>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="qrCodeBackgroundColor">QR Code Background Color:</label>
+          </td>
+          <td>
+            <input
+              id="qrCodeBackgroundColor"
+              type="color"
+              title="Choose QR code background color"
+              [value]="qrCodeBackgroundColor()"
+              (input)="qrCodeBackgroundColor.set($any($event.target).value)"
+              list="backgroundPresetColors"
+            />
+            <datalist id="backgroundPresetColors">
+              <option>#ffffff</option>
+              <option>#ff0000</option>
+              <option>#00ff00</option>
+              <option>#0000ff</option>
+            </datalist>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="qr-code-display">
+    <h2>Generated QR Code:</h2>
+    @if (qrCodeContent().length > 0) {
+      @if (isBrowser) {
+        <qrcode
+          (qrCodeURL)="onChangeURL($event)"
+          [qrdata]="qrCodeContent()"
+          [width]="256"
+          [errorCorrectionLevel]="'M'"
+          [colorDark]="qrCodeForegroundColor()"
+          [colorLight]="qrCodeBackgroundColor()"
+          backgroundColor="transparent"
+        ></qrcode>
+      }
+
+      <span>
+        QR Code Content: <b>{{ qrCodeContent() }}</b>
+      </span>
+
+      <a
+        [href]="qrCodeDownloadLink"
+        download="qrcode"
+        [attr.disabled]="
+          !qrCodeDownloadLink && qrCodeContent().length > 0 ? true : null
+        "
+        >Download</a
+      >
+    } @else {
+      <div class="qr-code-placeholder">
+        Please enter text or URL to generate QR code.
+      </div>
+    }
+  </div>
+</div>
