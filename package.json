@@ -14,8 +14,10 @@
   },
   "lint-staged": {
     "src/**/*.{ts,html,scss}": [
-      "prettier --write",
-      "ng lint"
+      "prettier --write"
+    ],
+    "src/**/*.{ts,html}": [
+      "eslint --fix"
     ]
   },
   "prettier": {

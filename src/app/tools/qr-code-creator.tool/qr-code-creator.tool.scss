@@ -9,15 +9,15 @@
   .qr-code-creator {
     display: flex;
     flex-direction: column;
-    gap: 1em;
     width: 50%;
 
     table {
       width: 100%;
+      text-align: left;
 
       td {
         white-space: nowrap;
-        text-align: left;
+        vertical-align: top;
 
         &:first-child {
           width: 1%;
@@ -27,9 +27,18 @@
         &:last-child {
           width: 100%;
 
-          input[type="text"],
+          textarea,
           input[type="range"] {
             width: 80%;
+          }
+
+          textarea {
+            word-wrap: break-word;
+            resize: vertical;
+          }
+
+          textarea.input-error {
+            border: 2px solid red;
           }
         }
       }
@@ -62,6 +71,10 @@
       padding: 2em;
       display: flex;
       align-items: center;
+    }
+
+    span {
+      word-wrap: anywhere;
     }
   }
 
