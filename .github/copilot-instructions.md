@@ -54,6 +54,7 @@ The pre-commit hook enforces `lint → format → test` in order.
   - A new design pattern or constraint is introduced → add it to [Always/Never](#conventions--always--never)
   - A new icon set or `@ng-icons` package is added → update the [Icons](#icons) table
   - A new tool is added or `ToolMeta` interface changes → update [Tools system](#tools-system)
+  - A CI/CD workflow or Bicep resource is added/changed → update [CI/CD & Infrastructure](#cicd--infrastructure)
 
 **Never:**
 
@@ -191,6 +192,27 @@ this.seo.update({
 ```
 
 Exception: `NotFound404Page` uses Angular's `Meta` service directly to set `robots: noindex`.
+
+### CI/CD & Infrastructure
+
+Deployed to **Azure Static Web Apps** (Free tier) via GitHub Actions. Infrastructure is managed as code with **Bicep**.
+
+**Workflows** (`.github/workflows/`):
+
+- `run-tests.yml` — lint + unit tests; triggered on PRs and reusable via `workflow_call`
+- `deploy-infra.yml` — deploys Bicep IaC (resource group + Static Web App); reusable via `workflow_call` and manual `workflow_dispatch`
+- `build-and-deploy.yml` — orchestrator on `main` push; calls `run-tests.yml` and `deploy-infra.yml` in parallel, then builds and deploys the app
+
+**Infrastructure** (`infra/`):
+
+- `main.bicep` — subscription-scoped; creates resource group and deploys the Static Web App module
+- `main.bicepparam` — parameters file (region: `westeurope`, environment: `prod`)
+- `shared/static-web-app.bicep` — reusable `Microsoft.Web/staticSites` module (Free SKU)
+
+**GitHub Secrets** required for infra deployment (OIDC):
+
+- `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID` — Azure AD app registration with federated credentials
+- `AZURE_STATIC_WEB_APPS_API_TOKEN` — deploy token for the Static Web App
 
 ### SSR & prerendering
 
