@@ -15,6 +15,7 @@ import { fromEvent, debounceTime } from 'rxjs';
 import { routes } from './app.routes';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { readCssVar } from './utils/css-utils';
+import { environment } from '../environments/environment';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { diLinkedinPlain } from '@ng-icons/devicon/plain';
 import { simpleGithub } from '@ng-icons/simple-icons';
@@ -56,6 +57,7 @@ export class App implements OnInit {
   protected readonly isBrowser = isPlatformBrowser(this.platformId);
   protected readonly routes = routes;
   protected readonly currentYear = new Date().getFullYear();
+  protected readonly appVersion = environment.version;
   protected readonly id = 'tsparticles';
   protected isDarkMode = signal(
     this.isBrowser
