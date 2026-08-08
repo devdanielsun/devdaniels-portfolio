@@ -71,3 +71,9 @@ The app is configured for deployment to Azure Static Web Apps. See [azure-static
 ## How to add articles?
 
 Follow the instructies from [ARTICLES.md](/src/app/articles/ARTICLES.md)
+
+---
+
+## How to add tools?
+
+Follow the instructies from [TOOLS.md](/src/app/tools/tools.md)

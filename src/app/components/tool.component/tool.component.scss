@@ -1,0 +1,27 @@
+.tool-container {
+  padding: 0 1em;
+
+  .breadcrumb {
+    color: var(--mat-sys-on-surface);
+    padding: 0;
+    text-align: left;
+
+    .active {
+      font-weight: bold;
+    }
+  }
+
+  .tool-title {
+    justify-self: center;
+    padding: 0.5em 0em;
+    margin: 0;
+    border: 1px solid var(--mat-sys-on-surface-variant);
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .tool-description {
+    color: var(--mat-sys-on-surface-variant);
+    margin-bottom: 2em;
+  }
+}

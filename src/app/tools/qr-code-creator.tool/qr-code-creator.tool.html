@@ -1,0 +1,209 @@
+<div class="qr-code">
+  <div class="qr-code-creator">
+    <h2>Create here ur QR Code</h2>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <label for="qrCodeContent">QR Code Content</label>
+            <ng-icon
+              name="faSolidCircleInfo"
+              class="info-icon"
+              matTooltip="The text or URL to encode into the QR code"
+            />
+          </td>
+          <td>
+            <input
+              id="qrCodeContent"
+              type="text"
+              placeholder="Enter text or URL"
+              [value]="qrCodeContent()"
+              (input)="qrCodeContent.set($any($event.target).value)"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="qrCodeForegroundColor">Foreground Color</label>
+            <ng-icon
+              name="faSolidCircleInfo"
+              class="info-icon"
+              matTooltip="Color of the dark modules (the QR pattern itself)"
+            />
+          </td>
+          <td>
+            <input
+              id="qrCodeForegroundColor"
+              type="color"
+              title="Choose QR code foreground color"
+              [value]="qrCodeForegroundColor()"
+              (input)="qrCodeForegroundColor.set($any($event.target).value)"
+              list="foregroundPresetColors"
+            />
+            <datalist id="foregroundPresetColors">
+              <option>#000000</option>
+              <option>#b91c1c</option>
+              <option>#0e7490</option>
+              <option>#15803d</option>
+              <option>#7e22ce</option>
+              <option>#c2410c</option>
+              <option>#1d4ed8</option>
+              <option>#a21caf</option>
+            </datalist>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="qrCodeBackgroundColor">Background Color</label>
+            <ng-icon
+              name="faSolidCircleInfo"
+              class="info-icon"
+              matTooltip="Color of the light modules (the background)"
+            />
+          </td>
+          <td>
+            <input
+              id="qrCodeBackgroundColor"
+              type="color"
+              title="Choose QR code background color"
+              [value]="qrCodeBackgroundColor()"
+              (input)="qrCodeBackgroundColor.set($any($event.target).value)"
+              list="backgroundPresetColors"
+            />
+            <datalist id="backgroundPresetColors">
+              <option>#ffffff</option>
+              <option>#fecaca</option>
+              <option>#a5f3fc</option>
+              <option>#bbf7d0</option>
+              <option>#e9d5ff</option>
+              <option>#fed7aa</option>
+              <option>#bfdbfe</option>
+              <option>#f5d0fe</option>
+            </datalist>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="errorCorrectionLevel">Error Correction</label>
+            <ng-icon
+              name="faSolidCircleInfo"
+              class="info-icon"
+              matTooltip="Higher levels allow more of the QR code to be damaged while still being readable, but increase density"
+            />
+          </td>
+          <td>
+            <select
+              id="errorCorrectionLevel"
+              [value]="errorCorrectionLevel()"
+              (change)="errorCorrectionLevel.set($any($event.target).value)"
+            >
+              <option value="L">L - Low (~7%)</option>
+              <option value="M">M - Medium (~15%)</option>
+              <option value="Q">Q - Quartile (~25%)</option>
+              <option value="H">H - High (~30%)</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="width">Width</label>
+            <ng-icon
+              name="faSolidCircleInfo"
+              class="info-icon"
+              matTooltip="The width and height of the generated QR code in pixels"
+            />
+          </td>
+          <td>
+            <input
+              id="width"
+              type="range"
+              min="64"
+              max="512"
+              step="16"
+              [value]="width()"
+              (input)="width.set(+$any($event.target).value)"
+            />
+            <span>{{ width() }}px</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="margin">Margin</label>
+            <ng-icon
+              name="faSolidCircleInfo"
+              class="info-icon"
+              matTooltip="The quiet zone around the QR code in modules. Recommended: at least 4 for reliable scanning"
+            />
+          </td>
+          <td>
+            <input
+              id="margin"
+              type="range"
+              min="0"
+              max="10"
+              step="1"
+              [value]="margin()"
+              (input)="margin.set(+$any($event.target).value)"
+            />
+            <span>{{ margin() }}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="downloadFormat">Download Format</label>
+            <ng-icon
+              name="faSolidCircleInfo"
+              class="info-icon"
+              matTooltip="PNG is a bitmap image format, SVG is a scalable vector format"
+            />
+          </td>
+          <td>
+            <select
+              id="downloadFormat"
+              [value]="downloadFormat()"
+              (change)="downloadFormat.set($any($event.target).value)"
+            >
+              <option value="png">PNG</option>
+              <option value="svg">SVG</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="qr-code-display">
+    <h2>Generated QR Code</h2>
+    @if (qrCodeContent().length > 0) {
+      @if (isBrowser) {
+        <qrcode
+          (qrCodeURL)="onChangeURL($event)"
+          [qrdata]="qrCodeContent()"
+          [width]="width()"
+          [errorCorrectionLevel]="errorCorrectionLevel()"
+          [colorDark]="qrCodeForegroundColor()"
+          [colorLight]="qrCodeBackgroundColor()"
+          [margin]="margin()"
+          [elementType]="elementType()"
+        ></qrcode>
+      }
+
+      <span>
+        QR Code Content: <b>{{ qrCodeContent() }}</b>
+      </span>
+
+      <a
+        [href]="qrCodeDownloadLink"
+        download="qrcode.{{ downloadFormat() }}"
+        [attr.disabled]="
+          !qrCodeDownloadLink && qrCodeContent().length > 0 ? true : null
+        "
+        >Download</a
+      >
+    } @else {
+      <div class="qr-code-placeholder">
+        Please enter text or URL to generate QR code.
+      </div>
+    }
+  </div>
+</div>
