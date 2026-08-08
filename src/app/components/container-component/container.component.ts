@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-container-component',
-  imports: [CommonModule],
+  imports: [NgTemplateOutlet],
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
 })

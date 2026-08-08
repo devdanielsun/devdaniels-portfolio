@@ -7,7 +7,7 @@ import {
   inject,
 } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { SlicePipe } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ArticlesService } from '../../services/articles.service';
 import { ContainerComponent } from '../../components/container-component/container.component';
@@ -18,7 +18,7 @@ import { SeoService } from '../../services/seo.service';
 @Component({
   selector: 'app-articles-list-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, ContainerComponent],
+  imports: [SlicePipe, RouterLink, ContainerComponent],
   templateUrl: './articles-list.page.html',
   styleUrls: ['./articles-list.page.scss'],
 })

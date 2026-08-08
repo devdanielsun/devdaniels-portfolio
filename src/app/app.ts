@@ -9,10 +9,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
-import { NgxParticlesModule } from '@tsparticles/angular';
-import { loadLinksPreset } from '@tsparticles/preset-links';
-import { loadSlim } from '@tsparticles/slim';
-import { NgParticlesService } from '@tsparticles/angular';
+import { NgxParticlesModule, NgParticlesService } from '@tsparticles/angular';
 import type { Container } from '@tsparticles/engine';
 import { fromEvent, debounceTime } from 'rxjs';
 import { routes } from './app.routes';
@@ -88,6 +85,10 @@ export class App implements OnInit {
     if (!this.isBrowser) return;
 
     this.ngParticlesService.init(async (engine) => {
+      const [{ loadSlim }, { loadLinksPreset }] = await Promise.all([
+        import('@tsparticles/slim'),
+        import('@tsparticles/preset-links'),
+      ]);
       await loadSlim(engine);
       await loadLinksPreset(engine);
     });

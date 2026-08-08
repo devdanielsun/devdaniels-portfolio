@@ -2,7 +2,6 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ContainerComponent } from '../../components/container-component/container.component';
 import { Router, RouterLink } from '@angular/router';
 import { SeoService } from '../../services/seo.service';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
@@ -49,7 +48,6 @@ interface ExperienceTabConfig {
   imports: [
     RouterLink,
     ContainerComponent,
-    MatGridListModule,
     NgIconComponent,
     ArticlesListPage,
     MatTooltipModule,

@@ -8,7 +8,6 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { marked, Renderer } from 'marked';
-import sanitizeHtml from 'sanitize-html';
 import { ResolvedArticle } from '../../models/article.model';
 import { SeoService } from '../../services/seo.service';
 
@@ -70,6 +69,7 @@ export class ArticleLoaderComponent implements OnInit {
         ADD_ATTR: ['target'],
       });
     } else {
+      const { default: sanitizeHtml } = await import('sanitize-html');
       this.sanitizedHtml = sanitizeHtml(rawHtml, {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
         allowedAttributes: {
