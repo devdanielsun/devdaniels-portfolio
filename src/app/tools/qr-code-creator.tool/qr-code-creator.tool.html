@@ -5,6 +5,12 @@
       <tbody>
         <tr>
           <td>
+            <h3>Mandatory</h3>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
             <label for="qrCodeContent">QR Code Content</label>
             <ng-icon
               name="faSolidCircleInfo"
@@ -13,14 +19,26 @@
             />
           </td>
           <td>
-            <input
+            <textarea
               id="qrCodeContent"
-              type="text"
               placeholder="Enter text or URL"
+              wrap="soft"
+              rows="1"
+              oninput="
+                this.style.height = '';
+                this.style.height = 2 + this.scrollHeight + 'px';
+              "
+              [class.input-error]="qrCodeContent().length === 0"
               [value]="qrCodeContent()"
               (input)="qrCodeContent.set($any($event.target).value)"
-            />
+            ></textarea>
           </td>
+        </tr>
+        <tr>
+          <td>
+            <h3>Optional</h3>
+          </td>
+          <td></td>
         </tr>
         <tr>
           <td>
