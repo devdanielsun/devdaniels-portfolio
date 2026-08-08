@@ -24,7 +24,6 @@ marked.use({ renderer });
 
 @Component({
   selector: 'app-article-loader',
-  standalone: true,
   imports: [],
   template: `<div class="markdown-content" [innerHTML]="sanitizedHtml"></div>`,
   styleUrls: ['./article-loader.component.scss'],

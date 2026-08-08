@@ -1,5 +1,17 @@
 # Copilot Instructions
 
+## Angular 22
+
+This project uses **Angular 22**. When implementing features or solving problems, consult the official Angular docs at [angular.dev](https://angular.dev) for current best practices — APIs, defaults, and recommendations change between major versions. Key Angular 22 patterns used in this project:
+
+- **Standalone by default** — components, directives, and pipes are standalone; `@NgModule` is not used
+- **`inject()` function** — preferred over constructor injection
+- **Signals** (`signal`, `computed`, `toSignal`, `effect`) — preferred for reactive state over RxJS `BehaviorSubject` or manual subscriptions
+- **Built-in control flow** (`@if`, `@for`, `@switch`) — preferred over `*ngIf`, `*ngFor`, `*ngSwitch`
+- **SSR with `@angular/ssr`** — `RenderMode.Prerender` / `RenderMode.Server` / `RenderMode.Client` in `app.routes.server.ts`
+
+When in doubt about Angular 22 APIs or deprecations, always check the [Angular docs](https://angular.dev/overview) rather than relying on older patterns.
+
 ## Commands
 
 ```bash
@@ -28,7 +40,7 @@ The pre-commit hook enforces `lint → format → test` in order.
 
 **Always:**
 
-- Use **standalone components** (`standalone: true`, explicit `imports: []`) — never `@NgModule`
+- Use **standalone components** (default in Angular 22; explicit `standalone: true` is not needed) — never `@NgModule`
 - Use **`inject()`** for dependency injection — never constructor injection
 - Use **signals** (`signal`, `computed`, `toSignal`) for reactive state — avoid manual subscriptions where signals suffice
 - Use **`isPlatformBrowser(inject(PLATFORM_ID))`** before any browser-only API (DOM, DOMPurify, particles, localStorage)
@@ -41,6 +53,7 @@ The pre-commit hook enforces `lint → format → test` in order.
   - `SeoService.update()` signature changes → update the call example in [SEO](#seo)
   - A new design pattern or constraint is introduced → add it to [Always/Never](#conventions--always--never)
   - A new icon set or `@ng-icons` package is added → update the [Icons](#icons) table
+  - A new tool is added or `ToolMeta` interface changes → update [Tools system](#tools-system)
 
 **Never:**
 
@@ -83,7 +96,8 @@ This is an **Angular standalone-component portfolio app** deployed to Azure Stat
 **Pages** (`src/app/pages/`):
 
 - `PortfolioPage` — `/`, landing page with tabs and particle animation; embeds `ArticlesListPage` inline
-- `ArticlesListPage` — `/articles` and `/articles/category/:category`; embeddable via `@Input() onlyShowArticles` / `@Input() maxItemsToShow`
+- `ArticlesListPage` — `/articles` and `/articles/category/:category`; embeddable via `@Input() onlyShowArticles` / `@Input() maxItemsToShow` / `@Input() centerItems`
+- `ToolsListPage` — `/tools`; lists all registered tools with search, sort, and category filter
 - `NotFound404Page` — `**` catch-all; sets `robots: noindex` via Angular's `Meta` service directly (not `SeoService`)
 
 **Components** (`src/app/components/`):
@@ -91,6 +105,7 @@ This is an **Angular standalone-component portfolio app** deployed to Azure Stat
 - `ContainerComponent` — layout wrapper; `@Input() hideContainerView`
 - `ArticleComponent` — article shell (breadcrumbs, metadata sidebar, GitHub button); uses `toSignal` + `computed` to read nested child route data
 - `ArticleLoaderComponent` — markdown → sanitized HTML; calls `SeoService.update()`
+- `ToolComponent` — tool shell (breadcrumbs, layout); reads `toolMeta` from route data
 
 **Services** (`src/app/services/`):
 
@@ -129,6 +144,26 @@ interface Article {
 2. Returns `ResolvedArticle = { article: Article; markdownContent: string }` under route data key `article`
 3. `ArticleComponent` renders metadata sidebar; `ArticleLoaderComponent` renders markdown body
 
+### Tools system
+
+Tools are small standalone utilities (e.g. QR code generator) at `/tools/:slug`.
+
+**To add a tool:** create a component in `src/app/tools/<slug>.tool/`, add an entry to `TOOLS` in `src/app/tools/tools.registry.ts`. See `src/app/tools/TOOLS.md` for the full guide.
+
+The `ToolMeta` interface (`src/app/models/tool.model.ts`):
+
+```typescript
+interface ToolMeta {
+  slug: string;
+  title: string;
+  shortDescription: string;
+  categories: string[];
+  icon: string; // ng-icon name, e.g. 'faSolidQrcode'
+}
+```
+
+The registry extends `ToolMeta` with a `loadComponent` function for lazy loading. Routes and prerendering entries are auto-generated from the registry in `app.routes.ts` and `app.routes.server.ts`.
+
 ### SEO
 
 Call `SeoService.update()` in every page's `ngOnInit`:
@@ -159,7 +194,7 @@ Exception: `NotFound404Page` uses Angular's `Meta` service directly to set `robo
 
 ### SSR & prerendering
 
-`src/app/app.routes.server.ts` prerendering resolves dynamic routes at build time (`/articles/:slug`, `/articles/category/:category`). Always guard browser-only code:
+`src/app/app.routes.server.ts` prerendering resolves dynamic routes at build time (`/articles/:slug`, `/articles/category/:category`, `/tools`, `/tools/:slug`). Always guard browser-only code:
 
 ```typescript
 private platformId = inject(PLATFORM_ID);
