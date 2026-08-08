@@ -10,10 +10,19 @@ env:
   APP_ARTIFACT_LOCATION: "dist/devdaniels-portfolio/browser" # Angular build output
 
 permissions:
+  id-token: write
   contents: read
 
 jobs:
+  test:
+    uses: ./.github/workflows/run-tests.yml
+
+  infrastructure:
+    uses: ./.github/workflows/deploy-infra.yml
+    secrets: inherit
+
   build_and_deploy:
+    needs: [test, infrastructure]
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
@@ -30,14 +39,6 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: npm install
-
-      # Run linting
-      - name: Run linting
-        run: npm run lint
-
-      # Run unit tests (headless)
-      - name: Run unit tests (headless)
-        run: npx ng test --watch=false --browsers=ChromeHeadless
 
       # Build Angular project
       - name: Build Angular
