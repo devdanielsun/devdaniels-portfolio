@@ -1,0 +1,20 @@
+<app-container-component>
+  @if (toolMeta; as t) {
+    <div class="tool-container">
+      <p class="breadcrumb">
+        <span><a [routerLink]="['/']">Home</a></span>
+        <span> &gt; <a [routerLink]="['/tools']">Tools</a></span>
+        <span>
+          &gt; <span class="active">{{ t.title }}</span></span
+        >
+      </p>
+
+      <h1 class="tool-title">{{ t.title }}</h1>
+      <p class="tool-description">{{ t.shortDescription }}</p>
+
+      <div class="tool-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  }
+</app-container-component>

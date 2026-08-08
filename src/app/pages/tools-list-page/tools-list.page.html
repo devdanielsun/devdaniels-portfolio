@@ -1,0 +1,55 @@
+<app-container-component containerTitle="Tools">
+  <div class="tools-controls">
+    <input
+      class="tools-search"
+      type="text"
+      placeholder="Search tools..."
+      [ngModel]="searchQuery()"
+      (ngModelChange)="onSearchInput($event)"
+    />
+
+    <select
+      class="tools-sort"
+      [ngModel]="sortOption()"
+      (ngModelChange)="onSortChange($event)"
+    >
+      <option value="name-asc">Name (A–Z)</option>
+      <option value="name-desc">Name (Z–A)</option>
+    </select>
+  </div>
+
+  <div class="tools-category-nav">
+    <button
+      class="category-chip"
+      [class.selected]="selectedCategory() === null"
+      (click)="onCategorySelect(null)"
+    >
+      All
+    </button>
+    @for (c of categories(); track c) {
+      <button
+        class="category-chip"
+        [class.selected]="selectedCategory() === c"
+        (click)="onCategorySelect(c)"
+      >
+        {{ c }}
+      </button>
+    }
+  </div>
+
+  <div class="tools-list-grid">
+    @for (t of filteredTools(); track t.slug) {
+      <a class="tool-card" [routerLink]="['/tools', t.slug]">
+        <small class="tool-categories">
+          @for (c of t.categories; track c) {
+            <span class="tool-category-badge">{{ c }}</span>
+          }
+        </small>
+        <h2>{{ t.title }}</h2>
+        <p>{{ t.shortDescription }}</p>
+      </a>
+    } @empty {
+      <p class="tools-empty">No tools match your search.</p>
+    }
+  </div>
+</app-container-component>

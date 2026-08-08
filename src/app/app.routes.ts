@@ -5,6 +5,9 @@ import { ArticlesListPage } from './pages/article-list-page/articles-list.page';
 import { ArticleComponent } from './components/article-component/article.component';
 import { articleResolver } from './resolvers/article.resolver';
 import { ArticleLoaderComponent } from './components/article-loader-component/article-loader.component';
+import { ToolsListPage } from './pages/tools-list-page/tools-list.page';
+import { ToolComponent } from './components/tool.component/tool.component';
+import { TOOLS } from './tools/tools.registry';
 
 export const routes: Routes = [
   {
@@ -39,6 +42,29 @@ export const routes: Routes = [
           },
         ],
       },
+    ],
+  },
+  {
+    path: 'tools',
+    title: 'Tools - DevDaniels',
+    data: { navTitle: 'Tools' },
+    children: [
+      {
+        path: '',
+        component: ToolsListPage,
+      },
+      ...TOOLS.map((tool) => ({
+        path: tool.slug,
+        component: ToolComponent,
+        title: `${tool.title} - DevDaniels`,
+        data: { toolMeta: tool },
+        children: [
+          {
+            path: '',
+            loadComponent: tool.loadComponent,
+          },
+        ],
+      })),
     ],
   },
   {

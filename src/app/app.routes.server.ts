@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { RenderMode, ServerRoute } from '@angular/ssr';
 import { ARTICLE_SLUGS } from './articles/articles.registry';
+import { TOOLS } from './tools/tools.registry';
 import { parseFrontmatter } from './utils/frontmatter.parser';
 import { Article } from './models/article.model';
 
@@ -45,6 +46,17 @@ export const serverRoutes: ServerRoute[] = [
       return ARTICLE_SLUGS.map((slug) => ({ slug }));
     },
   },
+  {
+    path: 'tools',
+    renderMode: RenderMode.Prerender,
+  },
+  ...TOOLS.map(
+    (tool) =>
+      ({
+        path: `tools/${tool.slug}`,
+        renderMode: RenderMode.Prerender,
+      }) as ServerRoute,
+  ),
   {
     path: '**',
     renderMode: RenderMode.Prerender,
