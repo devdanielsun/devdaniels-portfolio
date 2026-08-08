@@ -11,7 +11,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) >= 22.12
+- [Node.js](https://nodejs.org/) >= 22.22.3
 - [Angular CLI](https://angular.dev/tools/cli) (recommended)
 
 ### Install dependencies
