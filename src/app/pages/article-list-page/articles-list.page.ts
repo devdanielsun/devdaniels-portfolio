@@ -40,14 +40,6 @@ export class ArticlesListPage implements OnInit {
   categories: string[] = [];
 
   ngOnInit(): void {
-    if (!this.onlyShowArticles) {
-      this.seo.update({
-        title: 'Articles',
-        description:
-          'Articles and project write-ups by Daniël Geerts (DevDaniels) covering software engineering, DevOps, and web development.',
-        url: '/articles',
-      });
-    }
     this.subscribeToRouteParams();
     this.loadCategories();
     this.loadArticles();
@@ -58,12 +50,33 @@ export class ArticlesListPage implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((paramMap) => {
         this.currentCategory = paramMap.get('category') || undefined;
-        if (this.currentCategory && !this.onlyShowArticles) {
-          this.seo.update({
-            title: `${this.currentCategory} Articles`,
-            description: `Articles about ${this.currentCategory} by Daniël Geerts (DevDaniels).`,
-            url: `/articles/category/${this.currentCategory}`,
-          });
+        if (!this.onlyShowArticles) {
+          if (this.currentCategory) {
+            this.seo.update({
+              title: `${this.currentCategory} Articles`,
+              description: `Articles about ${this.currentCategory} by Daniël Geerts (DevDaniels).`,
+              url: `/articles/category/${this.currentCategory}`,
+              breadcrumbs: [
+                { name: 'Home', url: '/' },
+                { name: 'Articles', url: '/articles' },
+                {
+                  name: this.currentCategory,
+                  url: `/articles/category/${this.currentCategory}`,
+                },
+              ],
+            });
+          } else {
+            this.seo.update({
+              title: 'Articles',
+              description:
+                'Articles and project write-ups by Daniël Geerts (DevDaniels) covering software engineering, DevOps, and web development.',
+              url: '/articles',
+              breadcrumbs: [
+                { name: 'Home', url: '/' },
+                { name: 'Articles', url: '/articles' },
+              ],
+            });
+          }
         }
         this.loadArticles();
       });
