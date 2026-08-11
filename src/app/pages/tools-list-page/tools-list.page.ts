@@ -2,15 +2,17 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ContainerComponent } from '../../components/container-component/container.component';
-import { TOOLS } from '../../tools/tools.registry';
+import { TOOLS, TOOL_ICONS } from '../../tools/tools.registry';
 import { ToolMeta } from '../../models/tool.model';
 import { SeoService } from '../../services/seo.service';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
 
 type SortOption = 'name-asc' | 'name-desc';
 
 @Component({
   selector: 'app-tools-list-page',
-  imports: [ContainerComponent, RouterLink, FormsModule],
+  imports: [ContainerComponent, RouterLink, FormsModule, NgIconComponent],
+  providers: [provideIcons(TOOL_ICONS)],
   templateUrl: './tools-list.page.html',
   styleUrl: './tools-list.page.scss',
 })
@@ -53,8 +55,12 @@ export class ToolsListPage implements OnInit {
     this.seo.update({
       title: 'Tools',
       description:
-        'Free online developer tools by Daniël Geerts (DevDaniels) — QR code generator, and more.',
+        'Free online developer tools by Daniël Geerts (DevDaniels) — generators, utilities, and more.',
       url: '/tools',
+      breadcrumbs: [
+        { name: 'Home', url: '/' },
+        { name: 'Tools', url: '/tools' },
+      ],
     });
   }
 

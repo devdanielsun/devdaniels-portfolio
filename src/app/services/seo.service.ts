@@ -17,6 +17,7 @@ export interface PageMeta {
   article?: {
     author?: string;
     publishedTime?: string;
+    modifiedTime?: string;
     tags?: string[];
   };
   breadcrumbs?: { name: string; url: string }[];
@@ -38,6 +39,7 @@ export class SeoService {
     // Basic
     this.title.setTitle(fullTitle);
     this.meta.updateTag({ name: 'description', content: description });
+    this.meta.updateTag({ name: 'author', content: 'Daniël Geerts' });
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
 
     // Canonical
@@ -48,8 +50,13 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:description', content: description });
     this.meta.updateTag({ property: 'og:url', content: url });
     this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({
+      property: 'og:image:alt',
+      content: page.title,
+    });
     this.meta.updateTag({ property: 'og:type', content: type });
     this.meta.updateTag({ property: 'og:site_name', content: SITE_NAME });
+    this.meta.updateTag({ property: 'og:locale', content: 'en_US' });
 
     // Twitter Card
     this.meta.updateTag({
@@ -62,28 +69,10 @@ export class SeoService {
       content: description,
     });
     this.meta.updateTag({ name: 'twitter:image', content: image });
-
-    // Article-specific OG tags
-    if (type === 'article' && page.article) {
-      if (page.article.author) {
-        this.meta.updateTag({
-          property: 'article:author',
-          content: page.article.author,
-        });
-      }
-      if (page.article.publishedTime) {
-        this.meta.updateTag({
-          property: 'article:published_time',
-          content: page.article.publishedTime,
-        });
-      }
-      page.article.tags?.forEach((tag) => {
-        this.meta.updateTag({ property: 'article:tag', content: tag });
-      });
-    }
+    this.meta.updateTag({ name: 'twitter:image:alt', content: page.title });
 
     // JSON-LD
-    this.updateJsonLd(page, fullTitle, description, url, image);
+    this.updateJsonLd(page, description, url, image);
   }
 
   private updateCanonical(url: string): void {
@@ -98,9 +87,13 @@ export class SeoService {
     link.setAttribute('href', url);
   }
 
+  /** Normalizes bare year "2022" → "2022-01-01" for ISO 8601 compliance. */
+  private toIsoDate(value: string): string {
+    return /^\d{4}$/.test(value) ? `${value}-01-01` : value;
+  }
+
   private updateJsonLd(
     page: PageMeta,
-    title: string,
     description: string,
     url: string,
     image: string,
@@ -116,10 +109,10 @@ export class SeoService {
       schemas.push({
         '@context': 'https://schema.org',
         '@type': 'Article',
-        headline: title,
+        headline: page.title,
         description,
         url,
-        image,
+        image: { '@type': 'ImageObject', url: image },
         inLanguage: 'en',
         author: {
           '@type': 'Person',
@@ -134,7 +127,10 @@ export class SeoService {
           url: BASE_URL,
         },
         ...(page.article?.publishedTime && {
-          datePublished: page.article.publishedTime,
+          datePublished: this.toIsoDate(page.article.publishedTime),
+        }),
+        ...(page.article?.modifiedTime && {
+          dateModified: this.toIsoDate(page.article.modifiedTime),
         }),
         ...(page.article?.tags?.length && {
           keywords: page.article.tags.join(', '),

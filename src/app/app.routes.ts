@@ -13,12 +13,12 @@ export const routes: Routes = [
   {
     path: '',
     component: PortfolioPage,
-    title: 'Portfolio - DevDaniels',
+    title: 'Portfolio',
     data: { navTitle: 'Portfolio' },
   },
   {
     path: 'articles',
-    title: 'Articles - DevDaniels',
+    title: 'Articles',
     data: { navTitle: 'Articles' },
     children: [
       {
@@ -28,7 +28,7 @@ export const routes: Routes = [
       {
         path: 'category/:category',
         component: ArticlesListPage,
-        title: 'Articles - DevDaniels',
+        title: 'Articles',
       },
       {
         // make the portfolio wrapper the route component so its router-outlet hosts the article
@@ -46,7 +46,7 @@ export const routes: Routes = [
   },
   {
     path: 'tools',
-    title: 'Tools - DevDaniels',
+    title: 'Tools',
     data: { navTitle: 'Tools' },
     children: [
       {
@@ -56,7 +56,7 @@ export const routes: Routes = [
       ...TOOLS.map((tool) => ({
         path: tool.slug,
         component: ToolComponent,
-        title: `${tool.title} - DevDaniels`,
+        title: tool.title,
         data: { toolMeta: tool },
         children: [
           {
@@ -70,7 +70,7 @@ export const routes: Routes = [
   {
     path: '**',
     component: NotFound404Page,
-    title: '404 Not Found - DevDaniels',
+    title: '404 Not Found',
   },
 ];
 

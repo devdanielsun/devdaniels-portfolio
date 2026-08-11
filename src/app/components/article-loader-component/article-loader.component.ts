@@ -2,10 +2,12 @@ import {
   ChangeDetectorRef,
   Component,
   inject,
+  OnDestroy,
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { marked, Renderer } from 'marked';
 import { ResolvedArticle } from '../../models/article.model';
@@ -28,9 +30,10 @@ marked.use({ renderer });
   template: `<div class="markdown-content" [innerHTML]="sanitizedHtml"></div>`,
   styleUrls: ['./article-loader.component.scss'],
 })
-export class ArticleLoaderComponent implements OnInit {
+export class ArticleLoaderComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private seo = inject(SeoService);
+  private meta = inject(Meta);
   private platformId = inject(PLATFORM_ID);
   private cdr = inject(ChangeDetectorRef);
 
@@ -53,6 +56,7 @@ export class ArticleLoaderComponent implements OnInit {
       article: {
         author: a.author,
         publishedTime: a.startDate,
+        modifiedTime: a.endDate,
         tags: a.tags,
       },
       breadcrumbs: [
@@ -61,6 +65,7 @@ export class ArticleLoaderComponent implements OnInit {
         { name: a.title, url: `/articles/${a.slug}` },
       ],
     });
+    this.setArticleTags(a.author, a.startDate, a.tags);
     const rawHtml = marked.parse(resolved.markdownContent) as string;
     if (isPlatformBrowser(this.platformId)) {
       const DOMPurify = (await import('dompurify')).default;
@@ -79,5 +84,36 @@ export class ArticleLoaderComponent implements OnInit {
       });
     }
     this.cdr.markForCheck();
+  }
+
+  ngOnDestroy(): void {
+    this.clearArticleTags();
+  }
+
+  private setArticleTags(
+    author?: string,
+    publishedTime?: string,
+    tags?: string[],
+  ): void {
+    if (author) {
+      this.meta.addTag({ property: 'article:author', content: author });
+    }
+    if (publishedTime) {
+      this.meta.addTag({
+        property: 'article:published_time',
+        content: publishedTime,
+      });
+    }
+    tags?.forEach((tag) => {
+      this.meta.addTag({ property: 'article:tag', content: tag });
+    });
+  }
+
+  private clearArticleTags(): void {
+    this.meta.removeTag("property='article:author'");
+    this.meta.removeTag("property='article:published_time'");
+    this.meta.getTags("property='article:tag'").forEach((el) => {
+      this.meta.removeTagElement(el);
+    });
   }
 }

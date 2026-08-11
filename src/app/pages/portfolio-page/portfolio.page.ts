@@ -91,6 +91,7 @@ export class PortfolioPage implements OnInit {
       description:
         'Portfolio of Daniël Geerts (DevDaniels) — Software and DevOps engineer from the Netherlands. Projects, articles, and experience with C# .NET, Azure, TypeScript, and more.',
       url: '/',
+      breadcrumbs: [{ name: 'Home', url: '/' }],
     });
   }
 
