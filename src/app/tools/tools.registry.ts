@@ -1,7 +1,9 @@
 import { Type } from '@angular/core';
 import { ToolMeta } from '../models/tool.model';
+import { faSolidQrcode } from '@ng-icons/font-awesome/solid';
 
 export interface ToolRegistryEntry extends ToolMeta {
+  iconRef: string;
   loadComponent: () => Promise<Type<unknown>>;
 }
 
@@ -12,9 +14,14 @@ export const TOOLS: ToolRegistryEntry[] = [
     shortDescription: 'Generate QR codes from text or URLs',
     categories: ['Generators'],
     icon: 'faSolidQrcode',
+    iconRef: faSolidQrcode,
     loadComponent: () =>
       import('./qr-code-creator.tool/qr-code-creator.tool').then(
         (m) => m.QrCodeCreatorTool,
       ),
   },
 ];
+
+export const TOOL_ICONS: Record<string, string> = Object.fromEntries(
+  TOOLS.map((t) => [t.icon, t.iconRef]),
+);
